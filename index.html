@@ -184,7 +184,8 @@ button{font-family:var(--wp-font)}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:999px;background:linear-gradient(to right,var(--wp-blue) 0%,var(--wp-blue) var(--pct,50%),var(--wp-grey-200) var(--pct,50%),var(--wp-grey-200) 100%);outline:none}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--wp-blue);cursor:pointer;box-shadow:var(--wp-shadow-sm)}
 input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--wp-blue);cursor:pointer}
-.slider-ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--wp-grey-400);margin-top:10px}
+.slider-ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--wp-grey-400);margin-top:10px;gap:10px}
+.slider-ticks span{white-space:nowrap}
 .slider-threshold{margin-top:16px;padding:12px 14px;border-radius:var(--wp-r-sm);font-size:13.5px;line-height:1.55;background:var(--wp-grey-50);color:var(--wp-fg-2);border-left:2px solid var(--wp-grey-300)}
 .slider-threshold.hit{background:var(--wp-blue-50);border-left-color:var(--wp-blue);color:var(--wp-ink)}
 
@@ -626,10 +627,10 @@ const QUESTIONS = [
   short:'Volumétrie',
   type:'twoSliders',
   title:"Quelle volumétrie devez-vous gouverner ?",
-  why:"En gouvernance des identités, la complexité ne vient pas du nombre d'employés mais de deux grandeurs : le nombre d'identités internes à gouverner (employés, consultants, fournisseurs sous contrat…) et le nombre d'applications d'affaires dont les accès doivent réellement être gouvernés. C'est le second chiffre qui détermine l'essentiel de la charge de projet ; les identités externes sans lien contractuel (clients, citoyens, partenaires ponctuels) seront couvertes par une question distincte.",
-  impact:`Une volumétrie élevée d'identités favorise les plateformes éprouvées à grande échelle : <strong>SailPoint</strong>, <strong>Saviynt</strong>, <strong>One Identity</strong>, <strong>IBM</strong> et <strong>Oracle</strong><sup class="src">[2][3][5]</sup>. Le nombre d'applications à connecter pèse encore plus lourd : au-delà de quelques dizaines, la richesse du catalogue de connecteurs et la capacité à intégrer des applications non standard deviennent le premier facteur de succès<sup class="src">[1][2]</sup>. À l'inverse, une volumétrie modeste valorise les solutions au coût d'entrée contenu : <strong>Entra ID Governance</strong>, <strong>midPoint</strong> et <strong>Omada</strong>.`,
+  why:"En gouvernance des identités, la complexité ne vient pas du nombre d'employés mais de trois grandeurs : le nombre d'identités humaines internes à gouverner (employés, consultants, fournisseurs sous contrat…), le nombre d'identités non humaines (comptes de service, robots, clés d'API, agents) et le nombre d'applications d'affaires dont les accès doivent réellement être gouvernés. C'est ce dernier chiffre qui détermine l'essentiel de la charge de projet ; les identités externes sans lien contractuel (clients, citoyens, partenaires ponctuels) seront couvertes par une question distincte.",
+  impact:`Une volumétrie élevée d'identités humaines favorise les plateformes éprouvées à grande échelle : <strong>SailPoint</strong>, <strong>Saviynt</strong>, <strong>One Identity</strong>, <strong>IBM</strong> et <strong>Oracle</strong><sup class="src">[2][3][5]</sup>. Un volume significatif d'identités non humaines valorise particulièrement <strong>Saviynt</strong> et <strong>SailPoint</strong>, dont l'évaluation 2026 souligne l'avance sur ce terrain<sup class="src">[2]</sup>. Le nombre d'applications à connecter pèse encore plus lourd : au-delà de quelques dizaines, la richesse du catalogue de connecteurs et la capacité à intégrer des applications non standard deviennent le premier facteur de succès<sup class="src">[1][2]</sup>. À l'inverse, une volumétrie modeste valorise les solutions au coût d'entrée contenu : <strong>Entra ID Governance</strong>, <strong>midPoint</strong> et <strong>Omada</strong>.`,
   sliders:[
-    { key:'total', label:'Nombre d\'identités internes à gouverner (employés, consultants, fournisseurs sous contrat…)',
+    { key:'total', label:'Nombre d\'identités HUMAINES internes à gouverner (employés, consultants, fournisseurs sous contrat…)',
       buckets:[
         { rep:300,    upper:500,    label:'Moins de 500' },
         { rep:750,    upper:1000,   label:'500 à 1 000' },
@@ -639,7 +640,16 @@ const QUESTIONS = [
         { rep:17500,  upper:25000,  label:'10 000 à 25 000' },
         { rep:37500,  upper:50000,  label:'25 000 à 50 000' },
         { rep:75000,  upper:100000, label:'50 000 à 100 000' },
-        { rep:150000, upper:150000, label:'Plus de 100 000' }
+        { rep:150000, upper:150000, label:'100 000+' }
+      ] },
+    { key:'nonhuman', label:"Nombre d'identités NON HUMAINES (comptes de service, robots, clés d'API, agents)",
+      buckets:[
+        { rep:0,    upper:10,    label:'Moins de 10' },
+        { rep:30,   upper:50,    label:'10 à 50' },
+        { rep:125,  upper:200,   label:'50 à 200' },
+        { rep:600,  upper:1000,  label:'200 à 1 000' },
+        { rep:3000, upper:5000,  label:'1 000 à 5 000' },
+        { rep:10000,upper:10000, label:'5 000+' }
       ] },
     { key:'it', label:"Nombre d'applications d'affaires à gouverner",
       buckets:[
@@ -649,7 +659,7 @@ const QUESTIONS = [
         { rep:110, upper:150,  label:'75 à 150' },
         { rep:250, upper:400,  label:'150 à 400' },
         { rep:600, upper:800,  label:'400 à 800' },
-        { rep:1200,upper:1200, label:'Plus de 800' }
+        { rep:1200,upper:1200, label:'800+' }
       ] }
   ]
 },
@@ -776,22 +786,22 @@ const QUESTIONS = [
   section:'s1',
   short:'Modèle d\'accès',
   title:"Où en êtes-vous sur votre modèle de contrôle d'accès ?",
-  why:"Le modèle de contrôle d'accès — par rôles (RBAC), par attributs (ABAC) ou par relations (ReBAC) — est le langage sur lequel repose toute automatisation de la gouvernance. Plus il est défini et documenté avant le projet, plus la mise en œuvre avance vite ; le construire en même temps que l'outil rallonge fortement les délais.",
-  impact:`Sans modèle formalisé, les solutions dotées d'un moteur de <strong>découverte de rôles assistée par IA</strong> réduisent le travail de démarrage : <strong>Saviynt</strong> et <strong>SailPoint</strong><sup class="src">[2]</sup>, ainsi qu'<strong>Omada</strong> par sa méthode cadrée<sup class="src">[2]</sup>. Un RBAC déjà structuré valorise les moteurs de rôles les plus profonds : <strong>One Identity</strong><sup class="src">[5]</sup> et <strong>midPoint</strong><sup class="src">[10]</sup>. Une démarche ABAC ou ReBAC déjà engagée, plus rare et plus exigeante, valorise les architectures de politiques les plus modernes : <strong>Saviynt</strong> et <strong>Ping Identity</strong>, dont la gouvernance s'adosse à un moteur de politiques contextuel<sup class="src">[5][6]</sup>.`,
+  why:"Trois notions bien distinctes se cachent souvent derrière « modèle d'accès ». Le <strong>modèle d'accès applicatif</strong> : les rôles ou privilèges documentés à l'intérieur d'une seule application. Le <strong>rôle métier</strong> : un regroupement d'accès qui traverse plusieurs applications, assemblé autour d'une fonction (ex. « comptable AP » = tel accès dans l'ERP + tel accès dans l'outil de paie). L'<strong>attribution dynamique</strong> : des règles qui calculent l'accès à partir d'attributs (service, projet, niveau d'habilitation) plutôt que de rôles figés à l'avance. Plus votre démarche est avancée sur cette échelle avant le projet, plus la mise en œuvre ira vite ; la construire en même temps que l'outil rallonge fortement les délais.",
+  impact:`Sans modèle formalisé, les solutions dotées d'un moteur de <strong>découverte de rôles assistée par IA</strong> réduisent le travail de démarrage : <strong>Saviynt</strong> et <strong>SailPoint</strong><sup class="src">[2]</sup>, ainsi qu'<strong>Omada</strong> par sa méthode cadrée<sup class="src">[2]</sup>. Un modèle documenté au niveau applicatif valorise les catalogues d'entitlements les plus riches. Des rôles métier transverses déjà définis valorisent les moteurs de rôles les plus profonds : <strong>One Identity</strong><sup class="src">[5]</sup> et <strong>midPoint</strong><sup class="src">[10]</sup>. Une attribution dynamique déjà engagée, plus rare et plus exigeante, valorise les architectures de politiques les plus modernes : <strong>Saviynt</strong> et <strong>Ping Identity</strong>, dont la gouvernance s'adosse à un moteur de politiques contextuel<sup class="src">[5][6]</sup>.`,
   options:[
-    { id:'none', label:'Aucun modèle formalisé', desc:'Les accès sont accordés au cas par cas, sans référentiel de rôles',
+    { id:'none', label:'Aucun modèle formalisé', desc:'Les accès sont accordés au cas par cas, sans référentiel de rôles ni de privilèges',
       fx:{ saviynt:5, sailpointisc:5, omada:5, entra:3, ping:2, oneidentity:0, midpoint:0, sailpointiiq:0, ibm:0, oracle:0 },
       notes:[ {sol:'saviynt', txt:'Vous n\'avez pas encore de modèle formalisé : le role mining assisté par IA de Saviynt aide à faire émerger une première structure de rôles à partir des accès réels plutôt que de la construire à la main', src:[2]} ] },
-    { id:'partial', label:'Quelques rôles documentés', desc:'Un début de RBAC existe, sur un périmètre restreint',
+    { id:'appmodel', label:'Modèle d\'accès documenté par application', desc:'Les rôles ou privilèges internes à chaque application sont connus, mais sans vue transverse entre applications',
       fx:{ sailpointisc:3, saviynt:3, omada:3, oneidentity:3, midpoint:2, entra:2, ping:2, ibm:2, oracle:2, sailpointiiq:2 }, notes:[] },
-    { id:'rbac', label:'RBAC structuré et maintenu', desc:'Des rôles métier sont définis, documentés et revus régulièrement',
+    { id:'businessrole', label:'Rôles métier transverses définis', desc:'Un rôle métier regroupe des accès de plusieurs applications, documenté et revu régulièrement',
       fx:{ oneidentity:6, saviynt:5, sailpointisc:5, midpoint:5, sailpointiiq:4, omada:3, ibm:3, oracle:3, ping:1, entra:0 },
-      notes:[ {sol:'oneidentity', txt:'Votre RBAC est structuré et maintenu : c\'est le terrain où le moteur de rôles de One Identity Manager, l\'un des plus complets du marché, s\'exprime pleinement', src:[5]} ] },
-    { id:'abac_rebac', label:'Démarche ABAC ou ReBAC engagée', desc:'Des attributs dynamiques ou des relations pilotent déjà une partie des accès, au-delà du RBAC classique',
+      notes:[ {sol:'oneidentity', txt:'Vos rôles métier transverses sont définis : c\'est le terrain où le moteur de rôles de One Identity Manager, l\'un des plus complets du marché, s\'exprime pleinement', src:[5]} ] },
+    { id:'dynamic', label:'Attribution dynamique engagée', desc:'Des règles basées sur des attributs ou des politiques calculent une partie des accès, au-delà des rôles statiques',
       fx:{ saviynt:6, ping:5, sailpointisc:4, oneidentity:2, ibm:1, midpoint:0, entra:-1, sailpointiiq:-2 },
       notes:[
-        {sol:'saviynt', txt:'Vous avez engagé une démarche ABAC ou ReBAC : l\'architecture orientée API et l\'analytique contextuelle de Saviynt sont conçues pour ce type de politiques dynamiques', src:[2]},
-        {sol:'sailpointiiq', txt:'Vous avez engagé une démarche ABAC ou ReBAC : IdentityIQ reste structuré autour d\'un modèle plus classique, et cette ambition pousse plutôt vers une plateforme plus récente', src:[9]} ] }
+        {sol:'saviynt', txt:'Vous avez engagé une attribution dynamique : l\'architecture orientée API et l\'analytique contextuelle de Saviynt sont conçues pour ce type de politiques', src:[2]},
+        {sol:'sailpointiiq', txt:'Vous avez engagé une attribution dynamique : IdentityIQ reste structuré autour d\'un modèle plus classique, et cette ambition pousse plutôt vers une plateforme plus récente', src:[9]} ] }
   ]
 },
 {
@@ -1030,9 +1040,10 @@ const RANK_WEIGHTS = [1, .7, .5, .35, .22, .12, .05, 0];
 /* ================================================================
    ÉTAT
    ================================================================ */
-const state = { answers:{}, slider:50, sizeTotalIdx:3, sizeITIdx:1, capexBudget:700, toggles:{}, envDeploy:'', notes:{}, idx:0, maxIdx:0, fromReview:false };
+const state = { answers:{}, slider:50, sizeTotalIdx:3, sizeITIdx:1, sizeNonhumanIdx:1, capexBudget:700, toggles:{}, envDeploy:'', notes:{}, idx:0, maxIdx:0, fromReview:false };
 
 /* Helpers pour retrouver la valeur représentative des buckets de taille */
+const SIZE_IDX_KEY = { total:'sizeTotalIdx', it:'sizeITIdx', nonhuman:'sizeNonhumanIdx' };
 function sizeBuckets(key){
   const q = QUESTIONS.find(x => x.id === 'size');
   return q.sliders.find(s => s.key === key).buckets;
@@ -1040,6 +1051,7 @@ function sizeBuckets(key){
 function get_sizeTotal(){ return sizeBuckets('total')[state.sizeTotalIdx].rep; }
 function get_sizeIT(){ return sizeBuckets('it')[state.sizeITIdx].rep; }
 function get_sizeITUpper(){ return sizeBuckets('it')[state.sizeITIdx].upper || sizeBuckets('it')[state.sizeITIdx].rep; }
+function get_sizeNonhuman(){ return sizeBuckets('nonhuman')[state.sizeNonhumanIdx].rep; }
 
 /* Contrainte : la borne haute de l'équipe TI ne peut jamais dépasser la borne haute totale.
    Retourne l'indice IT maximal autorisé compte tenu de sizeTotalIdx. */
@@ -1072,6 +1084,7 @@ function adminTiers(){
 Object.defineProperty(state, 'sizeTotal', { get(){ return get_sizeTotal(); } });
 Object.defineProperty(state, 'sizeIT', { get(){ return get_sizeIT(); } });
 Object.defineProperty(state, 'sizeITUpper', { get(){ return get_sizeITUpper(); } });
+Object.defineProperty(state, 'sizeNonhuman', { get(){ return get_sizeNonhuman(); } });
 
 function visibleQuestions(){ return QUESTIONS.filter(q => !q.cond || q.cond(state)); }
 
@@ -1086,9 +1099,9 @@ function go(name){
 function startQuiz(){ state.idx = 0; state.maxIdx = 0; state.fromReview = false; state.toggles = {}; state.envDeploy = ''; renderQuiz(); go('quiz'); }
 function restart(){
   if(!confirm("Recommencer une nouvelle évaluation ? Toutes vos réponses et vos notes personnelles seront effacées.")) return;
-  state.answers = {}; state.slider = 50; state.sizeTotalIdx = 3; state.sizeITIdx = 1; state.capexBudget = 700; state.toggles = {}; state.envDeploy = ''; state.notes = {}; state.idx = 0; state.maxIdx = 0; state.fromReview = false; renderQuiz(); go('quiz');
+  state.answers = {}; state.slider = 50; state.sizeTotalIdx = 3; state.sizeITIdx = 1; state.sizeNonhumanIdx = 1; state.capexBudget = 700; state.toggles = {}; state.envDeploy = ''; state.notes = {}; state.idx = 0; state.maxIdx = 0; state.fromReview = false; renderQuiz(); go('quiz');
 }
-function clearAnswers(){ state.answers = {}; state.slider = 50; state.sizeTotalIdx = 3; state.sizeITIdx = 1; state.capexBudget = 700; state.toggles = {}; state.envDeploy = ''; state.notes = {}; state.idx = 0; state.maxIdx = 0; state.fromReview = false; renderQuiz(); }
+function clearAnswers(){ state.answers = {}; state.slider = 50; state.sizeTotalIdx = 3; state.sizeITIdx = 1; state.sizeNonhumanIdx = 1; state.capexBudget = 700; state.toggles = {}; state.envDeploy = ''; state.notes = {}; state.idx = 0; state.maxIdx = 0; state.fromReview = false; renderQuiz(); }
 function confirmRestart(){
   if(confirm("Recommencer l'évaluation depuis le début ? Toutes vos réponses et vos notes personnelles seront effacées.")){
     clearAnswers();
@@ -1151,6 +1164,16 @@ function renderRail(){
   const pct = qs.length > 1 ? (state.maxIdx / (qs.length - 1)) * 100 : 0;
   document.getElementById('railFill').style.height = `calc(${pct}% - ${pct>0?8:0}px)`;
 }
+function syncNextBtn(){
+  const btn = document.getElementById('nextBtn');
+  if(!btn) return;
+  const qs = visibleQuestions();
+  const q = qs[state.idx];
+  if(q && q.type === 'orgLoc'){
+    const ok = !!(state.answers.org || '').trim() && Array.isArray(state.answers.regions) && state.answers.regions.length > 0;
+    btn.disabled = !ok;
+  }
+}
 function jumpTo(i){
   state.idx = i; state.fromReview = false; renderQuiz(); window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -1174,7 +1197,7 @@ function renderQuiz(){
     const selRegions = Array.isArray(state.answers.regions) ? state.answers.regions : [];
     body = `<div class="org-block">
       <input type="text" class="org-input" id="orgInput" placeholder="Nom de votre organisation" value="${orgVal}"
-        oninput="state.answers.org = this.value">
+        oninput="state.answers.org = this.value; syncNextBtn();">
       <p class="org-hint">Cette information personnalise votre bilan et le courriel de prise de contact. Elle n'est ni stockée ni transmise.</p>
     </div>
     <p style="font-size:14px;font-weight:500;color:var(--wp-fg-2);margin:0 0 12px">Zones géographiques où votre organisation opère (sélectionnez une ou plusieurs) :</p>
@@ -1187,7 +1210,7 @@ function renderQuiz(){
     }).join('')}</div>`;
   } else if(q.type === 'twoSliders'){
     body = `<div class="dual-sliders">` + q.sliders.map(sc=>{
-      const idxKey = sc.key === 'total' ? 'sizeTotalIdx' : 'sizeITIdx';
+      const idxKey = SIZE_IDX_KEY[sc.key];
       const idx = state[idxKey];
       const bk = sc.buckets[idx];
       const max = sc.buckets.length - 1;
@@ -1346,7 +1369,7 @@ function renderQuiz(){
 
   let canNext = true;
   if(q.type === 'multi') canNext = Array.isArray(state.answers[q.id]) && state.answers[q.id].length > 0;
-  else if(q.type === 'orgLoc') canNext = Array.isArray(state.answers.regions) && state.answers.regions.length > 0;
+  else if(q.type === 'orgLoc') canNext = !!(state.answers.org || '').trim() && Array.isArray(state.answers.regions) && state.answers.regions.length > 0;
   else if(q.type === 'text') canNext = !!(state.answers[q.id] || '').trim();
   else if(q.type === 'twoSliders' || q.type === 'slider') canNext = true;
   else if(q.type === 'buckets') canNext = state.answers[q.id] && q.buckets.every(bk => state.answers[q.id][bk.key]);
@@ -1389,7 +1412,7 @@ function renderQuiz(){
       </button>
     </div>`;
   if(q.type === 'slider') onSlider(state.slider);
-  if(q.type === 'twoSliders'){ onDualSlider('total', state.sizeTotalIdx, true); onDualSlider('it', state.sizeITIdx, true); }
+  if(q.type === 'twoSliders'){ onDualSlider('total', state.sizeTotalIdx, true); onDualSlider('it', state.sizeITIdx, true); onDualSlider('nonhuman', state.sizeNonhumanIdx, true); }
   if(q.type === 'budget'){ onBudget(state.capexBudget); }
   if(q.type === 'buckets'){ onWinRatio(state.winRatio); }
 }
@@ -1461,7 +1484,7 @@ function pickNetCount(v){
 }
 
 function onDualSlider(key, v, silent){
-  const idxKey = key === 'total' ? 'sizeTotalIdx' : 'sizeITIdx';
+  const idxKey = SIZE_IDX_KEY[key];
   let vNum = +v;
   /* Contrainte : la borne IT ne peut jamais dépasser la borne totale.
      On plafonne systématiquement l'IT au maximum autorisé. */
@@ -1656,7 +1679,7 @@ function computeScores(){
       return;
     }
     if(q.type === 'twoSliders'){
-      const ident = state.sizeTotal, apps = state.sizeIT;
+      const ident = state.sizeTotal, apps = state.sizeIT, nonhuman = state.sizeNonhuman;
       const fmt = n => n.toLocaleString('fr-CA');
       if(ident < 2500){
         addC('entra', q.id, 4); addC('omada', q.id, 3);
@@ -1685,6 +1708,13 @@ function computeScores(){
         addC('entra', q.id, 3); addC('omada', q.id, 2);
         addC('ping', q.id, 2); addC('midpoint', q.id, 1);
         addC('oneidentity', q.id, -1); addC('ibm', q.id, -1); addC('oracle', q.id, -1); addC('sailpointiiq', q.id, -1);
+      }
+      /* Identités non humaines : terrain où Saviynt et SailPoint sont documentés en tête */
+      if(nonhuman >= 1000){
+        addC('saviynt', q.id, 3); addC('sailpointisc', q.id, 3); addC('oneidentity', q.id, 1); addC('entra', q.id, -1);
+        reasons.saviynt.push({txt:`Vous gouvernez un volume important d'identités non humaines (~${fmt(nonhuman)}) : c'est exactement le terrain où l'évaluation 2026 place Saviynt et SailPoint en tête, loin devant le reste du marché`, src:[2]});
+      } else if(nonhuman >= 200){
+        addC('saviynt', q.id, 1); addC('sailpointisc', q.id, 1);
       }
       return;
     }
@@ -1903,7 +1933,7 @@ function userAxisProfile(){
   };
 }
 
-function radarSVG(eligible, leaders, excluded){function radarSVG(eligible, leaders, excluded){
+function radarSVG(eligible, leaders, excluded){
   const axes = AXES;
   const N = axes.length;
   if(N < 3) return '';
@@ -1977,7 +2007,7 @@ function radarSVG(eligible, leaders, excluded){function radarSVG(eligible, leade
 
   const EXCL_SHORT = {
     entra: "écartée : empreinte Microsoft sous 85 %"
-  };  };
+  };
   let legend = `<div class="rleg" style="border-bottom:1px solid var(--wp-grey-200);padding-bottom:10px;margin-bottom:6px">
       <span class="rleg-swatch" style="border-top-color:#0C0F11;border-top-width:2.5px"></span>
       <span class="rleg-name" style="font-weight:600">${orgName}</span>
@@ -2055,7 +2085,7 @@ function userHeatPoint(){
     if(a.motivation.compliance === 3) y += 0.5;
     if(a.motivation.security === 3) y += 0.5;
   }
-  const accessAdjY = { none:-1, partial:-0.3, rbac:0.5, abac_rebac:1 };
+  const accessAdjY = { none:-1, appmodel:-0.3, businessrole:0.5, dynamic:1 };
   y += accessAdjY[a.accessmodel] ?? 0;
   y = Math.min(10, Math.max(0, y));
   return { x, y };
@@ -2189,9 +2219,10 @@ function answerTextBase(q){
   if(q.type === 'text') return (state.answers[q.id]||'').trim() || 'Non précisé';
   if(q.type === 'slider') return `${state.slider} % d'empreinte Microsoft`;
   if(q.type === 'twoSliders'){
-    const b1 = q.sliders[0].buckets[state.sizeTotalIdx].label;
-    const b2 = q.sliders[1].buckets[state.sizeITIdx].label;
-    return `${b1} identités internes, ${b2} applications d'affaires`;
+    const bTotal = sizeBuckets('total')[state.sizeTotalIdx].label;
+    const bNH = sizeBuckets('nonhuman')[state.sizeNonhumanIdx].label;
+    const bIT = sizeBuckets('it')[state.sizeITIdx].label;
+    return `${bTotal} identités humaines, ${bNH} identités non humaines, ${bIT} applications d'affaires`;
   }
   if(q.type === 'buckets'){
     const sel = state.answers[q.id] || {};
