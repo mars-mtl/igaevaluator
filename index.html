@@ -1,0 +1,2760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choisir un outil de gouvernance des identités · wepoint.</title>
+<link rel="icon" href="https://www.wepoint.com/wp-content/uploads/2025/07/cropped-logo-180x180.png" sizes="32x32">
+<link rel="icon" href="https://www.wepoint.com/wp-content/uploads/2025/07/cropped-logo-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://www.wepoint.com/wp-content/uploads/2025/07/cropped-logo-180x180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   WEPOINT — tokens (extraits de colors_and_type.css)
+   ============================================================ */
+:root{
+  --wp-ink:#0C0F11; --wp-white:#FFFFFF; --wp-blue:#009DDF; --wp-blue-press:#0079B8;
+  --wp-night:#15151E; --wp-night-2:#191B2A;
+  --wp-grey-50:#F6F7F8; --wp-grey-100:#EEEEEC; --wp-grey-200:#DCDFE2; --wp-grey-300:#BCC1C6;
+  --wp-grey-400:#8A9099; --wp-grey-500:#5B626B; --wp-grey-600:#3A3F45; --wp-grey-700:#24272C;
+  --wp-blue-50:#E6F5FC; --wp-blue-100:#B2E1F6;
+  --wp-success:#059469; --wp-danger:#DB3149; --wp-warning:#F8B432;
+  --wp-cat-3:#25C1C3;
+  --wp-fg-1:var(--wp-ink); --wp-fg-2:var(--wp-grey-500); --wp-fg-3:var(--wp-grey-400);
+  --wp-bg-1:var(--wp-white); --wp-bg-2:var(--wp-grey-50); --wp-border:var(--wp-grey-200);
+  --wp-font:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --wp-r-sm:4px; --wp-r-md:8px; --wp-r-lg:16px; --wp-r-pill:999px;
+  --wp-shadow-sm:0 1px 2px rgba(12,15,17,.06),0 1px 3px rgba(12,15,17,.08);
+  --wp-shadow-md:0 4px 12px rgba(12,15,17,.08),0 2px 4px rgba(12,15,17,.06);
+  --wp-shadow-lg:0 18px 48px rgba(12,15,17,.14);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{background:var(--wp-night)}
+body{font-family:var(--wp-font);color:var(--wp-ink);background:var(--wp-white);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+main,.screen.on{flex:1 0 auto}
+.ftr{flex-shrink:0}
+a{color:var(--wp-blue);text-decoration:none}
+a:hover{color:var(--wp-blue-press);text-decoration:underline}
+button{font-family:var(--wp-font)}
+
+/* Wordmark (repli typographique si le logo ne charge pas) */
+.wm{font-weight:600;letter-spacing:-0.035em;line-height:1}
+.wm-dot{color:var(--wp-blue)}
+
+/* Type */
+.wp-eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--wp-blue)}
+.wp-h1{font-weight:600;font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.015em;text-wrap:balance;margin:0}
+.wp-h2{font-weight:600;font-size:clamp(24px,3vw,32px);line-height:1.14;letter-spacing:-.01em;margin:0}
+.wp-lead{font-weight:400;font-size:clamp(17px,2vw,20px);line-height:1.55;color:var(--wp-fg-2)}
+.wp-small{font-size:13px;line-height:1.55;color:var(--wp-fg-3)}
+
+/* Buttons */
+.wp-btn{font-size:14px;font-weight:500;border-radius:var(--wp-r-pill);padding:12px 24px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .18s ease;white-space:nowrap;text-decoration:none}
+.wp-btn:hover{text-decoration:none}
+.wp-btn-primary{background:var(--wp-ink);color:#fff}
+.wp-btn-primary:hover{background:#000;transform:translateY(-1px);color:#fff}
+.wp-btn-accent{background:var(--wp-blue);color:#fff}
+.wp-btn-accent:hover{background:var(--wp-blue-press);color:#fff}
+.wp-btn-ghost{background:transparent;color:var(--wp-ink);border-color:var(--wp-grey-300)}
+.wp-btn-ghost:hover{border-color:var(--wp-ink)}
+.wp-btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.wp-btn svg{width:16px;height:16px}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--wp-grey-200)}
+.hdr-logo{cursor:pointer;display:flex;align-items:center}
+.hdr-logo img{height:32px;width:auto;display:block}
+.hdr-tag{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-grey-500);border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-pill);padding:8px 16px;background:#fff}
+.hdr-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--wp-blue)}
+
+/* Screens */
+.screen{display:none}
+.screen.on{display:block;animation:fadeUp .35s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.screen.on{animation:none}*{transition:none!important}}
+
+/* Défensif : si un window.print() est déclenché depuis un onglet enfant, s'assurer que la page mère reste identique à l'écran */
+@media print {
+  html, body { background: #fff !important; }
+  .screen.on { display: block !important; }
+}
+
+/* Hero (intro) */
+.hero{background:var(--wp-night);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(120% 90% at 72% 8%,#243049 0%,#15151e 55%,#0a0a10 100%)}
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:88px 40px 72px}
+.hero-title{font-size:clamp(34px,5vw,62px);font-weight:600;letter-spacing:-.02em;line-height:1.05;margin:16px 0 22px;text-wrap:balance;max-width:640px}
+.hero-lead{max-width:600px;color:rgba(255,255,255,.78);font-size:clamp(16px,1.8vw,19px);line-height:1.6;margin:0 0 36px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-meta{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;border-top:1px solid rgba(255,255,255,.14);padding-top:28px}
+.hero-meta div h4{margin:0 0 6px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--wp-blue)}
+.hero-meta div p{margin:0;font-size:14px;color:rgba(255,255,255,.7);line-height:1.55}
+
+/* Intro — méthodologie */
+.method{padding:64px 0 64px;overflow:hidden}
+.method-cols{max-width:1360px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,480px);gap:56px;align-items:center;padding-right:0}
+.method-text{padding-left:40px;padding-right:0;min-width:0}
+.method-img{position:relative;align-self:center;min-width:0;display:flex;justify-content:flex-end;padding-right:56px}
+.method-img img{width:100%;max-width:440px;height:auto;display:block}
+.method-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
+.method-grid .mcard{padding:22px 20px}
+.method-grid .mcard p{font-size:13.5px;line-height:1.55}
+
+@media (max-width:1100px){
+  .method-cols{grid-template-columns:1fr;padding:0}
+  .method-text{padding:0 40px}
+  .method-img{margin-right:0;max-width:560px;margin:0 auto}
+}
+.mcard{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:24px}
+.mcard h3{margin:0 0 8px;font-size:17px;font-weight:600;letter-spacing:-.005em}
+.mcard p{margin:0;font-size:14px;color:var(--wp-fg-2);line-height:1.6}
+.mnum{font-size:13px;font-weight:600;color:var(--wp-blue);letter-spacing:.06em;display:block;margin-bottom:12px}
+
+/* Quiz layout — rail signature */
+.quiz-wrap{max-width:1100px;margin:0 auto;padding:56px 40px 88px;display:grid;grid-template-columns:64px 1fr;gap:40px}
+.rail{position:relative;height:520px}
+.rail-line{position:absolute;left:50%;top:8px;bottom:8px;width:1px;background:var(--wp-grey-200)}
+.rail-fill{position:absolute;left:50%;top:8px;width:1px;background:var(--wp-blue);transition:height .35s ease-out}
+.rail-steps{position:relative;display:flex;flex-direction:column;justify-content:space-between;height:520px}
+.rail-step{position:relative;width:100%;display:flex;justify-content:center}
+.rail-dot{width:9px;height:9px;border-radius:50%;background:var(--wp-white);border:1px solid var(--wp-grey-300);transition:all .2s}
+.rail-step.done{cursor:pointer}
+.rail-step.done .rail-dot{background:var(--sec-color,var(--wp-blue));border-color:var(--sec-color,var(--wp-blue))}
+.rail-step.done:hover .rail-dot{box-shadow:0 0 0 5px color-mix(in srgb, var(--sec-color,var(--wp-blue)) 15%, transparent)}
+.rail-step.cur .rail-dot{background:var(--sec-color,var(--wp-blue));border-color:var(--sec-color,var(--wp-blue));box-shadow:0 0 0 5px color-mix(in srgb, var(--sec-color,var(--wp-blue)) 15%, transparent)}
+.rail-idx{position:absolute;left:-4px;transform:translateX(-100%);top:-4px;font-size:11px;color:var(--wp-grey-400);font-weight:500;letter-spacing:.04em;white-space:nowrap}
+.rail-step.cur .rail-idx{color:var(--sec-color,var(--wp-blue));font-weight:600}
+/* Séparateur entre sections dans le rail */
+.rail-sec-sep{display:flex;align-items:center;justify-content:center;height:24px;position:relative}
+.rail-sec-dot{width:8px;height:8px;border-radius:50%;display:block}
+/* Infobulle du fil */
+.rail-step[data-tip]::after{content:attr(data-tip);position:absolute;left:calc(50% + 16px);top:50%;transform:translateY(-50%);background:var(--wp-ink);color:#fff;font-size:12px;font-weight:500;line-height:1.3;padding:7px 12px;border-radius:var(--wp-r-sm);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:30;box-shadow:var(--wp-shadow-md)}
+.rail-step[data-tip]:hover::after{opacity:1}
+
+.qcard{max-width:760px}
+.q-count{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.sec-pill{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;padding:3px 10px;border-radius:var(--wp-r-pill);vertical-align:baseline}
+.q-clear{margin-left:auto;background:none;border:none;cursor:pointer;font-size:12.5px;color:var(--wp-grey-400);text-decoration:underline;text-underline-offset:3px;padding:0}
+.q-clear:hover{color:var(--wp-danger)}
+.q-title{font-weight:600;font-size:clamp(24px,3vw,34px);letter-spacing:-.012em;line-height:1.15;margin:0 0 14px;text-wrap:balance}
+.q-why{color:var(--wp-fg-2);font-size:15.5px;line-height:1.65;margin:0 0 26px;max-width:640px}
+
+/* Options (choix unique) */
+.opts{display:flex;flex-direction:column;gap:10px;margin-bottom:26px}
+.opt{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:16px 18px;cursor:pointer;transition:border-color .15s,box-shadow .15s,background .15s;background:#fff;text-align:left;width:100%}
+.opt:hover{border-color:var(--wp-grey-400)}
+.opt.sel{border-color:var(--wp-blue);box-shadow:0 0 0 1px var(--wp-blue);background:var(--wp-blue-50)}
+.opt-radio{flex:0 0 18px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--wp-grey-300);margin-top:2px;position:relative;transition:border-color .15s}
+.opt.sel .opt-radio{border-color:var(--wp-blue)}
+.opt.sel .opt-radio::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--wp-blue)}
+/* Cases (choix multiple) */
+.opt-check{flex:0 0 18px;width:18px;height:18px;border-radius:var(--wp-r-sm);border:1.5px solid var(--wp-grey-300);margin-top:2px;position:relative;transition:all .15s}
+.opt.sel .opt-check{border-color:var(--wp-blue);background:var(--wp-blue)}
+.opt.sel .opt-check::after{content:'';position:absolute;left:5px;top:1.5px;width:4px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.opt-label{font-size:15.5px;font-weight:500;letter-spacing:-.003em;line-height:1.4}
+.opt-desc{font-size:13.5px;color:var(--wp-fg-2);line-height:1.55;margin-top:3px}
+
+/* Classement (glisser-déposer) */
+.rank-hint{font-size:13px;color:var(--wp-fg-3);margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.rank-hint svg{width:15px;height:15px;color:var(--wp-blue)}
+.rank-list{display:flex;flex-direction:column;gap:8px;margin-bottom:26px}
+.rank-item{display:flex;align-items:center;gap:14px;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:13px 14px;background:#fff;cursor:grab;transition:border-color .15s,box-shadow .15s,opacity .15s}
+.rank-item:active{cursor:grabbing}
+.rank-item.dragging{opacity:.4;border-style:dashed}
+.rank-item.dragover{border-color:var(--wp-blue);box-shadow:0 0 0 1px var(--wp-blue)}
+.rank-grip{color:var(--wp-grey-300);flex:0 0 auto;display:grid;place-items:center}
+.rank-grip svg{width:16px;height:16px}
+.rank-pos{flex:0 0 30px;font-size:13px;font-weight:600;color:var(--wp-blue);letter-spacing:.04em}
+.rank-item:nth-child(n+6) .rank-pos{color:var(--wp-grey-400)}
+.rank-label{flex:1;font-size:14.5px;font-weight:500;line-height:1.35}
+.rank-arrows{display:flex;gap:4px}
+.rank-arrows button{width:30px;height:30px;border-radius:var(--wp-r-pill);border:1px solid var(--wp-grey-200);background:#fff;cursor:pointer;color:var(--wp-grey-500);display:grid;place-items:center;transition:all .15s;padding:0}
+.rank-arrows button:hover{border-color:var(--wp-ink);color:var(--wp-ink)}
+.rank-arrows button:disabled{opacity:.25;cursor:default}
+.rank-arrows svg{width:14px;height:14px}
+
+/* Slider */
+.slider-block{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:28px 24px;margin-bottom:26px}
+.slider-val{font-size:clamp(38px,5vw,54px);font-weight:600;letter-spacing:-.02em;line-height:1;margin-bottom:4px}
+.slider-val small{font-size:.5em;font-weight:500;color:var(--wp-grey-400)}
+.slider-caption{font-size:14px;color:var(--wp-fg-2);margin-bottom:22px;min-height:22px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:999px;background:linear-gradient(to right,var(--wp-blue) 0%,var(--wp-blue) var(--pct,50%),var(--wp-grey-200) var(--pct,50%),var(--wp-grey-200) 100%);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--wp-blue);cursor:pointer;box-shadow:var(--wp-shadow-sm)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--wp-blue);cursor:pointer}
+.slider-ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--wp-grey-400);margin-top:10px}
+.slider-threshold{margin-top:16px;padding:12px 14px;border-radius:var(--wp-r-sm);font-size:13.5px;line-height:1.55;background:var(--wp-grey-50);color:var(--wp-fg-2);border-left:2px solid var(--wp-grey-300)}
+.slider-threshold.hit{background:var(--wp-blue-50);border-left-color:var(--wp-blue);color:var(--wp-ink)}
+
+/* Impact accordion */
+details.impact{border-top:1px solid var(--wp-grey-200);padding:16px 0 6px;margin-bottom:26px}
+details.impact summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--wp-grey-500);user-select:none}
+details.impact summary::-webkit-details-marker{display:none}
+details.impact summary svg{width:15px;height:15px;transition:transform .2s;color:var(--wp-blue)}
+details.impact[open] summary svg{transform:rotate(90deg)}
+details.impact .impact-body{padding:14px 0 4px;font-size:14px;color:var(--wp-fg-2);line-height:1.7}
+details.impact .impact-body strong{color:var(--wp-ink);font-weight:600}
+sup.src{font-size:10px}
+sup.src a{color:var(--wp-blue);font-weight:600;text-decoration:none}
+sup.src a:hover{text-decoration:underline}
+
+/* Nav */
+.q-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+/* Review */
+.review{max-width:820px;margin:0 auto;padding:56px 40px 88px}
+.rev-list{margin-top:32px;border-top:1px solid var(--wp-grey-200)}
+.rev-row{display:flex;align-items:center;gap:18px;padding:18px 4px;border-bottom:1px solid var(--wp-grey-200)}
+.rev-num{flex:0 0 34px;font-size:12px;font-weight:600;color:var(--wp-grey-400);letter-spacing:.04em}
+.rev-main{flex:1;min-width:0}
+.rev-q{font-size:14px;color:var(--wp-fg-2);margin:0 0 2px}
+.rev-a{font-size:15px;font-weight:500;margin:0}
+.rev-edit{flex:0 0 auto}
+.rev-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+
+/* Results */
+.results{max-width:1000px;margin:0 auto;padding:56px 40px 40px}
+.res-head{max-width:760px;margin-bottom:44px}
+.res-caveat{margin-top:18px;padding:16px 20px;background:var(--wp-grey-50);border-radius:var(--wp-r-md);font-size:14px;color:var(--wp-fg-2);line-height:1.65;border-left:2px solid var(--wp-blue)}
+
+.leaders-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.leaders-grid.tie{grid-template-columns:1fr 1fr}
+.leader-card{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-lg);padding:36px;box-shadow:var(--wp-shadow-md);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.leader-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--lead-color,var(--wp-blue))}
+.lead-top{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.logo-box{width:76px;height:76px;border-radius:var(--wp-r-md);border:1px solid var(--wp-grey-200);display:grid;place-items:center;background:#fff;overflow:hidden;flex:0 0 76px;padding:10px}
+.logo-box img{max-width:100%;max-height:100%;object-fit:contain}
+.logo-mono{font-weight:600;font-size:22px;letter-spacing:-.02em}
+.logo-mono span{color:var(--wp-blue)}
+.lead-id h3{margin:0;font-size:23px;font-weight:600;letter-spacing:-.01em}
+.lead-id p{margin:3px 0 0;font-size:14px;color:var(--wp-fg-2)}
+.lead-badge{margin-left:auto;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-blue);border:1px solid var(--wp-blue-100);background:var(--wp-blue-50);border-radius:var(--wp-r-pill);padding:6px 14px}
+.affbar{height:6px;border-radius:999px;background:var(--wp-grey-100);overflow:hidden;margin:6px 0 4px}
+.affbar span{display:block;height:100%;background:var(--lead-color,var(--wp-blue));border-radius:999px;transition:width .8s ease-out}
+.aff-line{display:flex;justify-content:space-between;font-size:13px;color:var(--wp-fg-2);margin-bottom:16px}
+.aff-line b{color:var(--wp-ink);font-weight:600}
+.why-title{font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-grey-500);margin:22px 0 10px}
+.why-list{margin:0;padding:0;list-style:none}
+.why-list li{position:relative;padding:0 0 12px 22px;font-size:14.5px;line-height:1.65;color:var(--wp-fg-1)}
+.why-list li::before{content:'';position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--lead-color,var(--wp-blue))}
+.lead-cta{margin-top:auto;padding-top:20px;display:flex;gap:12px;flex-wrap:wrap}
+.lead-note{margin-top:18px;font-size:13px;color:var(--wp-fg-3);line-height:1.6}
+
+/* Radar */
+.radar-sec{margin-top:52px}
+.radar-card{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-lg);padding:32px;margin-top:14px}
+.radar-flex{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.radar-svg{width:100%;height:auto;display:block}
+.radar-legend{display:flex;flex-direction:column;gap:10px}
+.rleg{display:flex;align-items:center;gap:12px;font-size:13.5px}
+.rleg-swatch{flex:0 0 34px;height:0;border-top:2.5px solid var(--wp-grey-300)}
+.rleg-swatch.dash{border-top-style:dashed;border-top-width:1.5px}
+.rleg-name{font-weight:500;color:var(--wp-ink)}
+.rleg-pts{margin-left:auto;color:var(--wp-fg-3);font-size:12.5px}
+.radar-note{margin-top:20px;font-size:13px;color:var(--wp-fg-3);line-height:1.6}
+
+.others{margin-top:44px}
+.other-row{display:flex;align-items:center;gap:18px;padding:20px 4px;border-bottom:1px solid var(--wp-grey-200)}
+.other-row .logo-box{width:56px;height:56px;flex:0 0 56px;padding:7px}
+.other-main{flex:1;min-width:0}
+.other-name{font-size:16px;font-weight:600;margin:0 0 2px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.other-name a{font-size:12.5px;font-weight:500}
+.other-why{font-size:13.5px;color:var(--wp-fg-2);margin:0 0 8px;line-height:1.55}
+.other-row .affbar{margin:0 0 3px}
+.other-row .affbar span{background:var(--wp-grey-400)}
+.other-row .aff-line{margin:0}
+
+.excluded{margin-top:48px}
+.exc-row{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border:1px dashed var(--wp-grey-300);border-radius:var(--wp-r-md);margin-bottom:12px;background:var(--wp-grey-50)}
+.exc-row .logo-box{width:48px;height:48px;flex:0 0 48px;filter:grayscale(1);opacity:.75;padding:6px}
+.exc-name{font-size:15px;font-weight:600;margin:0 0 3px}
+.exc-why{font-size:13.5px;color:var(--wp-fg-2);margin:0;line-height:1.6}
+
+.sources{max-width:1000px;margin:0 auto;padding:12px 40px 72px}
+.sources h3{font-size:18px;font-weight:600;margin:0 0 6px}
+.sources > p{font-size:14px;color:var(--wp-fg-2);margin:0 0 20px;max-width:720px}
+.src-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--wp-grey-200)}
+.src-list li{display:flex;gap:14px;padding:12px 4px;border-bottom:1px solid var(--wp-grey-200);font-size:12.5px;line-height:1.55}
+.src-list .src-id{flex:0 0 26px;font-weight:600;color:var(--wp-blue);font-size:12.5px}
+.src-list .src-txt{color:var(--wp-fg-2)}
+.src-list .src-txt b{color:var(--wp-ink);font-weight:600}
+.src-list .src-txt a{color:var(--wp-blue);text-decoration:none;font-weight:600}
+.src-list .src-txt a:hover{text-decoration:underline}
+
+.res-actions{display:flex;gap:12px;margin:44px 0 0;flex-wrap:wrap}
+
+/* Champ libre (organisation) */
+.org-block{margin-bottom:26px}
+.org-input{width:100%;max-width:560px;font-family:var(--wp-font);font-size:clamp(20px,2.6vw,28px);font-weight:500;letter-spacing:-.01em;color:var(--wp-ink);border:none;border-bottom:2px solid var(--wp-grey-200);padding:10px 2px;outline:none;background:transparent;transition:border-color .15s}
+.org-input:focus{border-bottom-color:var(--wp-blue)}
+.org-input::placeholder{color:var(--wp-grey-300);font-weight:400}
+.org-hint{font-size:13px;color:var(--wp-fg-3);margin-top:10px}
+
+/* Sélecteur de régions géographiques */
+.region-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:20px}
+.region-btn{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);background:#fff;padding:16px 14px;font-family:var(--wp-font);cursor:pointer;transition:all .15s;text-align:left}
+.region-btn:hover{border-color:var(--wp-grey-400)}
+.region-btn.sel{border-color:var(--wp-blue);background:var(--wp-blue-50);box-shadow:0 0 0 1px var(--wp-blue)}
+.region-name{font-size:14px;font-weight:600;color:var(--wp-ink);display:block;margin-bottom:4px}
+.region-desc{font-size:12px;color:var(--wp-fg-2);line-height:1.4}
+@media(max-width:640px){.region-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Deux réglettes (taille) */
+.dual-sliders{display:flex;flex-direction:column;gap:22px;margin-bottom:26px}
+.dual-slider{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:20px 22px}
+.dual-slider label{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;font-weight:500;color:var(--wp-fg-2);margin-bottom:12px}
+.dual-slider label b{color:var(--wp-ink);font-size:20px;font-weight:600;letter-spacing:-.01em}
+.dual-slider .slider-ticks{font-size:11.5px}
+.ds-hint{display:block;margin-top:10px;font-size:12px;color:var(--wp-fg-3);font-style:italic}
+
+/* Buckets (infrastructure) */
+.bucket-block{margin-bottom:16px;position:relative}
+.bucket-title{font-size:14px;font-weight:500;color:var(--wp-fg-2);margin:0 0 10px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.bucket-info-btn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:var(--wp-r-pill);background:var(--wp-blue-50);color:var(--wp-blue);cursor:help;transition:all .15s;flex:0 0 auto}
+.bucket-info-btn:hover,.bucket-info-btn:focus{background:var(--wp-blue);color:#fff;outline:none}
+.bucket-hint{font-size:12px;color:var(--wp-fg-3);font-weight:400;margin-left:6px}
+.admin-info{display:none;position:absolute;top:calc(100% - 6px);left:22px;z-index:5;max-width:420px;background:var(--wp-ink);color:#fff;font-size:12.5px;font-weight:400;line-height:1.5;padding:10px 14px;border-radius:var(--wp-r-sm);box-shadow:0 8px 22px rgba(0,0,0,.15)}
+.admin-info::before{content:'';position:absolute;top:-6px;left:14px;width:12px;height:12px;background:var(--wp-ink);transform:rotate(45deg)}
+.admin-info.show{display:block}
+.bucket-choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.bucket-btn{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-sm);background:#fff;padding:12px 8px;font-family:var(--wp-font);font-size:13.5px;font-weight:500;color:var(--wp-ink);cursor:pointer;transition:all .15s;text-align:center}
+.bucket-btn:hover{border-color:var(--wp-grey-400)}
+.bucket-btn.sel{border-color:var(--wp-blue);background:var(--wp-blue-50);color:var(--wp-blue-press);box-shadow:0 0 0 1px var(--wp-blue)}
+
+/* Types de BD sous la question infra */
+.db-type-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.db-type-btn{font-size:12.5px!important;padding:8px 6px!important}
+@media(max-width:700px){.db-type-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Axes (motivation) */
+.axes-list{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
+.axis-row{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:18px 20px}
+.axis-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.axis-name{font-size:15px;font-weight:600;letter-spacing:-.005em}
+.axis-level{font-size:12.5px;color:var(--wp-blue);font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+.axis-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.axis-btn{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-sm);background:#fff;padding:12px 12px;font-family:var(--wp-font);cursor:pointer;transition:all .15s;text-align:left}
+.axis-btn:hover{border-color:var(--wp-grey-400)}
+.axis-btn.sel{color:var(--wp-ink)}
+.axis-btn.sel.lvl-1{border-color:#B2E1F6;background:#EAF7FD;box-shadow:0 0 0 1px #B2E1F6}
+.axis-btn.sel.lvl-2{border-color:#4EB8E5;background:#CFEDF9;box-shadow:0 0 0 1px #4EB8E5}
+.axis-btn.sel.lvl-3{border-color:var(--wp-blue-press);background:#0079B826;box-shadow:0 0 0 1px var(--wp-blue-press)}
+.axis-btn.sel.lvl-3 .axis-btn-label{color:var(--wp-blue-press)}
+.axis-btn.sel.lvl-3 .axis-btn-desc{color:var(--wp-ink)}
+.axis-btn-label{font-size:13.5px;font-weight:600;color:var(--wp-ink);display:block;margin-bottom:2px}
+.axis-btn-desc{font-size:12px;color:var(--wp-fg-2);line-height:1.4}
+
+/* Budget */
+.budget-block{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:22px 22px;margin-bottom:20px}
+.budget-block h4{margin:0 0 12px;font-size:14px;font-weight:500;color:var(--wp-fg-2)}
+.capex-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.capex-btn{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-sm);background:#fff;padding:14px 12px;font-family:var(--wp-font);cursor:pointer;transition:all .15s;text-align:left}
+.capex-btn:hover{border-color:var(--wp-grey-400)}
+.capex-btn.sel{border-color:var(--wp-blue);background:var(--wp-blue-50);box-shadow:0 0 0 1px var(--wp-blue)}
+.capex-btn-label{font-size:13.5px;font-weight:600;color:var(--wp-ink);display:block;margin-bottom:2px}
+.capex-btn-desc{font-size:12px;color:var(--wp-fg-2);line-height:1.4}
+.budget-slider .slider-ticks{font-size:11.5px}
+
+/* Bouton retirer (classement) */
+.rank-remove{width:28px;height:28px;border-radius:var(--wp-r-pill);border:1px solid transparent;background:transparent;cursor:pointer;color:var(--wp-grey-400);display:grid;place-items:center;transition:all .15s;padding:0;margin-left:6px}
+.rank-remove:hover{background:var(--wp-grey-100);color:var(--wp-danger);border-color:var(--wp-grey-200)}
+.rank-remove svg{width:14px;height:14px}
+.rank-restore{margin-top:12px;padding:14px 16px;border:1px dashed var(--wp-grey-300);border-radius:var(--wp-r-md);background:var(--wp-grey-50)}
+.rank-restore h5{margin:0 0 8px;font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--wp-grey-500)}
+.rank-restore-list{display:flex;flex-wrap:wrap;gap:6px}
+.rank-restore-btn{border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-pill);background:#fff;padding:6px 12px;font-family:var(--wp-font);font-size:12.5px;color:var(--wp-fg-2);cursor:pointer;transition:all .15s}
+.rank-restore-btn:hover{border-color:var(--wp-blue);color:var(--wp-blue-press)}
+
+/* Notes personnelles — visuellement distinctes du bloc d'impact (bleu, fond teinté, icône crayon) */
+.notes-block{border:1px solid var(--wp-blue-100);background:var(--wp-blue-50);border-radius:var(--wp-r-md);padding:14px 16px;margin:0 0 22px}
+.notes-block summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;letter-spacing:.03em;color:var(--wp-blue-press);user-select:none}
+.notes-block summary::-webkit-details-marker{display:none}
+.notes-block summary .notes-ico{width:18px;height:18px;color:var(--wp-blue);flex:0 0 auto}
+.notes-block summary .notes-caret{width:14px;height:14px;color:var(--wp-blue);transition:transform .2s;margin-left:auto}
+.notes-block[open] summary .notes-caret{transform:rotate(90deg)}
+.notes-block .notes-hint{font-size:12px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--wp-fg-2)}
+.notes-block textarea{width:100%;margin-top:12px;font-family:var(--wp-font);font-size:14px;line-height:1.6;color:var(--wp-ink);border:1px solid var(--wp-blue-100);border-radius:var(--wp-r-sm);padding:12px 14px;resize:vertical;min-height:88px;outline:none;transition:border-color .15s;background:#fff}
+.notes-block textarea:focus{border-color:var(--wp-blue);box-shadow:0 0 0 1px var(--wp-blue)}
+.notes-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:var(--wp-r-pill);background:var(--wp-blue);color:#fff;font-size:11px;font-weight:600}
+
+/* Réglette Windows / Unix sous la question serveurs */
+.win-slider{margin-top:14px;padding:14px 14px 10px;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-sm);background:var(--wp-grey-50)}
+.win-labels{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--wp-fg-2);margin-bottom:8px;gap:12px}
+.win-labels b{color:var(--wp-ink);font-size:15px;font-weight:600;margin-right:4px}
+.win-lbl{display:inline-flex;align-items:center;gap:8px}
+.win-lbl.unix{flex-direction:row-reverse}
+.win-lbl .os-ico{width:18px;height:18px;color:var(--wp-blue);flex:0 0 auto}
+
+/* Pastille "Niveau X" pour la question de maturité, en dégradé bleu croissant */
+.mat-pill{display:inline-block;font-weight:600;letter-spacing:.01em;color:#fff;padding:3px 10px;border-radius:var(--wp-r-pill);margin-right:10px;font-size:.88em;vertical-align:baseline}
+.mat-pill-1{background:linear-gradient(135deg,#B2E1F6,#7FCEEE)}
+.mat-pill-2{background:linear-gradient(135deg,#7FCEEE,#4EB8E5)}
+.mat-pill-3{background:linear-gradient(135deg,#4EB8E5,#009DDF)}
+.mat-pill-4{background:linear-gradient(135deg,#009DDF,#0079B8)}
+.mat-pill-5{background:linear-gradient(135deg,#0079B8,#04406F)}
+
+/* Bilan : bouton PDF flottant en fin de bloc résultats */
+.pdf-btn{background:var(--wp-blue);color:#fff}
+.pdf-btn:hover{background:var(--wp-blue-press);color:#fff}
+
+/* Notes générales sur la page de résultats */
+.general-notes{width:100%;font-family:var(--wp-font);font-size:14px;line-height:1.6;color:var(--wp-ink);border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);padding:14px 16px;resize:vertical;min-height:100px;outline:none;transition:border-color .15s}
+.general-notes:focus{border-color:var(--wp-blue);box-shadow:0 0 0 1px var(--wp-blue)}
+
+/* Légende radar : solutions écartées */
+.rleg-excl{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--wp-grey-400)}
+.rleg-excl .rleg-swatch{border-top:1.5px dotted var(--wp-grey-300)}
+.rleg-excl .rleg-name{color:var(--wp-grey-400);font-weight:400;text-decoration:line-through;text-decoration-thickness:1px}
+.rleg-excl .rleg-why{font-size:11.5px;color:var(--wp-grey-400);margin-left:auto;text-align:right;max-width:200px;line-height:1.35}
+
+/* Heatmap effort / profondeur */
+.heat-svg{width:100%;height:auto;display:block}
+.heat-note{margin-top:18px;font-size:13px;color:var(--wp-fg-3);line-height:1.6}
+
+/* Prochaines étapes */
+.next-steps{margin-top:56px;background:var(--wp-night);border-radius:var(--wp-r-lg);padding:44px;color:#fff;position:relative;overflow:hidden}
+.next-steps::before{content:'';position:absolute;inset:0;background:radial-gradient(110% 120% at 85% 0%,#243049 0%,transparent 55%)}
+.next-steps > *{position:relative}
+.next-steps h3{margin:10px 0 14px;font-size:clamp(21px,2.6vw,28px);font-weight:600;letter-spacing:-.01em}
+.next-steps p{margin:0 0 26px;font-size:15px;line-height:1.7;color:rgba(255,255,255,.78);max-width:680px}
+.next-steps p strong{color:#fff;font-weight:600}
+
+/* Footer */
+.ftr{background:var(--wp-night);color:#fff;padding:44px 40px;margin-top:24px}
+.ftr-in{max-width:1360px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.ftr-logo img{height:28px;width:auto;display:block}
+.ftr p{margin:0;font-size:13px;color:rgba(255,255,255,.55);font-style:italic;white-space:nowrap}
+
+@media (max-width:840px){
+  .hdr{padding:12px 20px}
+  .hdr-tag{display:none}
+  .hero-inner,.method,.review,.results,.sources{padding-left:20px;padding-right:20px}
+  .hero-meta,.method-grid{grid-template-columns:1fr}
+  .quiz-wrap{grid-template-columns:1fr;padding:40px 20px 72px}
+  .rail{display:none}
+  .method{padding:40px 0}
+  .method-cols{grid-template-columns:1fr}
+  .method-text{padding:0 20px;max-width:none;margin-left:0}
+  .method-grid{grid-template-columns:1fr}
+  .method-img{display:none}
+  .next-steps{padding:28px 22px}
+  .lead-badge{margin-left:0}
+  .leaders-grid.tie{grid-template-columns:1fr}
+  .radar-flex{grid-template-columns:1fr}
+  .ftr{padding:36px 20px}
+  .ftr-in{flex-direction:column;align-items:flex-start}
+  .ftr p{white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-logo" onclick="go('intro')">
+    <img src="https://www.wepoint.com/wp-content/themes/onepoint/Logo_wepoint_noir.png" alt="wepoint" onerror="wpLogoFail(this,22)">
+  </div>
+  <div class="hdr-tag">Sélecteur d'outil de gouvernance des identités</div>
+</header>
+
+<!-- ============================ INTRO ============================ -->
+<section id="scr-intro" class="screen on">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="wp-eyebrow">L'outil de gouvernance des identités qui vous correspond le mieux</div>
+      <h1 class="hero-title">Les bonnes décisions viennent des bonnes questions.</h1>
+      <p class="hero-lead">Les grands acteurs de la gouvernance des identités couvrent aujourd'hui les besoins fondamentaux. Le bon choix ne se joue donc pas sur une liste de fonctionnalités, mais sur l'adéquation entre l'outil, la nature de votre parc applicatif et les équipes qui l'exploiteront au quotidien. Nous vous proposons une quinzaine de questions pour évaluer, en toute transparence, la solution qui semble le mieux correspondre à votre contexte.</p>
+      <div class="hero-cta">
+        <button class="wp-btn wp-btn-accent" onclick="startQuiz()">Commencer le questionnaire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        <a class="wp-btn wp-btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="#methode">Notre méthodologie</a>
+      </div>
+      <div class="hero-meta">
+        <div><h4>Dix solutions évaluées</h4><p>SailPoint (Identity Security Cloud et IdentityIQ), Saviynt, Omada, One Identity, IBM, Oracle, Ping Identity, Microsoft Entra ID Governance et Evolveum midPoint.</p></div>
+        <div><h4>Des sources indépendantes</h4><p>Chaque pondération s'appuie sur des analyses tierces (Gartner, KuppingerCole...) jamais sur la documentation des éditeurs.</p></div>
+        <div><h4>Un résultat nuancé</h4><p>Nous n'annonçons pas « la » solution qu'il vous faut : nous éclairons celle qui semble vous ressembler le plus, et pourquoi.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="method" id="methode">
+    <div class="method-cols">
+      <div class="method-text">
+        <div class="wp-eyebrow">Notre méthodologie</div>
+        <h2 class="wp-h2" style="margin-top:8px">Quatre angles, un score transparent</h2>
+        <p class="wp-lead" style="max-width:720px">Chaque question évalue votre contexte sous un angle fonctionnel, technique, opérationnel ou stratégique. À chaque réponse, chaque solution gagne ou perd des points d'affinité, et nous vous expliquons systématiquement comment, avec la source à l'appui.</p>
+        <div class="method-grid">
+          <div class="mcard"><span class="mnum">01 · Fonctionnel</span><h3>Ce que l'outil sait faire</h3><p>Centralisation des identités, cycle de vie et provisioning, campagnes de certification, demande d'accès, modèle de rôles, séparation des tâches.</p></div>
+          <div class="mcard"><span class="mnum">02 · Technique</span><h3>Comment il s'intègre</h3><p>Votre parc applicatif réel, votre source d'autorité RH, vos annuaires, et vos exigences de souveraineté et de réversibilité.</p></div>
+          <div class="mcard"><span class="mnum">03 · Opérationnel</span><h3>Qui l'exploitera au quotidien</h3><p>La question la plus sous-estimée : une plateforme très riche peut devenir un fardeau pour une équipe réduite.</p></div>
+        </div>
+        <div style="margin-top:32px">
+          <button class="wp-btn wp-btn-primary" onclick="startQuiz()">Démarrer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="method-img"><img src="https://www.groupeonepoint.com/wp-content/uploads/2024/07/Secteur-savoir-faire-300x286.png" alt="" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ QUIZ ============================ -->
+<section id="scr-quiz" class="screen">
+  <div class="quiz-wrap">
+    <div class="rail">
+      <div class="rail-line"></div>
+      <div class="rail-fill" id="railFill"></div>
+      <div class="rail-steps" id="railSteps"></div>
+    </div>
+    <div class="qcard" id="qcard"></div>
+  </div>
+</section>
+
+<!-- ============================ REVIEW ============================ -->
+<section id="scr-review" class="screen">
+  <div class="review">
+    <div class="wp-eyebrow">Vos réponses</div>
+    <h2 class="wp-h1" style="margin-top:10px">Modifier certaines réponses</h2>
+    <p class="wp-lead" style="max-width:640px">Ajustez un point de contexte sans repartir de zéro : le score est recalculé instantanément.</p>
+    <div class="rev-list" id="revList"></div>
+    <div class="rev-actions">
+      <button class="wp-btn wp-btn-primary" onclick="showResults()">Revenir au résultat</button>
+      <button class="wp-btn wp-btn-ghost" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Recommencer de zéro</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ RESULTS ============================ -->
+<section id="scr-results" class="screen">
+  <div class="results" id="resWrap"></div>
+  <div class="sources" id="srcWrap"></div>
+</section>
+
+<footer class="ftr">
+  <div class="ftr-in">
+    <div class="ftr-logo"><img src="https://www.wepoint.com/wp-content/themes/onepoint/Logo_wepoint_blanc.png" alt="wepoint" onerror="wpLogoFail(this,26,true)"></div>
+    <p>Note : cet outil est un outil d'aide à la décision, les pondérations reposent sur des analyses tierces citées en source. Elles ne remplacent ni un cadrage, ni un appel d'offres, ni un pilote.</p>
+  </div>
+</footer>
+
+<script>
+/* ================================================================
+   DONNÉES : solutions, sources, questions, pondérations
+   ================================================================ */
+
+/* Noms courts pour les en-têtes de matrice et les étiquettes de graphiques */
+const SHORT_NAME = {
+  sailpointisc:'SailPoint ISC', sailpointiiq:'SailPoint IIQ', saviynt:'Saviynt',
+  omada:'Omada', oneidentity:'One Identity', ibm:'IBM Verify', oracle:'Oracle OIG',
+  ping:'Ping', entra:'Entra ID Gov.', midpoint:'midPoint'
+};
+
+/* Rend cliquables les renvois [n] dans un texte HTML */
+function linkSups(html){
+  return html.replace(/\[(\d+)\]/g, (m,n)=> SOURCES[n] ? `<a href="${SOURCES[n].url}" target="_blank" rel="noopener" title="${SOURCES[n].label.replace(/"/g,'&quot;')}">[${n}]</a>` : m);
+}
+function srcSup(arr){
+  return `<sup class="src">${arr.map(i=>`<a href="${SOURCES[i].url}" target="_blank" rel="noopener" title="${SOURCES[i].label.replace(/"/g,'&quot;')}">[${i}]</a>`).join('')}</sup>`;
+}
+
+const SOLUTIONS = {
+  sailpointisc: { name:'SailPoint Identity Security Cloud', tag:'La référence SaaS du marché, la plus large base installée', domain:'sailpoint.com', url:'https://www.sailpoint.com', mono:'S' },
+  sailpointiiq: { name:'SailPoint IdentityIQ', tag:"La plateforme on-premise très personnalisable, en fin de cycle stratégique", domain:'sailpoint.com', url:'https://www.sailpoint.com', mono:'IQ' },
+  saviynt:      { name:'Saviynt Identity Cloud', tag:'Le cloud-natif, fort en analytique de risque et en gouvernance applicative', domain:'saviynt.com', url:'https://saviynt.com', mono:'SV' },
+  omada:        { name:'Omada Identity', tag:'Le spécialiste GIA nordique, méthode de déploiement cadrée', domain:'omadaidentity.com', url:'https://omadaidentity.com', mono:'O' },
+  oneidentity:  { name:'One Identity Manager', tag:'La profondeur fonctionnelle et la gouvernance applicative SAP', domain:'oneidentity.com', url:'https://www.oneidentity.com', mono:'1' },
+  ibm:          { name:'IBM Verify Identity Governance', tag:'Le socle des grands comptes déjà investis dans IBM', domain:'ibm.com', url:'https://www.ibm.com/products/verify-identity', mono:'IB' },
+  oracle:       { name:'Oracle Identity Governance', tag:"L'ancrage historique des SI Oracle, complété par Access Governance", domain:'oracle.com', url:'https://www.oracle.com', mono:'OR' },
+  ping:         { name:'Ping Identity Governance', tag:'La gouvernance adossée à une plateforme d\u2019accès unifiée', domain:'pingidentity.com', url:'https://www.pingidentity.com', mono:'P' },
+  entra:        { name:'Microsoft Entra ID Governance', tag:"La gouvernance native de l'écosystème Microsoft", domain:'microsoft.com', url:'https://www.microsoft.com/security/business/identity-access/microsoft-entra-id-governance', mono:'M' },
+  midpoint:     { name:'Evolveum midPoint', tag:'La seule suite GIA complète en logiciel libre, souveraineté maximale', domain:'evolveum.com', url:'https://evolveum.com', mono:'mP' }
+};
+const ORDER = ['sailpointisc','sailpointiiq','saviynt','omada','oneidentity','ibm','oracle','ping','entra','midpoint'];
+
+/* Couleurs par fournisseur (palette dataviz, réservée aux graphiques) */
+const COLORS = {
+  sailpointisc:'#2B5CE6', sailpointiiq:'#8FA9F2', saviynt:'#832A96', omada:'#00A88F',
+  oneidentity:'#E66F29', ibm:'#0C2D6B', oracle:'#C8102E', ping:'#D62598',
+  entra:'#2BD68E', midpoint:'#C79A00'
+};
+
+const SOURCES = {
+  1:{ label:'Gartner, Market Guide for Identity Governance and Administration (2 octobre 2025) — Steve Wessels, Paul Mezzera, Brian Guthrie, Rebecca Archambault', note:"Point méthodologique important : Gartner ne publie plus de Magic Quadrant pour la GIA, mais un Market Guide, qui liste des « Representative Vendors » sans les hiérarchiser en quadrants. Le guide définit la GIA comme la solution de gestion du cycle de vie des identités et de gouvernance des accès sur site et en infonuagique, et situe la croissance du marché autour de 9 à 11 % par an. Conséquence directe pour cet outil : aucune de nos pondérations ne peut s'appuyer sur une position « leader Gartner » en GIA, contrairement à ce qui se pratique en PAM.", url:'https://www.gartner.com/doc/reprints?id=1-2M2KL7UB&ct=251010&st=sb' },
+  2:{ label:'KuppingerCole, Leadership Compass Identity Governance and Administration (édition 2026, publiée le 19 mai 2026, analyste Nitish Deshpande)', note:"Édition la plus récente du principal classement indépendant encore hiérarchisé sur ce marché. Le rapport évalue les solutions sur le cycle de vie des identités, la gestion des habilitations, l'application des politiques, les campagnes de certification, les revues d'accès, l'automatisation des flux et le libre-service. Omada et Saviynt y sont confirmés Overall Leaders, Saviynt obtenant les meilleures notes sur les quatre segments (Overall, Product, Innovation, Market).", url:'https://www.kuppingercole.com/research/lc80864/identity-governance-and-administration-iga' },
+  3:{ label:'KuppingerCole, Leadership Compass Identity Governance and Administration (édition 2024) — périmètre des éditeurs évalués', note:"Utile pour établir qui est couvert par l'analyse indépendante et à quel titre. IBM, Microsoft, Omada, One Identity, Oracle, Ping Identity, SailPoint et Saviynt y figurent comme Overall Leaders ; Evolveum (midPoint) y est évalué comme Rated Vendor.", url:'https://www.kuppingercole.com/research/lc80832/identity-governance-and-administration' },
+  4:{ label:'Gartner Peer Insights, avis clients vérifiés (marché Identity Governance and Administration)', note:"Retours d'expérience d'utilisateurs finaux, hors éditeurs. Source la plus utile pour objectiver la charge de mise en œuvre et d'exploitation réellement constatée, là où les rapports d'analystes restent centrés sur la couverture fonctionnelle.", url:'https://www.gartner.com/reviews/market/identity-governance-administration' },
+  5:{ label:'Quadrant Knowledge Solutions, SPARK Matrix™ : Identity Governance and Administration, 2025', note:"Troisième cabinet indépendant, utile pour trianguler. Positionne Saviynt, One Identity, SailPoint, Omada, Ping Identity, Eviden, Netwrix et WALLIX parmi les leaders, en soulignant la capacité à passer à l'échelle dans des environnements hybrides et l'alignement avec les démarches Zero Trust et de modernisation de la conformité.", url:'https://omadaidentity.com/wp-content/uploads/2025/11/SPARK-Matrix-Identity-Governance-and-Administration-2025-Report.pdf' },
+  6:{ label:'ISMG / BankInfoSecurity, analyse indépendante des classements Forrester sur l\u2019identité en entreprise', note:"Presse spécialisée relayant l'évaluation Forrester du marché de l'identité en entreprise, où Ping Identity, Saviynt, SailPoint et IBM sont situés parmi les « Strong Performers ». À noter : la Wave spécifiquement consacrée à la gouvernance des identités date de Q4 2021, ce qui limite sa valeur pour apprécier l'état actuel du marché.", url:'https://www.bankinfosecurity.com/microsoft-okta-cyberark-lead-workforce-identity-rankings-a-24783' },
+  7:{ label:'Commission européenne, portail Interoperable Europe — fiche de la solution midPoint', note:"Référencement institutionnel européen de midPoint comme plateforme GIA en logiciel libre couvrant le provisioning, le contrôle d'accès basé sur les rôles et la gouvernance. Confirme la double licence Apache 2.0 et EUPL, et l'inscription de la solution dans les catalogues de réutilisation du secteur public européen.", url:'https://interoperable-europe.ec.europa.eu/collection/eidentity-and-esignature/solution/midpoint' },
+  8:{ label:'Dépôt public Evolveum/midPoint (GitHub) — licence European Union Public License', note:"Source primaire vérifiable, et non un discours commercial : le code est publié sous EUPL, ce qui garantit l'auditabilité du produit et la possibilité juridique de poursuivre son exploitation ou son évolution indépendamment de l'éditeur. C'est le fondement objectif de l'avantage de midPoint sur les critères de souveraineté et de réversibilité.", url:'https://github.com/evolveum/midpoint' },
+  9:{ label:'SailPoint Developer Community — retours de praticiens sur la migration IdentityIQ vers Identity Security Cloud', note:"Sessions et discussions animées par des intégrateurs et des clients, et non par le marketing de l'éditeur. Le constat convergent : le passage d'IdentityIQ à Identity Security Cloud n'est pas une montée de version mais un changement de paradigme, de la personnalisation profonde vers l'extensibilité de plateforme, avec une dette technique à traiter. C'est ce qui justifie de traiter les deux produits comme deux candidats distincts dans ce comparatif.", url:'https://developer.sailpoint.com/discuss/t/beyond-the-lift-and-shift-architecting-success-in-the-iiq-to-isc-migration/209983' },
+ 10:{ label:'Start with Identity, revue indépendante d\u2019Evolveum midPoint', note:"Analyse indépendante destinée aux professionnels de l'identité : midPoint couvre le provisioning, la gestion des rôles et des structures organisationnelles, les politiques et la certification d'accès à un niveau qui rivalise avec les outils commerciaux, sans coût de licence, mais suppose des compétences internes réelles. Adoption marquée dans le secteur public, l'enseignement supérieur et les organisations cherchant à éviter une facturation à l'identité.", url:'https://startwithidentity.com/vendors/iga/evolveum/' }
+};
+
+const SECTIONS = [
+  { id:'s1', label:'Organisation et objectifs', color:'#009DDF' },
+  { id:'s2', label:'Système d\'information', color:'#E66F29' },
+  { id:'s3', label:'Moyens à disposition', color:'#832A96' }
+];
+
+const QUESTIONS = [
+/* ================================================================
+   SECTION 1 : Comprendre l'organisation et ses objectifs
+   ================================================================ */
+{
+  id:'org',
+  section:'s1',
+  short:'Organisation et localisation',
+  type:'orgLoc',
+  title:'Votre organisation et ses zones d\'activité',
+  why:"Le nom personnalise votre bilan. Les zones géographiques conditionnent l'éligibilité de certaines solutions dont l'écosystème (partenaires, support, compétences, hébergement) est concentré sur un continent.",
+  impact:`Une présence européenne valorise <strong>midPoint</strong>, développé et détenu dans l'Union européenne et référencé par la Commission<sup class="src">[7]</sup>, ainsi qu'<strong>Omada</strong>, éditeur danois dont la majorité des clients sont européens<sup class="src">[2]</sup>.`,
+  options:[],
+  regions:[
+    { id:'europe', label:'Europe', desc:'UE, Royaume-Uni, Suisse…', fx:{ midpoint:5, omada:4, oneidentity:2 },
+      notes:[
+        {sol:'midpoint', txt:'Vous opérez en Europe : midPoint est développé et détenu dans l\'Union européenne et référencé au catalogue Interoperable Europe de la Commission, ce qui simplifie les dossiers de souveraineté', src:[7]},
+        {sol:'omada', txt:'Vous opérez en Europe : Omada, éditeur danois, y concentre l\'essentiel de sa base installée et de son écosystème de partenaires', src:[2]} ] },
+    { id:'na', label:'Amérique du Nord', desc:'Canada, États-Unis, Mexique', fx:{ sailpointisc:1, saviynt:1 } },
+    { id:'sa', label:'Amérique du Sud', desc:'Brésil, Argentine, Chili…', fx:{} },
+    { id:'apac', label:'Asie-Pacifique', desc:'Japon, Australie, Singapour…', fx:{ sailpointisc:1, ibm:1 } },
+    { id:'mena', label:'Moyen-Orient', desc:'EAU, Arabie saoudite, Turquie…', fx:{ ibm:1, oracle:1 } },
+    { id:'africa', label:'Afrique', desc:'Afrique du Sud, Nigeria, Kenya…', fx:{ oracle:1 } }
+  ]
+},
+{
+  id:'size',
+  section:'s1',
+  short:'Volumétrie',
+  type:'twoSliders',
+  title:"Quelle volumétrie devez-vous gouverner ?",
+  why:"En gouvernance des identités, la complexité ne vient pas du nombre d'employés mais de deux grandeurs : le nombre d'identités internes à gouverner (employés, consultants, fournisseurs sous contrat…) et le nombre d'applications d'affaires dont les accès doivent réellement être gouvernés. C'est le second chiffre qui détermine l'essentiel de la charge de projet ; les identités externes sans lien contractuel (clients, citoyens, partenaires ponctuels) seront couvertes par une question distincte.",
+  impact:`Une volumétrie élevée d'identités favorise les plateformes éprouvées à grande échelle : <strong>SailPoint</strong>, <strong>Saviynt</strong>, <strong>One Identity</strong>, <strong>IBM</strong> et <strong>Oracle</strong><sup class="src">[2][3][5]</sup>. Le nombre d'applications à connecter pèse encore plus lourd : au-delà de quelques dizaines, la richesse du catalogue de connecteurs et la capacité à intégrer des applications non standard deviennent le premier facteur de succès<sup class="src">[1][2]</sup>. À l'inverse, une volumétrie modeste valorise les solutions au coût d'entrée contenu : <strong>Entra ID Governance</strong>, <strong>midPoint</strong> et <strong>Omada</strong>.`,
+  sliders:[
+    { key:'total', label:'Nombre d\'identités internes à gouverner (employés, consultants, fournisseurs sous contrat…)',
+      buckets:[
+        { rep:300,    upper:500,    label:'Moins de 500' },
+        { rep:750,    upper:1000,   label:'500 à 1 000' },
+        { rep:1750,   upper:2500,   label:'1 000 à 2 500' },
+        { rep:3750,   upper:5000,   label:'2 500 à 5 000' },
+        { rep:7500,   upper:10000,  label:'5 000 à 10 000' },
+        { rep:17500,  upper:25000,  label:'10 000 à 25 000' },
+        { rep:37500,  upper:50000,  label:'25 000 à 50 000' },
+        { rep:75000,  upper:100000, label:'50 000 à 100 000' },
+        { rep:150000, upper:150000, label:'Plus de 100 000' }
+      ] },
+    { key:'it', label:"Nombre d'applications d'affaires à gouverner",
+      buckets:[
+        { rep:5,   upper:10,   label:'Moins de 10' },
+        { rep:20,  upper:30,   label:'10 à 30' },
+        { rep:50,  upper:75,   label:'30 à 75' },
+        { rep:110, upper:150,  label:'75 à 150' },
+        { rep:250, upper:400,  label:'150 à 400' },
+        { rep:600, upper:800,  label:'400 à 800' },
+        { rep:1200,upper:1200, label:'Plus de 800' }
+      ] }
+  ]
+},
+{
+  id:'maturity',
+  section:'s1',
+  short:'Maturité GIA',
+  title:"Quel est votre niveau de maturité en gouvernance des identités ?",
+  why:"Une plateforme très avancée suppose des données d'identité propres, un référentiel fiable, des processus RH formalisés et une gouvernance capable de trancher. Une organisation qui débute tire davantage de valeur d'un outil qui la met en mouvement rapidement que d'une plateforme exhaustive qu'elle mettra trois ans à configurer.",
+  impact:`La charge de mise en œuvre constatée par les clients pèse fortement ici<sup class="src">[4]</sup>. Les plateformes les plus profondes — <strong>One Identity</strong>, <strong>Oracle</strong>, <strong>IBM</strong>, <strong>SailPoint IdentityIQ</strong> — demandent un investissement initial important et supposent une organisation déjà structurée. <strong>Omada</strong> et <strong>Entra ID Governance</strong> sont plus accessibles à un premier projet, la première par sa méthode de déploiement cadrée<sup class="src">[2]</sup>, la seconde par sa continuité avec un environnement Microsoft déjà en place. Plus votre maturité monte, plus la profondeur fonctionnelle reprend l'avantage sur la simplicité.`,
+  options:[
+    { id:'n1', label:'Niveau 1 : tout est manuel', desc:'Les accès sont créés au fil de l\'eau, sans inventaire consolidé ni revue',
+      fx:{ entra:6, omada:5, midpoint:3, ping:3, sailpointisc:2, saviynt:2, oneidentity:1, ibm:0, oracle:0, sailpointiiq:0 },
+      notes:[
+        {sol:'omada', txt:'Vous partez de zéro : Omada structure son déploiement autour d\'un cadre de processus GIA prêt à l\'emploi, ce qui limite la page blanche du premier projet', src:[2]} ] },
+    { id:'n2', label:'Niveau 2 : premiers inventaires', desc:'Un référentiel existe, alimenté partiellement, mais sans automatisation',
+      fx:{ omada:5, entra:4, midpoint:4, sailpointisc:3, ping:3, saviynt:3, oneidentity:2, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
+    { id:'n3', label:'Niveau 3 : cycle de vie automatisé', desc:'Arrivées, mobilités et départs déclenchent des actions automatiques',
+      fx:{ sailpointisc:4, saviynt:4, omada:4, oneidentity:3, midpoint:3, entra:3, ping:3, ibm:2, oracle:2, sailpointiiq:2 }, notes:[] },
+    { id:'n4', label:'Niveau 4 : gouvernance établie', desc:'Campagnes de certification régulières, modèle de rôles vivant, contrôles SoD',
+      fx:{ saviynt:5, sailpointisc:5, oneidentity:4, omada:4, sailpointiiq:3, ibm:3, oracle:3, midpoint:2, ping:2, entra:1 },
+      notes:[
+        {sol:'saviynt', txt:'Votre gouvernance est établie : c\'est le terrain où l\'analytique de risque et la gouvernance applicative de Saviynt, notées au plus haut niveau par KuppingerCole, prennent tout leur sens', src:[2]} ] },
+    { id:'n5', label:"Niveau 5 : gouvernance pilotée par le risque", desc:'Accès dynamiques, analytique, remédiation continue, identités non humaines incluses',
+      fx:{ saviynt:6, sailpointisc:6, oneidentity:4, omada:3, ibm:3, oracle:2, sailpointiiq:2, ping:2, midpoint:1, entra:1 },
+      notes:[
+        {sol:'saviynt', txt:'Vous visez une gouvernance pilotée par le risque : KuppingerCole place Saviynt en tête sur les quatre segments de son évaluation 2026, en soulignant l\'analytique de risque et l\'architecture orientée API', src:[2]},
+        {sol:'sailpointisc', txt:'Vous visez une gouvernance pilotée par le risque : SailPoint reste la plus large base installée du marché sur ce type de programme, avec un écosystème d\'intégrateurs correspondant', src:[3,5]} ] }
+  ]
+},
+{
+  id:'motivation',
+  section:'s1',
+  short:'Vos moteurs',
+  type:'axes',
+  title:"Pourquoi regardez-vous une solution de gouvernance des identités aujourd'hui ?",
+  why:"Un programme GIA avance rarement pour une seule raison. Pour chacun des quatre axes ci-dessous, positionnez-vous : est-ce un moteur secondaire, présent, ou décisif dans votre démarche ?",
+  impact:`Chaque axe (1 à 3) modifie les scores : plus il est élevé, plus il oriente le résultat. Une <strong>conformité décisive</strong> favorise les plateformes à forte capacité de certification et de preuve — Saviynt, SailPoint, One Identity, Omada<sup class="src">[2][5]</sup>. Une <strong>sécurité maximale</strong> valorise l'analytique de risque et la couverture des identités non humaines<sup class="src">[2]</sup>. Une <strong>efficience élevée</strong> favorise l'automatisation du cycle de vie et la richesse des connecteurs<sup class="src">[1]</sup>. Une <strong>expérience utilisateur poussée</strong> valorise le libre-service et la lisibilité des campagnes, terrain sur lequel les retours clients sont les plus discriminants<sup class="src">[4]</sup>.`,
+  axes:[
+    { key:'compliance', label:'Conformité et audit', levels:[
+      { label:'Absente de nos réflexions', desc:'Le projet est porté par l\'efficacité opérationnelle, pas par l\'audit', fx:{ entra:2, midpoint:2, ping:1 } },
+      { label:'Présente sans pression réglementaire forte', desc:'Bonnes pratiques, audits internes, traçabilité raisonnable', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 } },
+      { label:'Moteur principal, avec exigences fortes', desc:'Secteur régulé : 52-109, SOX, loi 25, DORA, NIS2, exigences d\'un régulateur sectoriel', fx:{ saviynt:6, sailpointisc:5, oneidentity:5, omada:5, sailpointiiq:4, ibm:3, oracle:3, midpoint:2, ping:1, entra:-1 },
+        notes:[ {sol:'entra', txt:'La conformité est votre moteur principal : Entra ID Governance couvre bien les revues d\'accès sur le périmètre Microsoft, mais produire une preuve d\'audit homogène sur des applications hors écosystème demande des compléments', src:[3]} ] }
+    ]},
+    { key:'security', label:'Sécurité et réduction du risque', levels:[
+      { label:'Modérée', desc:'Réduire les accès dormants sans viser l\'excellence', fx:{ sailpointisc:1, saviynt:1, omada:1, oneidentity:1, ibm:1, oracle:1, ping:1, entra:1, midpoint:1, sailpointiiq:1 } },
+      { label:'Élevée', desc:'Un standard exigeant est visé sur l\'ensemble du périmètre', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, midpoint:2, sailpointiiq:2 } },
+      { label:'Maximale', desc:'Moindre privilège généralisé, accès dynamiques, identités non humaines et agents IA', fx:{ saviynt:5, sailpointisc:5, oneidentity:3, omada:3, ibm:2, ping:2, oracle:2, sailpointiiq:2, entra:1, midpoint:1 },
+        notes:[ {sol:'saviynt', txt:'Vous visez le niveau de sécurité maximal : l\'évaluation 2026 souligne le virage du marché vers la gouvernance des identités non humaines et l\'analytique prédictive, terrain sur lequel Saviynt obtient les meilleures notes', src:[2]} ] }
+    ]},
+    { key:'efficiency', label:'Efficience et automatisation', levels:[
+      { label:'Faible', desc:'Une part de traitement manuel reste acceptable', fx:{ entra:1, midpoint:1 } },
+      { label:'Moyenne', desc:'Automatiser les tâches chronophages : créations de comptes, départs, campagnes', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, midpoint:2, sailpointiiq:2 } },
+      { label:'Élevée', desc:'Provisioning de bout en bout, zéro ticket manuel, remédiation automatique', fx:{ sailpointisc:5, saviynt:4, oneidentity:4, omada:3, sailpointiiq:3, ibm:3, oracle:3, midpoint:2, ping:2, entra:2 },
+        notes:[ {sol:'oneidentity', txt:'Vous visez une automatisation poussée : One Identity Manager est régulièrement cité pour la profondeur de son moteur de provisioning et de politiques, au prix d\'un paramétrage exigeant', src:[5]} ] }
+    ]},
+    { key:'ux', label:'Expérience utilisateur et adhésion', levels:[
+      { label:'Standard', desc:'Une interface fonctionnelle suffit', fx:{ midpoint:1 } },
+      { label:'Améliorée', desc:'Réduire la friction pour les gestionnaires et les approbateurs', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, midpoint:2, sailpointiiq:2 } },
+      { label:'Poussée', desc:'Libre-service généralisé, campagnes lisibles par des non-informaticiens, adhésion des gestionnaires', fx:{ omada:5, sailpointisc:5, saviynt:4, entra:3, ping:3, oneidentity:2, ibm:1, oracle:1, sailpointiiq:1, midpoint:0 },
+        notes:[
+          {sol:'omada', txt:'L\'adhésion des utilisateurs est décisive : KuppingerCole relève la configurabilité des flux et l\'interaction assistée par IA d\'Omada comme des points forts sur ce terrain', src:[2]},
+          {sol:'midpoint', txt:'L\'adhésion des utilisateurs est décisive : c\'est le point où midPoint demande le plus d\'efforts, son interface restant plus proche de l\'outil d\'administration que du portail métier', src:[10]} ] }
+    ]}
+  ]
+},
+{
+  id:'need',
+  section:'s1',
+  short:'Priorités fonctionnelles',
+  type:'rankRemovable',
+  title:'Classez ces besoins du plus important au moins important, ou retirez ceux qui ne vous concernent pas',
+  why:"Toutes les organisations n'attendent pas la même chose d'un programme GIA, et elles en attendent rarement une seule. Hiérarchisez, et retirez ce qui ne vous concerne pas : vos cinq premiers choix (mis en évidence) pèsent l'essentiel du score, du plus important (poids plein) au cinquième (poids réduit) ; au-delà, le poids devient marginal.",
+  impact:`C'est le critère le plus pondéré du questionnaire. <strong>Saviynt</strong> et <strong>SailPoint</strong> sont les mieux notés sur la certification et l'analytique de risque<sup class="src">[2][5]</sup>, <strong>One Identity</strong> se distingue sur la gouvernance applicative fine et l'univers SAP<sup class="src">[5]</sup>, <strong>Omada</strong> sur les campagnes et les processus cadrés<sup class="src">[2]</sup>, <strong>midPoint</strong> sur le provisioning et le modèle de rôles sans coût de licence<sup class="src">[10]</sup>, et <strong>Entra ID Governance</strong> sur les revues et le libre-service à l'intérieur du périmètre Microsoft<sup class="src">[3]</sup>.`,
+  options:[
+    { id:'central', label:'Centralisation des identités et des accès',
+      desc:'Un référentiel unique : qui existe, qui a accès à quoi, et pourquoi',
+      fx:{ sailpointisc:8, saviynt:8, omada:8, oneidentity:8, midpoint:7, ibm:7, oracle:7, ping:6, sailpointiiq:7, entra:4 },
+      notes:[
+        {sol:'midpoint', txt:'La centralisation est votre priorité : midPoint couvre le référentiel, le provisioning et la structure organisationnelle à un niveau comparable aux outils commerciaux, sans facturation à l\'identité', src:[10]} ] },
+    { id:'lifecycle', label:'Cycle de vie et provisioning automatisé',
+      desc:'Arrivées, mobilités, départs : les accès suivent automatiquement',
+      fx:{ sailpointisc:9, oneidentity:9, saviynt:8, omada:8, midpoint:8, ibm:7, oracle:7, sailpointiiq:8, ping:6, entra:5 },
+      notes:[
+        {sol:'oneidentity', txt:'Le cycle de vie est votre priorité : le moteur de provisioning de One Identity Manager est l\'un des plus complets du marché, y compris sur des cibles hétérogènes', src:[5]},
+        {sol:'sailpointisc', txt:'Le cycle de vie est votre priorité : c\'est le socle historique de SailPoint et le domaine où sa base installée et son écosystème d\'intégrateurs sont les plus profonds', src:[3,5]} ] },
+    { id:'cert', label:'Certification et revues d\'accès',
+      desc:'Campagnes périodiques, attestation par les gestionnaires, preuve pour l\'audit',
+      fx:{ saviynt:9, sailpointisc:9, omada:9, oneidentity:7, sailpointiiq:8, ibm:6, oracle:6, entra:5, midpoint:5, ping:5 },
+      notes:[
+        {sol:'omada', txt:'Les campagnes de certification sont votre priorité : Omada en fait un axe central de son cadre de processus, avec des campagnes conçues pour être conduites par des gestionnaires non techniques', src:[2]},
+        {sol:'saviynt', txt:'Les campagnes de certification sont votre priorité : Saviynt obtient les meilleures notes de l\'évaluation KuppingerCole 2026 sur la certification et l\'analytique associée', src:[2]} ] },
+    { id:'request', label:'Demande d\'accès et libre-service',
+      desc:'Un catalogue lisible, des approbations claires, sans passer par un ticket',
+      fx:{ sailpointisc:8, omada:8, saviynt:7, entra:7, ping:6, oneidentity:6, ibm:5, oracle:5, sailpointiiq:6, midpoint:4 },
+      notes:[
+        {sol:'entra', txt:'Le libre-service est votre priorité : les packages d\'accès et les approbations d\'Entra ID Governance sont directement utilisables par les utilisateurs déjà dans l\'écosystème Microsoft', src:[3]} ] },
+    { id:'roles', label:'Modèle de rôles, RBAC et role mining',
+      desc:'Construire et maintenir des rôles métier plutôt que des accès individuels',
+      fx:{ oneidentity:8, saviynt:8, sailpointisc:8, midpoint:7, omada:7, sailpointiiq:8, ibm:6, oracle:6, ping:4, entra:3 },
+      notes:[
+        {sol:'midpoint', txt:'Le modèle de rôles est votre priorité : la gestion des rôles et des structures organisationnelles est l\'un des points les plus aboutis de midPoint selon les revues indépendantes', src:[10]} ] },
+    { id:'sod', label:'Séparation des tâches (SoD) et contrôles applicatifs',
+      desc:'Détecter et bloquer les combinaisons d\'accès interdites, notamment dans l\'ERP',
+      fx:{ saviynt:10, oneidentity:8, sailpointisc:6, oracle:6, ibm:5, sailpointiiq:6, omada:5, ping:3, midpoint:3, entra:2 },
+      notes:[
+        {sol:'saviynt', txt:'La séparation des tâches est votre priorité : la gouvernance des accès applicatifs, notamment sur les ERP, est un différenciateur documenté de Saviynt', src:[2]},
+        {sol:'oneidentity', txt:'La séparation des tâches est votre priorité : One Identity dispose d\'une offre de gouvernance applicative reconnue, en particulier sur l\'univers SAP', src:[5]} ] },
+    { id:'nonhuman', label:'Identités non humaines et agents IA',
+      desc:'Comptes de service, robots, jetons applicatifs, agents autonomes',
+      fx:{ saviynt:8, sailpointisc:8, oneidentity:4, omada:4, ping:3, ibm:3, entra:3, oracle:2, sailpointiiq:2, midpoint:2 },
+      notes:[
+        {sol:'saviynt', txt:'Les identités non humaines sont votre priorité : l\'évaluation 2026 identifie ce sujet comme la principale ligne de fracture du marché, et y place Saviynt en tête', src:[2]} ] },
+    { id:'external', label:'Identités externes et partenaires',
+      desc:'Prestataires, fournisseurs, bénévoles, stagiaires : sans dossier RH, mais avec des accès',
+      fx:{ sailpointisc:7, saviynt:6, omada:6, entra:6, oneidentity:5, ping:5, midpoint:4, ibm:4, oracle:4, sailpointiiq:5 },
+      notes:[
+        {sol:'entra', txt:'Les identités externes sont votre priorité : la gouvernance des invités B2B est nativement couverte par Entra ID Governance', src:[3]} ] }
+  ]
+},
+{
+  id:'accessmodel',
+  section:'s1',
+  short:'Modèle d\'accès',
+  title:"Où en êtes-vous sur votre modèle de contrôle d'accès ?",
+  why:"Le modèle de contrôle d'accès — par rôles (RBAC), par attributs (ABAC) ou par relations (ReBAC) — est le langage sur lequel repose toute automatisation de la gouvernance. Plus il est défini et documenté avant le projet, plus la mise en œuvre avance vite ; le construire en même temps que l'outil rallonge fortement les délais.",
+  impact:`Sans modèle formalisé, les solutions dotées d'un moteur de <strong>découverte de rôles assistée par IA</strong> réduisent le travail de démarrage : <strong>Saviynt</strong> et <strong>SailPoint</strong><sup class="src">[2]</sup>, ainsi qu'<strong>Omada</strong> par sa méthode cadrée<sup class="src">[2]</sup>. Un RBAC déjà structuré valorise les moteurs de rôles les plus profonds : <strong>One Identity</strong><sup class="src">[5]</sup> et <strong>midPoint</strong><sup class="src">[10]</sup>. Une démarche ABAC ou ReBAC déjà engagée, plus rare et plus exigeante, valorise les architectures de politiques les plus modernes : <strong>Saviynt</strong> et <strong>Ping Identity</strong>, dont la gouvernance s'adosse à un moteur de politiques contextuel<sup class="src">[5][6]</sup>.`,
+  options:[
+    { id:'none', label:'Aucun modèle formalisé', desc:'Les accès sont accordés au cas par cas, sans référentiel de rôles',
+      fx:{ saviynt:5, sailpointisc:5, omada:5, entra:3, ping:2, oneidentity:0, midpoint:0, sailpointiiq:0, ibm:0, oracle:0 },
+      notes:[ {sol:'saviynt', txt:'Vous n\'avez pas encore de modèle formalisé : le role mining assisté par IA de Saviynt aide à faire émerger une première structure de rôles à partir des accès réels plutôt que de la construire à la main', src:[2]} ] },
+    { id:'partial', label:'Quelques rôles documentés', desc:'Un début de RBAC existe, sur un périmètre restreint',
+      fx:{ sailpointisc:3, saviynt:3, omada:3, oneidentity:3, midpoint:2, entra:2, ping:2, ibm:2, oracle:2, sailpointiiq:2 }, notes:[] },
+    { id:'rbac', label:'RBAC structuré et maintenu', desc:'Des rôles métier sont définis, documentés et revus régulièrement',
+      fx:{ oneidentity:6, saviynt:5, sailpointisc:5, midpoint:5, sailpointiiq:4, omada:3, ibm:3, oracle:3, ping:1, entra:0 },
+      notes:[ {sol:'oneidentity', txt:'Votre RBAC est structuré et maintenu : c\'est le terrain où le moteur de rôles de One Identity Manager, l\'un des plus complets du marché, s\'exprime pleinement', src:[5]} ] },
+    { id:'abac_rebac', label:'Démarche ABAC ou ReBAC engagée', desc:'Des attributs dynamiques ou des relations pilotent déjà une partie des accès, au-delà du RBAC classique',
+      fx:{ saviynt:6, ping:5, sailpointisc:4, oneidentity:2, ibm:1, midpoint:0, entra:-1, sailpointiiq:-2 },
+      notes:[
+        {sol:'saviynt', txt:'Vous avez engagé une démarche ABAC ou ReBAC : l\'architecture orientée API et l\'analytique contextuelle de Saviynt sont conçues pour ce type de politiques dynamiques', src:[2]},
+        {sol:'sailpointiiq', txt:'Vous avez engagé une démarche ABAC ou ReBAC : IdentityIQ reste structuré autour d\'un modèle plus classique, et cette ambition pousse plutôt vers une plateforme plus récente', src:[9]} ] }
+  ]
+},
+{
+  id:'process',
+  section:'s1',
+  short:'Processus & RACI',
+  title:'Vos processus de gouvernance sont-ils déjà formalisés ?',
+  why:"Un outil GIA automatise des processus existants, il ne les invente pas. Un RACI clair (qui demande, qui approuve, qui revoit, qui est informé) et des workflows déjà écrits, même sur papier, réduisent fortement le risque qu'un projet s'enlise dans la définition des règles pendant la configuration de l'outil.",
+  impact:`Sans aucun processus formalisé, les méthodes de déploiement cadrées et les workflows prêts à l'emploi comptent davantage : <strong>Omada</strong><sup class="src">[2]</sup> et <strong>Entra ID Governance</strong><sup class="src">[3]</sup>. Des processus déjà documentés, même hors outil, valorisent les moteurs de workflow les plus configurables : <strong>One Identity</strong>, <strong>SailPoint</strong>, <strong>Saviynt</strong> et <strong>midPoint</strong><sup class="src">[2][5][10]</sup>.`,
+  options:[
+    { id:'none', label:"Rien n'est formalisé", desc:'Les demandes et approbations se font au fil de l\'eau, sans règle écrite',
+      fx:{ omada:5, entra:4, sailpointisc:2, ping:2, saviynt:1, oneidentity:-2, oracle:-2, ibm:-2, sailpointiiq:-2, midpoint:-2 },
+      notes:[ {sol:'omada', txt:'Rien n\'est formalisé chez vous : la méthode de déploiement cadrée d\'Omada fournit des processus de départ prêts à l\'emploi plutôt que d\'attendre que vous les écriviez d\'abord', src:[2]} ] },
+    { id:'informal', label:'Des pratiques existent, rien n\'est écrit', desc:'Chacun sait globalement quoi faire, sans document de référence',
+      fx:{ omada:3, entra:2, sailpointisc:2, saviynt:2, ping:1, oneidentity:0, ibm:0, oracle:0, sailpointiiq:0, midpoint:0 }, notes:[] },
+    { id:'documented', label:'RACI et workflows documentés, pas encore dans un outil', desc:'Les règles existent sur papier ou dans un référentiel qualité',
+      fx:{ oneidentity:4, sailpointisc:4, saviynt:4, midpoint:4, sailpointiiq:3, omada:2, ibm:2, oracle:2, ping:1, entra:-1 },
+      notes:[ {sol:'oneidentity', txt:'Vos processus sont déjà documentés : le moteur de workflow de One Identity Manager est conçu pour reproduire fidèlement des règles complexes plutôt que d\'imposer les siennes', src:[5]} ] },
+    { id:'automated', label:'Workflows déjà automatisés ailleurs', desc:'Dans un ITSM, un outil RH ou un autre système, à faire migrer',
+      fx:{ sailpointisc:4, saviynt:4, oneidentity:3, ibm:2, oracle:2, sailpointiiq:2, omada:2, midpoint:1, ping:1, entra:0 }, notes:[] }
+  ]
+},
+/* ================================================================
+   SECTION 2 : Comprendre le système d'information
+   ================================================================ */
+{
+  id:'env',
+  section:'s2',
+  short:'Environnement',
+  title:'Quel est votre environnement technologique dominant ?',
+  why:"Le modèle de déploiement de la solution doit être compatible avec vos contraintes d'hébergement, de résidence des données et d'exploitation. Certaines solutions ne sont plus proposées qu'en mode infonuagique, d'autres restent installables chez vous.",
+  impact:`Un SI infonuagique favorise les plateformes conçues pour ce modèle : <strong>Saviynt</strong>, <strong>SailPoint Identity Security Cloud</strong>, <strong>Omada Identity Cloud</strong> et <strong>Entra ID Governance</strong><sup class="src">[2][5]</sup>. Un SI majoritairement interne, ou soumis à des exigences de résidence des données, valorise les solutions installables sur site : <strong>midPoint</strong><sup class="src">[7][8]</sup>, <strong>One Identity</strong>, <strong>Oracle</strong>, <strong>IBM</strong>, <strong>SailPoint IdentityIQ</strong><sup class="src">[9]</sup> et <strong>Omada Identity</strong> en version sur site<sup class="src">[2]</sup>.`,
+  options:[
+    { id:'cloud', label:'Infonuagique d\'abord', desc:'SaaS majoritaire, peu ou pas de serveurs applicatifs internes',
+      fx:{ saviynt:5, sailpointisc:5, omada:4, entra:4, ping:3, oneidentity:1, ibm:1, oracle:1, midpoint:0, sailpointiiq:-3 },
+      notes:[
+        {sol:'sailpointiiq', txt:'Votre SI est infonuagique : IdentityIQ est une plateforme conçue pour une exploitation sur site, et les retours de praticiens décrivent le passage vers Identity Security Cloud comme un changement de paradigme et non une migration technique', src:[9]} ] },
+    { id:'hybrid', label:'Hybride', desc:'Centres de données internes et nuage public, coexistence durable',
+      fx:{ sailpointisc:4, saviynt:4, omada:4, oneidentity:4, ibm:3, oracle:3, ping:3, midpoint:3, sailpointiiq:3, entra:2 }, notes:[] },
+    { id:'onprem', label:'Majoritairement interne', desc:'Applications hébergées chez vous, migration infonuagique limitée',
+      fx:{ oneidentity:5, midpoint:5, sailpointiiq:5, ibm:4, oracle:4, omada:3, saviynt:1, sailpointisc:1, ping:1, entra:-3 },
+      notes:[
+        {sol:'entra', txt:'Votre SI est majoritairement interne : Entra ID Governance est un service infonuagique dont la valeur décroît fortement dès que les applications à gouverner sortent de l\'écosystème Microsoft', src:[3]} ] },
+    { id:'sovereign', label:'Souverain ou isolé', desc:'Données sensibles, hébergement national imposé, environnements cloisonnés',
+      fx:{ midpoint:7, sailpointiiq:4, oneidentity:4, ibm:3, oracle:3, omada:2, saviynt:0, sailpointisc:0, ping:0, entra:-4 },
+      notes:[
+        {sol:'midpoint', txt:'Votre contexte impose la souveraineté : midPoint est publié sous EUPL, déployable intégralement chez vous, et son code est auditable, ce qui répond directement aux exigences de résidence et de transparence', src:[7,8]} ] }
+  ],
+  deploy:[
+    { id:'saas', label:'SaaS uniquement', desc:'Vous excluez toute exploitation sur site pour l\'outil de GIA lui-même',
+      fx:{ sailpointisc:3, saviynt:3, omada:2, entra:2, ping:2, oneidentity:-2, oracle:-2, ibm:-2, sailpointiiq:-5, midpoint:-4 },
+      notes:[ {sol:'sailpointiiq', txt:'Vous excluez le sur site pour l\'outil lui-même : IdentityIQ ne correspond pas à cette contrainte, contrairement à Identity Security Cloud', src:[9]} ] },
+    { id:'onprem', label:'Sur site uniquement', desc:'Vous excluez toute solution exclusivement infonuagique',
+      fx:{ midpoint:4, oneidentity:3, sailpointiiq:3, ibm:2, oracle:2, omada:1, entra:-6, saviynt:-3, sailpointisc:-3, ping:-2 },
+      notes:[ {sol:'entra', txt:'Vous excluez le sur site pour l\'outil lui-même : Entra ID Governance n\'existe qu\'en service infonuagique, ce qui est incompatible avec cette contrainte', src:[3]} ] },
+    { id:'any', label:'Peu importe', desc:'Le modèle de déploiement de l\'outil n\'est pas un critère en soi', fx:{}, notes:[] }
+  ]
+},
+{
+  id:'apps',
+  section:'s2',
+  short:'Parc applicatif',
+  type:'buckets',
+  title:"Quelle est la nature de votre parc à connecter ?",
+  why:"Le coût réel d'un projet GIA se joue sur les connecteurs. Trois familles d'indicateurs permettent de le dimensionner : la source d'autorité RH, les applications critiques à gouverner finement, et les outils techniques dont l'intégration est réputée plus exigeante.",
+  impact:`Un parc majoritairement standard (SaaS avec SCIM, annuaires, ERP courants) est bien couvert par tous les candidats. Ce sont les <strong>applications non standard</strong> et les <strong>outils techniques</strong> (CRM, dépôts de code, plateformes cloud) qui discriminent : ils valorisent les plateformes dont le cadre d'extension est le plus ouvert — <strong>One Identity</strong>, <strong>midPoint</strong>, <strong>SailPoint IdentityIQ</strong> — et pénalisent les plateformes infonuagiques dont l'extensibilité passe par des mécanismes plus contraints<sup class="src">[1][9]</sup>. La présence d'un <strong>ERP majeur</strong> valorise fortement <strong>Saviynt</strong> et <strong>One Identity</strong><sup class="src">[2][5]</sup>.`,
+  buckets:[
+    { key:'hr', label:"Source d'autorité RH",
+      choices:[
+        { id:'s', label:'Aucune source RH exploitable', fx:{ midpoint:1, omada:1 } },
+        { id:'m', label:'SIRH interne ou fichier consolidé', fx:{ oneidentity:2, midpoint:2, sailpointiiq:1 } },
+        { id:'l', label:'SIRH SaaS majeur (Workday, SuccessFactors…)', fx:{ sailpointisc:3, saviynt:2, omada:2, ping:1 } },
+        { id:'xl', label:'Plusieurs sources RH à réconcilier', fx:{ sailpointisc:2, saviynt:2, oneidentity:2, omada:2, midpoint:1 } }
+      ]},
+    { key:'critical', label:'Applications critiques à gouverner finement', multi:true,
+      choices:[
+        { id:'none', label:'Aucune application critique particulière', fx:{ entra:2 } },
+        { id:'business', label:'Applications métier internes ou spécifiques', fx:{ oneidentity:2, midpoint:2, sailpointiiq:2, ibm:1 } },
+        { id:'erp', label:'ERP majeur (SAP, Oracle, Dynamics, NetSuite…)', fx:{ saviynt:5, oneidentity:5, oracle:3, sailpointisc:2, ibm:1 } }
+      ]},
+    { key:'complex', label:'Outils techniques à gouverner', multi:true,
+      choices:[
+        { id:'crm', label:'CRM (Salesforce, HubSpot…)', fx:{ sailpointisc:2, saviynt:2, omada:1, entra:1 } },
+        { id:'coderepo', label:'Dépôts de code (GitHub, GitLab, Bitbucket…)', fx:{ saviynt:2, sailpointisc:2, oneidentity:1, midpoint:1 },
+          notes:[ {sol:'saviynt', txt:'Vous devez gouverner des dépôts de code : c\'est un terrain proche de la gestion des identités non humaines, où l\'analytique de Saviynt est reconnue', src:[2]} ] },
+        { id:'paas', label:'PaaS / IaaS (Azure, AWS, GCP…)', fx:{ sailpointisc:3, saviynt:3, entra:2, ping:1, midpoint:1 } }
+      ]},
+    { key:'legacy', label:"Applications sans interface standard (ni SCIM, ni API)",
+      choices:[
+        { id:'s', label:'Presque aucune', fx:{ entra:3, sailpointisc:2, saviynt:2, ping:1 } },
+        { id:'m', label:'Quelques-unes', fx:{ sailpointisc:1, saviynt:1, omada:1, oneidentity:1, midpoint:1 } },
+        { id:'l', label:'Une part significative', fx:{ oneidentity:3, midpoint:3, sailpointiiq:3, ibm:2, oracle:2, entra:-2 } },
+        { id:'xl', label:'La majorité du parc (mainframe, applications historiques)', fx:{ oneidentity:4, sailpointiiq:4, midpoint:3, ibm:4, oracle:3, entra:-4, ping:-2 } }
+      ]}
+  ],
+  toggles:[
+    { key:'sod', label:'Vous avez des enjeux de séparation des tâches (SoD) sur vos applications critiques',
+      fx:{ saviynt:4, oneidentity:3, sailpointisc:2, oracle:2, ibm:1, sailpointiiq:1, entra:-1 },
+      notes:[ {sol:'saviynt', txt:'Vous avez des enjeux de séparation des tâches : c\'est un différenciateur documenté de Saviynt, en particulier sur les ERP', src:[2]} ] }
+  ]
+},
+{
+  id:'pam',
+  section:'s2',
+  short:'PAM en place',
+  title:'Quelle solution de gestion des accès à privilèges (PAM) utilisez-vous ?',
+  why:"La gouvernance des identités et la gestion des accès à privilèges se rejoignent : les comptes à privilèges doivent eux aussi être demandés, approuvés, revus et retirés. Une intégration native entre les deux réduit les délais et les frictions.",
+  impact:`Si vous utilisez déjà <strong>Saviynt</strong> en PAM, sa plateforme unifiée fait de son module GIA le prolongement naturel, avec une seule console et un seul modèle de politiques<sup class="src">[2]</sup>. Un <strong>Entra PIM</strong> en place renforce la cohérence d'<strong>Entra ID Governance</strong><sup class="src">[3]</sup>. Les autres PAM du marché s'intègrent à l'ensemble des candidats sans avantage décisif pour l'un d'eux.`,
+  options:[
+    { id:'saviynt', label:'Saviynt PAM', fx:{ saviynt:7 },
+      notes:[ {sol:'saviynt', txt:'Vous utilisez déjà Saviynt en PAM : KuppingerCole souligne l\'unification GIA et PAM dans une architecture unique, ce qui vous évite un second modèle de politiques et une seconde console', src:[2]} ] },
+    { id:'cyberark', label:'CyberArk', fx:{ sailpointisc:2, saviynt:1, omada:1 }, notes:[] },
+    { id:'delinea', label:'Delinea', fx:{ sailpointisc:1, omada:1 }, notes:[] },
+    { id:'beyondtrust', label:'BeyondTrust', fx:{ sailpointisc:1, saviynt:1 }, notes:[] },
+    { id:'wallix', label:'WALLIX', fx:{ midpoint:2, omada:1 }, notes:[] },
+    { id:'entrapim', label:'Microsoft Entra PIM', fx:{ entra:4 },
+      notes:[ {sol:'entra', txt:'Vous utilisez déjà Entra PIM : la gouvernance Entra en est le prolongement direct, sous la même console et le même modèle de licence', src:[3]} ] },
+    { id:'none', label:'Aucune solution PAM en place', fx:{}, notes:[] }
+  ]
+},
+{
+  id:'am',
+  section:'s2',
+  short:'Annuaires, IdP, MFA/SSO',
+  type:'buckets',
+  title:'Quels annuaires, fournisseurs d\'identité et mécanismes d\'authentification utilisez-vous ?',
+  why:"La solution GIA doit lire vos répertoires pour réconcilier les comptes, dialoguer avec vos fournisseurs d'identité pour propager les accès, et s'articuler avec votre SSO et votre MFA existants plutôt que les dupliquer. Sélectionnez tout ce qui s'applique.",
+  impact:`Tous les candidats s'intègrent aux répertoires et IdP majeurs. Un socle <strong>Ping</strong> déjà en place favorise sa propre brique de gouvernance par continuité de plateforme<sup class="src">[5]</sup>. Un SSO et un MFA déjà déployés indiquent une organisation prête pour une gouvernance fine<sup class="src">[5][6]</sup>. La question suivante détermine l'éligibilité d'<strong>Entra ID Governance</strong>, dont la valeur s'effondre hors de l'écosystème Microsoft<sup class="src">[3]</sup>.`,
+  buckets:[
+    { key:'directory', label:'Répertoires / annuaires', multi:true,
+      choices:[
+        { id:'ad', label:'Active Directory', fx:{ oneidentity:1, sailpointiiq:1, midpoint:1 } },
+        { id:'ldap', label:'LDAP ou annuaire tiers', fx:{ midpoint:2, oneidentity:1, sailpointiiq:1, oracle:1 } },
+        { id:'entradir', label:'Entra ID (répertoire cloud)', fx:{ entra:1, sailpointisc:1, saviynt:1 } }
+      ]},
+    { key:'idp', label:"Fournisseurs d'identité (IdP)", multi:true,
+      choices:[
+        { id:'entra', label:'Entra ID', fx:{ entra:2, sailpointisc:1, saviynt:1 } },
+        { id:'okta', label:'Okta', fx:{ sailpointisc:1, saviynt:1 } },
+        { id:'ping', label:'Ping Identity', fx:{ ping:4 },
+          notes:[ {sol:'ping', txt:'Vous utilisez déjà Ping comme IdP : sa brique de gouvernance partage la même plateforme, ce qui limite le nombre de fournisseurs et de modèles à maintenir', src:[5]} ] },
+        { id:'google', label:'Google Workspace', fx:{ sailpointisc:1, midpoint:1 } }
+      ]}
+  ],
+  toggles:[
+    { key:'sso', label:'Une solution de SSO est déjà en place', fx:{ sailpointisc:1, saviynt:1, omada:1, ping:2, entra:1 }, notes:[] },
+    { key:'mfa', label:'Une solution de MFA est déjà en place', fx:{ sailpointisc:1, saviynt:1, oneidentity:1, ping:1, entra:1 }, notes:[] }
+  ]
+},
+{
+  id:'msfootprint',
+  section:'s2',
+  short:'Empreinte Microsoft',
+  type:'slider',
+  title:'Quelle part de votre système d\'information repose sur l\'écosystème Microsoft ?',
+  why:"Estimez la présence de Microsoft dans votre SI : Entra ID, Microsoft 365, Azure, Dynamics, SharePoint, Teams, SQL Server, Windows Server. Cette empreinte détermine si une gouvernance native Microsoft peut suffire, ou si elle laissera l'essentiel de vos applications hors de portée.",
+  impact:`Au-delà de <strong>85 %</strong>, votre SI est réellement centré sur Microsoft : <strong>Entra ID Governance</strong> entre alors dans le comparatif avec un bonus important, car il couvre les packages d'accès, les revues et le cycle de vie sans plateforme supplémentaire ni licence tierce<sup class="src">[3]</sup>. En dessous de ce seuil, la gouvernance des applications hors écosystème — le cœur du besoin GIA — resterait à traiter par un autre outil, et nous l'écartons du comparatif.`,
+  options:[]
+},
+{
+  id:'sovereignty',
+  section:'s2',
+  short:'Souveraineté et résilience',
+  type:'multi',
+  title:'Quelles exigences de souveraineté, d\'ouverture ou de résilience s\'appliquent à vous ?',
+  why:"La gouvernance des identités est une infrastructure critique : elle sait tout de qui a accès à quoi. Certaines organisations ont des exigences fortes sur l'endroit où résident ces données, sur la capacité à auditer le code, ou sur ce qui se passerait si l'éditeur disparaissait ou était racheté. Sélectionnez tout ce qui s'applique.",
+  impact:`Une exigence d'<strong>hébergement national</strong> pénalise les solutions proposées exclusivement en mode infonuagique multi-locataire et valorise celles installables chez vous. Une exigence de <strong>code auditable</strong> ne peut être satisfaite que par <strong>midPoint</strong>, seule suite GIA complète publiée en logiciel libre, sous licence EUPL<sup class="src">[7][8][10]</sup>. Une exigence de <strong>réversibilité</strong> valorise également midPoint, dont la licence garantit juridiquement la poursuite de l'exploitation indépendamment de l'éditeur<sup class="src">[8]</sup>.`,
+  options:[
+    { id:'residency', label:'Hébergement et résidence des données imposés', desc:'Loi 25, secteur public, données de santé ou de renseignement',
+      fx:{ midpoint:5, sailpointiiq:3, oneidentity:3, ibm:2, oracle:2, omada:1, saviynt:-1, sailpointisc:-1, entra:-2 }, notes:[] },
+    { id:'opensource', label:'Code source ouvert et auditable', desc:'Vérifier soi-même ce que fait l\'outil sur une infrastructure critique',
+      fx:{ midpoint:9, sailpointisc:-1, saviynt:-1, entra:-1, ping:-1, ibm:-1, oracle:-1, omada:-1, oneidentity:-1, sailpointiiq:-1 },
+      notes:[
+        {sol:'midpoint', txt:'Vous exigez un code auditable : midPoint est la seule suite GIA complète du marché publiée en logiciel libre, sous licence EUPL, et référencée à ce titre par la Commission européenne', src:[7,8]} ] },
+    { id:'reversibility', label:'Réversibilité et absence d\'enfermement propriétaire', desc:'Pouvoir changer d\'éditeur, ou continuer sans lui',
+      fx:{ midpoint:6, oneidentity:1, sailpointiiq:1, saviynt:-1, sailpointisc:-1, entra:-2 },
+      notes:[
+        {sol:'midpoint', txt:'Vous visez la réversibilité : la licence EUPL vous autorise juridiquement à poursuivre l\'exploitation et l\'évolution de la solution même sans l\'éditeur, ce qu\'aucune licence propriétaire ne permet', src:[8]} ] },
+    { id:'continuity', label:'Continuité en cas de rachat ou de fin de vie du produit', desc:'Le marché de l\'identité connaît des consolidations fréquentes',
+      fx:{ midpoint:4, omada:2, oneidentity:1, sailpointiiq:-3 },
+      notes:[
+        {sol:'sailpointiiq', txt:'La continuité du produit vous préoccupe : IdentityIQ fait l\'objet d\'un effort de modernisation vers Identity Security Cloud, et les praticiens décrivent cette transition comme une refonte plutôt qu\'une montée de version — un facteur à intégrer dans un choix engageant sur dix ans', src:[9]} ] },
+    { id:'analystcov', label:'Couverture par des analystes indépendants exigée', desc:'Votre gouvernance interne demande une validation externe du choix',
+      fx:{ saviynt:3, sailpointisc:3, omada:3, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, sailpointiiq:2, midpoint:0 }, notes:[] },
+    { id:'none', label:'Aucune exigence particulière', desc:'Le sujet n\'est pas structurant pour nous', fx:{}, notes:[] }
+  ]
+},
+/* ================================================================
+   SECTION 3 : Comprendre les moyens à disposition
+   ================================================================ */
+{
+  id:'ops',
+  section:'s3',
+  short:"Équipe d'exploitation",
+  title:'Qui exploitera réellement la solution au quotidien ?',
+  why:"La question la plus sous-estimée des programmes GIA. Un outil de gouvernance n'est pas un logiciel que l'on installe : ce sont des connecteurs à maintenir, des règles à faire évoluer à chaque réorganisation, des campagnes à préparer, des exceptions à arbitrer et des gestionnaires à accompagner. Une plateforme très riche devient un fardeau pour une équipe qui n'existe pas.",
+  impact:`Sans équipe dédiée, la charge d'exploitation devient le premier facteur d'échec : elle favorise <strong>Entra ID Governance</strong> et <strong>Omada</strong>, et pénalise nettement les plateformes les plus profondes — <strong>One Identity</strong>, <strong>Oracle</strong>, <strong>IBM</strong>, <strong>SailPoint IdentityIQ</strong> — ainsi que <strong>midPoint</strong>, dont l'absence de coût de licence se paie en compétences internes<sup class="src">[4][10]</sup>. Le recours à un intégrateur ou un MSSP compense en grande partie cette charge, quelle que soit la taille de votre équipe interne.`,
+  options:[
+    { id:'none', label:'Aucune équipe spécifique', desc:"L'équipe infrastructure ou sécurité s'en occupera « en plus »",
+      fx:{ entra:6, omada:4, sailpointisc:2, ping:2, saviynt:1, oneidentity:-3, oracle:-3, ibm:-3, sailpointiiq:-4, midpoint:-4 },
+      notes:[
+        {sol:'midpoint', txt:'Vous n\'avez pas d\'équipe dédiée : l\'absence de coût de licence de midPoint se paie en compétences internes, et les revues indépendantes insistent sur ce point comme condition de réussite', src:[10]},
+        {sol:'entra', txt:'Vous n\'avez pas d\'équipe dédiée : la gouvernance Entra s\'appuie sur une plateforme que vos équipes exploitent déjà, ce qui limite la charge additionnelle', src:[3]} ] },
+    { id:'shared', label:'Une équipe identité mutualisée', desc:'La même équipe couvre la GIA, le PAM et les annuaires, parmi d\'autres sujets, sans ressource exclusive',
+      fx:{ omada:4, sailpointisc:3, entra:3, saviynt:3, ping:2, oneidentity:1, ibm:0, oracle:0, sailpointiiq:0, midpoint:0 }, notes:[] },
+    { id:'dedicated', label:'Une équipe GIA dédiée', desc:'Des profils formés, du temps d\'ingénierie identifié',
+      fx:{ saviynt:5, sailpointisc:5, oneidentity:5, omada:3, ibm:3, oracle:3, sailpointiiq:3, midpoint:3, ping:2, entra:0 },
+      notes:[
+        {sol:'oneidentity', txt:'Vous disposez d\'une équipe dédiée : la principale réserve envers One Identity Manager, l\'exigence de son paramétrage, ne s\'applique plus à votre contexte', src:[5]} ] }
+  ],
+  toggles:[
+    { key:'msp', label:'Vous faites appel à un intégrateur ou un MSSP pour l\'implantation et l\'exploitation',
+      fx:{ sailpointisc:3, saviynt:3, oneidentity:4, omada:3, ibm:3, oracle:3, sailpointiiq:3, midpoint:3, ping:2, entra:0 },
+      notes:[ {sol:'omada', txt:'Vous vous appuyez sur un intégrateur ou un MSSP : KuppingerCole décrit Omada comme particulièrement adapté aux organisations qui veulent une GIA complète en livraison par partenaire', src:[2]} ] }
+  ]
+},
+{
+  id:'budget',
+  section:'s3',
+  short:'Budget',
+  type:'budget',
+  title:"Quel est votre modèle budgétaire, et quelle enveloppe envisagez-vous ?",
+  why:"Un programme GIA se paie en CAPEX (intégration, connecteurs, conception du modèle de rôles, infrastructure) et en OPEX (licences généralement facturées à l'identité, support, exploitation). Attention à un piège fréquent : la licence représente rarement plus du tiers du coût total sur cinq ans.",
+  impact:`Une préférence <strong>CAPEX</strong> favorise les solutions installables et amortissables, et tout particulièrement <strong>midPoint</strong>, sans coût de licence<sup class="src">[10]</sup>. Une préférence <strong>OPEX</strong> favorise les plateformes infonuagiques par abonnement et <strong>Entra ID Governance</strong>, souvent déjà partiellement couvert par vos licences existantes. L'enveloppe sert de garde-fou : en dessous de 400 k$ nous pénalisons les plateformes dont les coûts d'intégration constatés sont les plus élevés, au-dessus de 1,5 M$ nous les revalorisons.`,
+  options:[]
+}
+];
+
+/* Poids appliqués au classement de la question « priorités » (rangs 1 à 8) */
+const RANK_WEIGHTS = [1, .7, .5, .35, .22, .12, .05, 0];
+
+
+/* Poids appliqués au classement de la question « priorités » (rang 1 à 6) */
+/* RANK_WEIGHTS défini plus haut (8 rangs) */
+
+/* ================================================================
+   ÉTAT
+   ================================================================ */
+const state = { answers:{}, slider:50, sizeTotalIdx:3, sizeITIdx:1, capexBudget:700, toggles:{}, envDeploy:'', notes:{}, idx:0, maxIdx:0, fromReview:false };
+
+/* Helpers pour retrouver la valeur représentative des buckets de taille */
+function sizeBuckets(key){
+  const q = QUESTIONS.find(x => x.id === 'size');
+  return q.sliders.find(s => s.key === key).buckets;
+}
+function get_sizeTotal(){ return sizeBuckets('total')[state.sizeTotalIdx].rep; }
+function get_sizeIT(){ return sizeBuckets('it')[state.sizeITIdx].rep; }
+function get_sizeITUpper(){ return sizeBuckets('it')[state.sizeITIdx].upper || sizeBuckets('it')[state.sizeITIdx].rep; }
+
+/* Contrainte : la borne haute de l'équipe TI ne peut jamais dépasser la borne haute totale.
+   Retourne l'indice IT maximal autorisé compte tenu de sizeTotalIdx. */
+function maxITIdxAllowed(){
+  /* En GIA, le nombre d'applications n'est pas borné par le nombre d'identités :
+     les deux réglettes sont indépendantes. */
+  return sizeBuckets('it').length - 1;
+}
+
+function adminTiers(){
+  const upper = get_sizeITUpper();
+  /* On trouve un pas rond pour couper en 3 tiers */
+  const roundStep = (v) => {
+    if(v <= 10) return Math.max(1, Math.round(v/3));
+    if(v <= 30) return 10;
+    if(v <= 75) return 25;
+    if(v <= 150) return 50;
+    if(v <= 400) return Math.round(v/3/50)*50 || 100;
+    if(v <= 1000) return Math.round(v/3/100)*100 || 300;
+    if(v <= 3000) return Math.round(v/3/500)*500 || 1000;
+    return Math.round(v/3/500)*500 || 1500;
+  };
+  const step = roundStep(upper);
+  const t1 = step;
+  const t2 = step * 2;
+  const t3 = Math.max(t2 + step, upper);  /* borne haute au moins t2 + step */
+  return { t1, t2, t3 };
+}
+/* Alias en lecture pour compatibilité avec le code existant */
+Object.defineProperty(state, 'sizeTotal', { get(){ return get_sizeTotal(); } });
+Object.defineProperty(state, 'sizeIT', { get(){ return get_sizeIT(); } });
+Object.defineProperty(state, 'sizeITUpper', { get(){ return get_sizeITUpper(); } });
+
+function visibleQuestions(){ return QUESTIONS.filter(q => !q.cond || q.cond(state)); }
+
+/* ================================================================
+   NAVIGATION
+   ================================================================ */
+function go(name){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById('scr-'+name).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function startQuiz(){ state.idx = 0; state.maxIdx = 0; state.fromReview = false; state.toggles = {}; state.envDeploy = ''; renderQuiz(); go('quiz'); }
+function restart(){
+  if(!confirm("Recommencer une nouvelle évaluation ? Toutes vos réponses et vos notes personnelles seront effacées.")) return;
+  state.answers = {}; state.slider = 50; state.sizeTotalIdx = 3; state.sizeITIdx = 1; state.capexBudget = 700; state.toggles = {}; state.envDeploy = ''; state.notes = {}; state.idx = 0; state.maxIdx = 0; state.fromReview = false; renderQuiz(); go('quiz');
+}
+function clearAnswers(){ state.answers = {}; state.slider = 50; state.sizeTotalIdx = 3; state.sizeITIdx = 1; state.capexBudget = 700; state.toggles = {}; state.envDeploy = ''; state.notes = {}; state.idx = 0; state.maxIdx = 0; state.fromReview = false; renderQuiz(); }
+function confirmRestart(){
+  if(confirm("Recommencer l'évaluation depuis le début ? Toutes vos réponses et vos notes personnelles seront effacées.")){
+    clearAnswers();
+  }
+}
+
+/* Repli typographique si le logo wepoint ne charge pas */
+function wpLogoFail(img, size, white){
+  const s = document.createElement('span');
+  s.className = 'wm';
+  s.style.fontSize = (size||22) + 'px';
+  if(white) s.style.color = '#fff';
+  s.innerHTML = 'wepoint<span class="wm-dot">.</span>';
+  img.replaceWith(s);
+}
+
+/* Repli en chaîne pour les logos éditeurs : logo officiel (Clearbit) puis favicon Google puis monogramme */
+function logoFail(img){
+  if(!img.dataset.step){
+    img.dataset.step = '1';
+    img.src = 'https://www.google.com/s2/favicons?domain=' + img.dataset.domain + '&sz=128';
+  } else {
+    const p = img.parentNode;
+    p.innerHTML = '<span class="logo-mono">' + img.dataset.mono + '<span>.</span></span>';
+  }
+}
+function logoHTML(key){
+  const s = SOLUTIONS[key];
+  return `<div class="logo-box"><img src="https://logo.clearbit.com/${s.domain}?size=200" data-domain="${s.domain}" data-mono="${s.mono}" alt="Logo ${s.name}" onerror="logoFail(this)"></div>`;
+}
+
+/* ================================================================
+   RENDU QUIZ
+   ================================================================ */
+function railTip(q){
+  return (q.short + ' : ' + q.title).replace(/"/g,'&quot;');
+}
+function renderRail(){
+  const qs = visibleQuestions();
+  /* Identifier quand une section change pour insérer un séparateur */
+  let prevSection = '';
+  const steps = qs.map((q,i)=>{
+    let cls;
+    if(i === state.idx) cls = 'cur';
+    else if(i <= state.maxIdx) cls = 'done';
+    else cls = '';
+    const clickable = i !== state.idx && i <= state.maxIdx;
+    const click = clickable ? ` onclick="jumpTo(${i})"` : '';
+    const sec = SECTIONS.find(s => s.id === q.section);
+    const secColor = sec ? sec.color : '#009DDF';
+    /* Séparateur de section si on change de section */
+    let separator = '';
+    if(q.section !== prevSection && prevSection){
+      separator = `<div class="rail-sec-sep" title="${sec?sec.label:''}"><span class="rail-sec-dot" style="background:${secColor}"></span></div>`;
+    }
+    prevSection = q.section;
+    return `${separator}<div class="rail-step ${cls}" data-tip="${railTip(q)}" style="--sec-color:${secColor}"${click}><span class="rail-idx">${String(i+1).padStart(2,'0')}</span><span class="rail-dot"></span></div>`;
+  }).join('');
+  document.getElementById('railSteps').innerHTML = steps;
+  const pct = qs.length > 1 ? (state.maxIdx / (qs.length - 1)) * 100 : 0;
+  document.getElementById('railFill').style.height = `calc(${pct}% - ${pct>0?8:0}px)`;
+}
+function jumpTo(i){
+  state.idx = i; state.fromReview = false; renderQuiz(); window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function ensureRankDefault(q){
+  if(!Array.isArray(state.answers[q.id]) || state.answers[q.id].length !== q.options.length){
+    state.answers[q.id] = q.options.map(o=>o.id);
+  }
+}
+
+function renderQuiz(){
+  const qs = visibleQuestions();
+  if(state.idx >= qs.length){ state.idx = qs.length - 1; }
+  const q = qs[state.idx];
+  renderRail();
+  const total = qs.length;
+  let body = '';
+
+  if(q.type === 'orgLoc'){
+    const orgVal = (state.answers.org || '').replace(/"/g,'&quot;');
+    const selRegions = Array.isArray(state.answers.regions) ? state.answers.regions : [];
+    body = `<div class="org-block">
+      <input type="text" class="org-input" id="orgInput" placeholder="Nom de votre organisation" value="${orgVal}"
+        oninput="state.answers.org = this.value">
+      <p class="org-hint">Cette information personnalise votre bilan et le courriel de prise de contact. Elle n'est ni stockée ni transmise.</p>
+    </div>
+    <p style="font-size:14px;font-weight:500;color:var(--wp-fg-2);margin:0 0 12px">Zones géographiques où votre organisation opère (sélectionnez une ou plusieurs) :</p>
+    <div class="region-grid">${q.regions.map(r=>{
+      const sel = selRegions.includes(r.id);
+      return `<button type="button" class="region-btn${sel?' sel':''}" onclick="toggleRegion('${r.id}')">
+        <span class="region-name">${r.label}</span>
+        <span class="region-desc">${r.desc}</span>
+      </button>`;
+    }).join('')}</div>`;
+  } else if(q.type === 'twoSliders'){
+    body = `<div class="dual-sliders">` + q.sliders.map(sc=>{
+      const idxKey = sc.key === 'total' ? 'sizeTotalIdx' : 'sizeITIdx';
+      const idx = state[idxKey];
+      const bk = sc.buckets[idx];
+      const max = sc.buckets.length - 1;
+      return `<div class="dual-slider">
+        <label><span>${sc.label}</span><b id="dsVal-${sc.key}">${bk.label}</b></label>
+        <input type="range" min="0" max="${max}" step="1" value="${idx}" id="dsSl-${sc.key}"
+          aria-label="${sc.label}" oninput="onDualSlider('${sc.key}', this.value)">
+        <div class="slider-ticks"><span>${sc.buckets[0].label}</span><span>${sc.buckets[max].label}</span></div>
+      </div>`;
+    }).join('') + `</div>`;
+  } else if(q.type === 'buckets'){
+    if(!state.answers[q.id]) state.answers[q.id] = {};
+    body = q.buckets.map(bk=>{
+      if(bk.multi && !Array.isArray(state.answers[q.id][bk.key])) state.answers[q.id][bk.key] = [];
+      const choices = bk.choices;
+      const curSingle = state.answers[q.id][bk.key];
+      const curMulti = Array.isArray(curSingle) ? curSingle : [];
+      return `<div class="bucket-block">
+        <p class="bucket-title">${bk.label}${bk.multi?' <span class="bucket-hint">(plusieurs choix possibles)</span>':''}</p>
+        <div class="bucket-choices" style="grid-template-columns:repeat(${choices.length},minmax(0,1fr))">${choices.map(c=>{
+          const sel = bk.multi ? curMulti.includes(c.id) : curSingle===c.id;
+          const fn = bk.multi ? `toggleBucketMulti('${q.id}','${bk.key}','${c.id}')` : `pickBucket('${q.id}','${bk.key}','${c.id}')`;
+          return `<button type="button" class="bucket-btn${sel?' sel':''}" onclick="${fn}">${c.label}</button>`;
+        }).join('')}</div>
+      </div>`;
+    }).join('');
+  } else if(q.type === 'axes'){
+    if(!state.answers[q.id]) state.answers[q.id] = {};
+    body = `<div class="axes-list">` + q.axes.map(ax=>{
+      const cur = state.answers[q.id][ax.key];
+      return `<div class="axis-row">
+        <div class="axis-head"><span class="axis-name">${ax.label}</span><span class="axis-level">${cur ? 'Niveau ' + cur : 'À positionner'}</span></div>
+        <div class="axis-choices">${ax.levels.map((lv,i)=>`<button type="button" class="axis-btn${cur===i+1?' sel lvl-'+(i+1):''}" onclick="pickAxis('${q.id}','${ax.key}',${i+1})"><span class="axis-btn-label">${lv.label}</span><span class="axis-btn-desc">${lv.desc}</span></button>`).join('')}</div>
+      </div>`;
+    }).join('') + `</div>`;
+  } else if(q.type === 'budget'){
+    if(!state.answers[q.id]) state.answers[q.id] = {};
+    const capex = state.answers[q.id].pref;
+    const bud = state.capexBudget;
+    const capexOptions = [
+      { id:'capex', label:'Plutôt CAPEX', desc:"Achat, on-premise, mise en œuvre amortissable" },
+      { id:'balanced', label:'Équilibré', desc:"Sans forte préférence, la meilleure combinaison" },
+      { id:'opex', label:'Plutôt OPEX', desc:"SaaS, abonnements récurrents, moins de mise en œuvre" }
+    ];
+    const budgetFmt = v => v>=1000 ? (v/1000).toFixed(1).replace('.0','') + ' M$' : v + ' k$';
+    body = `<div class="budget-block">
+        <h4>Votre préférence budgétaire</h4>
+        <div class="capex-choices">${capexOptions.map(o=>`<button type="button" class="capex-btn${capex===o.id?' sel':''}" onclick="pickCapex('${o.id}')"><span class="capex-btn-label">${o.label}</span><span class="capex-btn-desc">${o.desc}</span></button>`).join('')}</div>
+      </div>
+      <div class="budget-block budget-slider">
+        <h4>Enveloppe CAPEX <strong>envisagée pour la mise en œuvre</strong></h4>
+        <div class="slider-val" id="budVal" style="font-size:32px;margin-bottom:6px">${budgetFmt(bud)}</div>
+        <input type="range" min="150" max="2000" step="50" value="${bud}" id="budSl" aria-label="Budget CAPEX" oninput="onBudget(this.value)">
+        <div class="slider-ticks"><span>150 k$</span><span>1 M$</span><span>2 M$ et +</span></div>
+      </div>`;
+  } else if(q.type === 'rankRemovable'){
+    ensureRankDefault(q);
+    const order = state.answers[q.id];
+    const removed = q.options.filter(o => !order.includes(o.id));
+    body = `<p class="rank-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/><path d="m5 12 7-7 7 7"/></svg> Faites glisser pour classer, retirez les besoins qui ne vous concernent pas avec la croix.</p>
+    <div class="rank-list" id="rankList">` + order.map((oid,i)=>{
+      const o = q.options.find(x=>x.id===oid);
+      return `<div class="rank-item" draggable="true" data-oid="${oid}"
+        ondragstart="rankDragStart(event,${i})" ondragover="rankDragOver(event,${i})" ondragleave="rankDragLeave(event)" ondrop="rankDrop(event,${i})" ondragend="rankDragEnd(event)">
+        <span class="rank-grip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg></span>
+        <span class="rank-pos">nº${i+1}</span>
+        <span class="rank-label">${o.label}</span>
+        <span class="rank-arrows">
+          <button type="button" aria-label="Monter" onclick="rankMove(${i},-1)" ${i===0?'disabled':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>
+          <button type="button" aria-label="Descendre" onclick="rankMove(${i},1)" ${i===order.length-1?'disabled':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        </span>
+        <button type="button" class="rank-remove" aria-label="Retirer ce besoin" onclick="rankRemove('${oid}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+      </div>`;
+    }).join('') + `</div>` + (removed.length ? `<div class="rank-restore"><h5>Retirés du classement</h5><div class="rank-restore-list">${removed.map(o=>`<button type="button" class="rank-restore-btn" onclick="rankRestore('${o.id}')">+ ${o.label.split(' (')[0]}</button>`).join('')}</div></div>` : '');
+  } else if(q.type === 'text'){
+    const v = (state.answers[q.id] || '').replace(/"/g,'&quot;');
+    body = `<div class="org-block">
+      <input type="text" class="org-input" id="orgInput" maxlength="80" placeholder="Ex. : Wepoint Canada" value="${v}"
+        aria-label="${q.title}" oninput="onOrgInput(this.value)" onkeydown="if(event.key==='Enter'){event.preventDefault();const b=document.getElementById('nextBtn');if(b&&!b.disabled)nextQ();}">
+      <p class="org-hint">Appuyez sur Entrée ou sur « Suivant » pour continuer.</p>
+    </div>`;
+  } else if(q.type === 'slider'){
+    const v = state.slider;
+    body = `
+      <div class="slider-block">
+        <div class="slider-val" id="sVal">${v}<small> %</small></div>
+        <div class="slider-caption" id="sCap"></div>
+        <input type="range" min="0" max="100" step="5" value="${v}" id="msSlider"
+               aria-label="Empreinte Microsoft en pourcentage" oninput="onSlider(this.value)">
+        <div class="slider-ticks"><span>0 % : SI très diversifié</span><span>100 % : full Microsoft</span></div>
+        <div class="slider-threshold" id="sTh"></div>
+      </div>`;
+  } else if(q.type === 'rank'){
+    ensureRankDefault(q);
+    const order = state.answers[q.id];
+    body = `<p class="rank-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/><path d="m5 12 7-7 7 7"/></svg> Faites glisser les éléments, ou utilisez les flèches, pour classer du plus important au moins important.</p>
+    <div class="rank-list" id="rankList">` + order.map((oid,i)=>{
+      const o = q.options.find(x=>x.id===oid);
+      return `<div class="rank-item" draggable="true" data-oid="${oid}"
+        ondragstart="rankDragStart(event,${i})" ondragover="rankDragOver(event,${i})" ondragleave="rankDragLeave(event)" ondrop="rankDrop(event,${i})" ondragend="rankDragEnd(event)">
+        <span class="rank-grip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/></svg></span>
+        <span class="rank-pos">nº${i+1}</span>
+        <span class="rank-label">${o.label}</span>
+        <span class="rank-arrows">
+          <button type="button" aria-label="Monter" onclick="rankMove(${i},-1)" ${i===0?'disabled':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>
+          <button type="button" aria-label="Descendre" onclick="rankMove(${i},1)" ${i===order.length-1?'disabled':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+        </span>
+      </div>`;
+    }).join('') + `</div>`;
+  } else if(q.type === 'multi'){
+    const sel = Array.isArray(state.answers[q.id]) ? state.answers[q.id] : [];
+    body = `<div class="opts" role="group" aria-label="${q.title}">` + q.options.map(o=>{
+      const on = sel.includes(o.id) ? ' sel' : '';
+      return `<button type="button" class="opt${on}" role="checkbox" aria-checked="${on?'true':'false'}" onclick="toggleMulti('${q.id}','${o.id}')">
+        <span class="opt-check"></span>
+        <span><span class="opt-label">${o.label}</span>${o.desc?`<div class="opt-desc">${o.desc}</div>`:''}</span>
+      </button>`;
+    }).join('') + `</div>`;
+  } else {
+    /* Rendu spécial pour la question de maturité : pastille "Niveau X" en dégradé bleu */
+    const stylizeLabel = (label) => {
+      const m = label.match(/^(Niveau\s*(\d))\s*:\s*(.+)$/i);
+      if(!m) return label;
+      return `<span class="mat-pill mat-pill-${m[2]}">${m[1]}</span>${m[3]}`;
+    };
+    body = `<div class="opts" role="radiogroup" aria-label="${q.title}">` + q.options.map(o=>{
+      const sel = state.answers[q.id] === o.id ? ' sel' : '';
+      return `<button type="button" class="opt${sel}" role="radio" aria-checked="${sel?'true':'false'}" onclick="pick('${q.id}','${o.id}')">
+        <span class="opt-radio"></span>
+        <span><span class="opt-label">${stylizeLabel(o.label)}</span>${o.desc?`<div class="opt-desc">${o.desc}</div>`:''}</span>
+      </button>`;
+    }).join('') + `</div>`;
+  }
+
+  if(Array.isArray(q.toggles) && q.toggles.length){
+    body += `<div class="toggle-block" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--wp-grey-100)">` + q.toggles.map(tg=>{
+      const val = (state.toggles||{})[q.id+'_'+tg.key] || '';
+      return `<div style="margin-bottom:14px">
+        <p class="bucket-title" style="margin:0 0 10px">${tg.label}</p>
+        <div class="bucket-choices" style="grid-template-columns:repeat(2,minmax(0,1fr));max-width:280px">
+          <button type="button" class="bucket-btn${val==='yes'?' sel':''}" onclick="pickToggle('${q.id}','${tg.key}','yes')">Oui</button>
+          <button type="button" class="bucket-btn${val==='no'?' sel':''}" onclick="pickToggle('${q.id}','${tg.key}','no')">Non</button>
+        </div>
+      </div>`;
+    }).join('') + `</div>`;
+  }
+  if(Array.isArray(q.deploy) && q.deploy.length){
+    body += `<div class="toggle-block" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--wp-grey-100)">
+      <p class="bucket-title" style="margin:0 0 10px">Préférence de déploiement pour l'outil lui-même</p>
+      <div class="bucket-choices" style="grid-template-columns:repeat(${q.deploy.length},minmax(0,1fr))">${q.deploy.map(d=>{
+        const sel = state.envDeploy === d.id;
+        return `<button type="button" class="bucket-btn${sel?' sel':''}" onclick="pickDeploy('${d.id}')"><span style="display:block;font-weight:600">${d.label}</span><span style="display:block;font-size:12px;color:var(--wp-fg-3);font-weight:400;margin-top:3px">${d.desc}</span></button>`;
+      }).join('')}</div>
+    </div>`;
+  }
+
+  let canNext = true;
+  if(q.type === 'multi') canNext = Array.isArray(state.answers[q.id]) && state.answers[q.id].length > 0;
+  else if(q.type === 'orgLoc') canNext = Array.isArray(state.answers.regions) && state.answers.regions.length > 0;
+  else if(q.type === 'text') canNext = !!(state.answers[q.id] || '').trim();
+  else if(q.type === 'twoSliders' || q.type === 'slider') canNext = true;
+  else if(q.type === 'buckets') canNext = state.answers[q.id] && q.buckets.every(bk => state.answers[q.id][bk.key]);
+  else if(q.type === 'axes') canNext = state.answers[q.id] && q.axes.every(ax => state.answers[q.id][ax.key]);
+  else if(q.type === 'budget') canNext = state.answers[q.id] && !!state.answers[q.id].pref;
+  else if(q.type === 'rankRemovable') canNext = Array.isArray(state.answers[q.id]) && state.answers[q.id].length > 0;
+  else if(!q.type) canNext = !!state.answers[q.id];
+
+  const noteVal = (state.notes[q.id] || '').replace(/</g,'&lt;');
+  const notesHTML = q.id === 'org' ? '' : `<details class="notes-block" ${noteVal ? 'open':''}>
+      <summary>
+        <svg class="notes-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+        <span>Vos notes personnelles${noteVal ? ' <span class="notes-badge">✓</span>' : ''}</span>
+        <span class="notes-hint">n'influencent pas le score, ajoutées à votre bilan pour vos discussions</span>
+        <svg class="notes-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </summary>
+      <textarea placeholder="Vos notes, questions ou points à discuter pour cette question…" oninput="onNote('${q.id}', this.value)">${noteVal}</textarea>
+    </details>`;
+
+  const sec = SECTIONS.find(s => s.id === q.section);
+  const secPill = sec ? `<span class="sec-pill" style="background:${sec.color}">${sec.label}</span>` : '';
+
+  document.getElementById('qcard').innerHTML = `
+    <div class="q-count"><span class="wp-eyebrow">Question ${String(state.idx+1).padStart(2,'0')} / ${String(total).padStart(2,'0')}</span>${secPill}<span class="wp-small">${q.short}</span>
+      <button type="button" class="q-clear" onclick="confirmRestart()">Recommencer l'évaluation</button></div>
+    <h2 class="q-title">${q.title}</h2>
+    <p class="q-why">${q.why}</p>
+    ${body}
+    ${q.id === 'org' ? '' : `<details class="impact">
+      <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg> Comment cette question influence le score</summary>
+      <div class="impact-body">${linkSups(q.impact)}</div>
+    </details>`}
+    ${notesHTML}
+    <div class="q-nav">
+      <button class="wp-btn wp-btn-ghost" onclick="prevQ()" ${state.idx===0 && !state.fromReview ? 'disabled':''}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> ${state.fromReview ? 'Retour aux réponses' : 'Précédent'}
+      </button>
+      <button class="wp-btn wp-btn-primary" id="nextBtn" onclick="nextQ()" ${canNext?'':'disabled'}>
+        ${state.idx === total-1 ? 'Voir le résultat' : 'Suivant'} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>`;
+  if(q.type === 'slider') onSlider(state.slider);
+  if(q.type === 'twoSliders'){ onDualSlider('total', state.sizeTotalIdx, true); onDualSlider('it', state.sizeITIdx, true); }
+  if(q.type === 'budget'){ onBudget(state.capexBudget); }
+  if(q.type === 'buckets'){ onWinRatio(state.winRatio); }
+}
+
+/* Glisser-déposer du classement */
+let dragIdx = null;
+function rankDragStart(e,i){ dragIdx = i; e.target.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
+function rankDragOver(e,i){ e.preventDefault(); e.currentTarget.classList.add('dragover'); }
+function rankDragLeave(e){ e.currentTarget.classList.remove('dragover'); }
+function rankDrop(e,i){
+  e.preventDefault();
+  const q = visibleQuestions()[state.idx];
+  const arr = state.answers[q.id];
+  if(dragIdx === null || dragIdx === i) { renderQuiz(); return; }
+  const [moved] = arr.splice(dragIdx,1);
+  arr.splice(i,0,moved);
+  dragIdx = null;
+  renderQuiz();
+}
+function rankDragEnd(e){ dragIdx = null; document.querySelectorAll('.rank-item').forEach(el=>el.classList.remove('dragging','dragover')); }
+function rankMove(i,delta){
+  const q = visibleQuestions()[state.idx];
+  const arr = state.answers[q.id];
+  const j = i + delta;
+  if(j < 0 || j >= arr.length) return;
+  [arr[i],arr[j]] = [arr[j],arr[i]];
+  renderQuiz();
+}
+
+function onOrgInput(v){
+  state.answers.org = v;
+  const b = document.getElementById('nextBtn');
+  if(b) b.disabled = !v.trim();
+}
+
+function onNote(qid, v){ state.notes[qid] = v; }
+
+function toggleRegion(rid){
+  if(!Array.isArray(state.answers.regions)) state.answers.regions = [];
+  const idx = state.answers.regions.indexOf(rid);
+  if(idx >= 0) state.answers.regions.splice(idx, 1);
+  else state.answers.regions.push(rid);
+  renderQuiz();
+}
+
+function toggleDBType(id){
+  if(!Array.isArray(state.answers.dbTypes)) state.answers.dbTypes = [];
+  const idx = state.answers.dbTypes.indexOf(id);
+  if(idx >= 0) state.answers.dbTypes.splice(idx, 1);
+  else state.answers.dbTypes.push(id);
+  renderQuiz();
+}
+
+function pickNet(v){
+  state.answers.netPam = v;
+  if(v === 'no'){
+    state.answers.netPalo = '';
+    state.answers.netCount = '';
+  }
+  renderQuiz();
+}
+function pickNetPalo(v){
+  state.answers.netPalo = v;
+  renderQuiz();
+}
+function pickNetCount(v){
+  state.answers.netCount = v;
+  renderQuiz();
+}
+
+function onDualSlider(key, v, silent){
+  const idxKey = key === 'total' ? 'sizeTotalIdx' : 'sizeITIdx';
+  let vNum = +v;
+  /* Contrainte : la borne IT ne peut jamais dépasser la borne totale.
+     On plafonne systématiquement l'IT au maximum autorisé. */
+  if(key === 'it'){
+    const maxIt = maxITIdxAllowed();
+    if(vNum > maxIt) vNum = maxIt;
+  }
+  state[idxKey] = vNum;
+  const q = QUESTIONS.find(x => x.id === 'size');
+  const sc = q.sliders.find(s=>s.key===key);
+  const bk = sc.buckets[vNum];
+  const el = document.getElementById('dsVal-'+key);
+  if(el && bk) el.textContent = bk.label;
+
+  /* Si on change le total, on doit re-rendre l'IT pour afficher la nouvelle borne max
+     (et éventuellement caper l'IT si le nouveau total est plus petit). `silent` désactive
+     ce re-rendu à l'initialisation depuis renderQuiz pour éviter la boucle infinie. */
+  if(key === 'total' && !silent){
+    const maxIt = maxITIdxAllowed();
+    if(state.sizeITIdx > maxIt) state.sizeITIdx = maxIt;
+    renderQuiz();
+    return;
+  }
+  const sl = document.getElementById('dsSl-'+key);
+  if(sl){
+    /* Si on a plafonné la valeur, on remet aussi le curseur DOM au bon endroit */
+    if(+sl.value !== vNum) sl.value = vNum;
+    const max = +sl.max;
+    sl.style.setProperty('--pct', max > 0 ? (vNum / max * 100) + '%' : '0%');
+  }
+}
+
+function pickToggle(qid, key, val){
+  if(!state.toggles) state.toggles = {};
+  state.toggles[qid+'_'+key] = val;
+  renderQuiz();
+}
+function pickDeploy(id){
+  state.envDeploy = id;
+  renderQuiz();
+}
+function toggleBucketMulti(qid, bkKey, cid){
+  if(!state.answers[qid]) state.answers[qid] = {};
+  if(!Array.isArray(state.answers[qid][bkKey])) state.answers[qid][bkKey] = [];
+  const arr = state.answers[qid][bkKey];
+  const i = arr.indexOf(cid);
+  if(i >= 0) arr.splice(i,1); else arr.push(cid);
+  renderQuiz();
+}
+function pickBucket(qid, bkKey, choiceId){
+  if(!state.answers[qid]) state.answers[qid] = {};
+  state.answers[qid][bkKey] = choiceId;
+  renderQuiz();
+}
+
+function toggleAdminInfo(evt){
+  const btn = evt.currentTarget;
+  const tip = btn.parentNode.querySelector('.admin-info');
+  if(!tip) return;
+  /* Fermer les autres */
+  document.querySelectorAll('.admin-info.show').forEach(el=>{ if(el!==tip) el.classList.remove('show'); });
+  tip.classList.toggle('show');
+  if(tip.classList.contains('show')){
+    /* Fermer au clic ailleurs */
+    setTimeout(()=>{
+      const closer = (e)=>{
+        if(!tip.contains(e.target) && e.target !== btn && !btn.contains(e.target)){
+          tip.classList.remove('show');
+          document.removeEventListener('click', closer);
+        }
+      };
+      document.addEventListener('click', closer);
+    }, 0);
+  }
+}
+
+function pickAxis(qid, axKey, lvl){
+  if(!state.answers[qid]) state.answers[qid] = {};
+  state.answers[qid][axKey] = lvl;
+  renderQuiz();
+}
+
+function pickCapex(pref){
+  const qid = 'budget';
+  if(!state.answers[qid]) state.answers[qid] = {};
+  state.answers[qid].pref = pref;
+  renderQuiz();
+}
+
+function onBudget(v){
+  state.capexBudget = +v;
+  const sl = document.getElementById('budSl');
+  if(sl) sl.style.setProperty('--pct', ((+v - 150) / (2000 - 150) * 100) + '%');
+  const el = document.getElementById('budVal');
+  if(el) el.textContent = (+v)>=1000 ? ((+v)/1000).toFixed(1).replace('.0','') + ' M$' : v + ' k$';
+}
+
+function onWinRatio(v){
+  state.winRatio = +v;
+  const sl = document.getElementById('winSl');
+  if(sl) sl.style.setProperty('--pct', v + '%');
+  const w = document.getElementById('winW'); if(w) w.textContent = v + ' %';
+  const u = document.getElementById('winU'); if(u) u.textContent = (100 - +v) + ' %';
+}
+
+function rankRemove(oid){
+  const q = visibleQuestions()[state.idx];
+  state.answers[q.id] = state.answers[q.id].filter(x => x !== oid);
+  renderQuiz();
+}
+function rankRestore(oid){
+  const q = visibleQuestions()[state.idx];
+  if(!state.answers[q.id].includes(oid)) state.answers[q.id].push(oid);
+  renderQuiz();
+}
+
+function toggleMulti(qid, oid){
+  if(!Array.isArray(state.answers[qid])) state.answers[qid] = [];
+  const arr = state.answers[qid];
+  const ix = arr.indexOf(oid);
+  if(ix >= 0) arr.splice(ix,1); else arr.push(oid);
+  renderQuiz();
+}
+
+function onSlider(v){
+  state.slider = +v;
+  const s = document.getElementById('msSlider');
+  if(s) s.style.setProperty('--pct', v + '%');
+  const val = document.getElementById('sVal');
+  if(val) val.innerHTML = `${v}<small> %</small>`;
+  const cap = document.getElementById('sCap');
+  const th = document.getElementById('sTh');
+  const hit = +v >= 85;
+  if(cap) cap.textContent = hit ? 'Écosystème très majoritairement Microsoft.' : (+v >= 50 ? 'Écosystème mixte, à dominante Microsoft.' : 'Écosystème diversifié.');
+  if(th){
+    th.classList.toggle('hit', hit);
+    th.innerHTML = linkSups(hit
+      ? `<strong>Seuil de 85 % atteint :</strong> votre SI est réellement tourné vers l'écosystème Microsoft. Entra PIM sera intégré au comparatif avec un bonus, car il couvre nativement ce périmètre [10].`
+      : `Sous le seuil de 85 %, votre SI reste diversifié : Entra PIM ne sera pas proposé, son périmètre naturel s'arrêtant aux rôles Microsoft [10].`);
+  }
+}
+
+function pick(qid, oid){
+  state.answers[qid] = oid;
+  renderQuiz();
+}
+
+function prevQ(){
+  if(state.fromReview){ renderReview(); go('review'); return; }
+  if(state.idx > 0){ state.idx--; renderQuiz(); window.scrollTo({top:0,behavior:'smooth'}); }
+}
+function nextQ(){
+  const qs = visibleQuestions();
+  if(state.fromReview){ showResults(); return; }
+  if(state.idx < qs.length - 1){
+    state.idx++;
+    if(state.idx > state.maxIdx) state.maxIdx = state.idx;
+    renderQuiz();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  else {
+    state.maxIdx = qs.length - 1;
+    showResults();
+  }
+}
+
+/* ================================================================
+   SCORING
+   ================================================================ */
+function computeScores(){
+  const contrib = {}; const reasons = {};
+  ORDER.forEach(k=>{ contrib[k]={}; reasons[k]=[]; });
+  const addC = (sol,qid,v)=>{ contrib[sol][qid] = (contrib[sol][qid]||0) + v; };
+
+  visibleQuestions().forEach(q=>{
+    if(q.type === 'orgLoc'){
+      /* Appliquer les fx de chaque région sélectionnée */
+      const regions = Array.isArray(state.answers.regions) ? state.answers.regions : [];
+      regions.forEach(rid=>{
+        const r = q.regions.find(x => x.id === rid);
+        if(r) Object.entries(r.fx || {}).forEach(([k,v])=> addC(k, q.id, v));
+        (r && r.notes || []).forEach(n=> reasons[n.sol] && reasons[n.sol].push({txt:n.txt, src:n.src}));
+      });
+      return;
+    }
+    if(q.type === 'slider'){
+      const ok = state.slider >= 85;
+      if(ok){
+        addC('entra', q.id, 10);
+        reasons.entra.push({txt:`Votre empreinte Microsoft estimée à ${state.slider} % dépasse le seuil de 85 % : la gouvernance Entra couvre les packages d'accès, les revues et le cycle de vie sans plateforme supplémentaire ni licence tierce`, src:[3]});
+      }
+      return;
+    }
+    if(q.type === 'twoSliders'){
+      const ident = state.sizeTotal, apps = state.sizeIT;
+      const fmt = n => n.toLocaleString('fr-CA');
+      if(ident < 2500){
+        addC('entra', q.id, 4); addC('omada', q.id, 3);
+        addC('midpoint', q.id, 3); addC('ping', q.id, 2); addC('sailpointisc', q.id, 1);
+      } else if(ident < 25000){
+        addC('sailpointisc', q.id, 3); addC('saviynt', q.id, 3); addC('omada', q.id, 3);
+        addC('oneidentity', q.id, 2); addC('entra', q.id, 2); addC('ping', q.id, 2);
+        addC('midpoint', q.id, 2); addC('ibm', q.id, 1); addC('oracle', q.id, 1);
+      } else {
+        addC('sailpointisc', q.id, 5); addC('saviynt', q.id, 5); addC('oneidentity', q.id, 4);
+        addC('ibm', q.id, 4); addC('oracle', q.id, 3); addC('omada', q.id, 3);
+        addC('sailpointiiq', q.id, 3); addC('ping', q.id, 2); addC('midpoint', q.id, 1);
+        addC('entra', q.id, 1);
+        reasons.sailpointisc.push({txt:`Volumétrie importante (${fmt(ident)} identités) : le terrain sur lequel SailPoint dispose de la base installée et de l'écosystème d'intégrateurs les plus profonds du marché`, src:[3,5]});
+      }
+      /* Le nombre d'applications à gouverner est le vrai facteur de charge du projet */
+      if(apps >= 400){
+        addC('sailpointisc', q.id, 3); addC('saviynt', q.id, 3); addC('oneidentity', q.id, 3);
+        addC('ibm', q.id, 2); addC('oracle', q.id, 2); addC('sailpointiiq', q.id, 2);
+        addC('entra', q.id, -3); addC('ping', q.id, -1);
+        reasons.saviynt.push({txt:`Vous devez gouverner environ ${fmt(apps)} applications : à ce niveau, la richesse du catalogue de connecteurs et la capacité d'intégration deviennent le premier facteur de succès du programme`, src:[1,2]});
+      } else if(apps >= 75){
+        addC('sailpointisc', q.id, 2); addC('saviynt', q.id, 2); addC('omada', q.id, 2);
+        addC('oneidentity', q.id, 2); addC('midpoint', q.id, 1); addC('entra', q.id, -1);
+      } else {
+        addC('entra', q.id, 3); addC('omada', q.id, 2);
+        addC('ping', q.id, 2); addC('midpoint', q.id, 1);
+        addC('oneidentity', q.id, -1); addC('ibm', q.id, -1); addC('oracle', q.id, -1); addC('sailpointiiq', q.id, -1);
+      }
+      return;
+    }
+    if(q.type === 'buckets'){
+      const sel = state.answers[q.id] || {};
+      q.buckets.forEach(bk=>{
+        const chosen = sel[bk.key];
+        if(bk.multi){
+          const arr = Array.isArray(chosen) ? chosen : [];
+          arr.forEach(cid=>{
+            const c = bk.choices.find(x=>x.id===cid);
+            if(c){
+              Object.entries(c.fx || {}).forEach(([k,v])=> addC(k, q.id+'_'+bk.key, v));
+              (c.notes || []).forEach(n=> reasons[n.sol] && reasons[n.sol].push({txt:n.txt, src:n.src}));
+            }
+          });
+        } else {
+          if(!chosen) return;
+          const c = bk.choices.find(x => x.id === chosen);
+          if(c) Object.entries(c.fx || {}).forEach(([k,v])=> addC(k, q.id, v));
+        }
+      });
+      return;
+    }
+    if(q.type === 'axes'){
+      const sel = state.answers[q.id] || {};
+      q.axes.forEach(ax=>{
+        const lvl = sel[ax.key];
+        if(!lvl) return;
+        const lv = ax.levels[lvl-1];
+        Object.entries(lv.fx || {}).forEach(([k,v])=> addC(k, q.id, v));
+        (lv.notes || []).forEach(n=>{ if(reasons[n.sol]) reasons[n.sol].push({txt:n.txt, src:n.src}); });
+      });
+      return;
+    }
+    if(q.type === 'budget'){
+      const sel = state.answers[q.id] || {};
+      const bud = state.capexBudget;
+      if(sel.pref === 'capex'){
+        addC('midpoint', q.id, 4); addC('oneidentity', q.id, 3); addC('sailpointiiq', q.id, 3);
+        addC('ibm', q.id, 2); addC('oracle', q.id, 2);
+        reasons.midpoint.push({txt:"Vous privilégiez le CAPEX : midPoint n'a aucun coût de licence, l'investissement porte entièrement sur l'intégration et les compétences, qui restent votre actif", src:[8,10]});
+      } else if(sel.pref === 'opex'){
+        addC('saviynt', q.id, 3); addC('sailpointisc', q.id, 3); addC('entra', q.id, 3);
+        addC('omada', q.id, 2); addC('ping', q.id, 2);
+        reasons.entra.push({txt:"Vous privilégiez l'OPEX : la gouvernance Entra s'active sur des licences que vous détenez déjà en partie, sans investissement d'infrastructure", src:[3]});
+      } else if(sel.pref === 'balanced'){
+        addC('omada', q.id, 2); addC('sailpointisc', q.id, 1); addC('oneidentity', q.id, 1);
+      }
+      /* Enveloppe : garde-fous sur les coûts d'intégration constatés */
+      if(bud < 400){
+        addC('sailpointisc', q.id, -3); addC('saviynt', q.id, -3); addC('oneidentity', q.id, -3);
+        addC('ibm', q.id, -3); addC('oracle', q.id, -3); addC('sailpointiiq', q.id, -2);
+        addC('entra', q.id, 2); addC('midpoint', q.id, 1);
+      } else if(bud >= 1500){
+        addC('sailpointisc', q.id, 3); addC('saviynt', q.id, 3); addC('oneidentity', q.id, 2);
+        addC('ibm', q.id, 2); addC('oracle', q.id, 2);
+      }
+      return;
+    }
+    if(q.type === 'rank' || q.type === 'rankRemovable'){
+      const order = Array.isArray(state.answers[q.id]) ? state.answers[q.id] : q.options.map(o=>o.id);
+      order.forEach((oid,rank)=>{
+        const o = q.options.find(x=>x.id===oid); if(!o) return;
+        const w = RANK_WEIGHTS[rank] ?? 0;
+        if(w === 0) return;
+        Object.entries(o.fx||{}).forEach(([k,v])=>{ addC(k, q.id, v*w); });
+        if(rank < 2) (o.notes||[]).forEach(n=>{ reasons[n.sol].push({txt:n.txt, src:n.src}); });
+      });
+      return;
+    }
+    if(q.type === 'multi'){
+      const sel = Array.isArray(state.answers[q.id]) ? state.answers[q.id] : [];
+      sel.forEach(oid=>{
+        const o = q.options.find(x=>x.id===oid); if(!o) return;
+        Object.entries(o.fx||{}).forEach(([k,v])=>{ addC(k, q.id, v); });
+        (o.notes||[]).forEach(n=>{ reasons[n.sol].push({txt:n.txt, src:n.src}); });
+      });
+      return;
+    }
+    const o = q.options.find(x=>x.id === state.answers[q.id]);
+    if(!o) return;
+    Object.entries(o.fx || {}).forEach(([k,v])=>{ addC(k, q.id, v); });
+    (o.notes || []).forEach(n=>{ reasons[n.sol].push({txt:n.txt, src:n.src}); });
+  });
+
+  /* Bascules génériques (SoD, SSO, MFA, MSSP…) déclarées sur n'importe quelle question */
+  QUESTIONS.forEach(qq=>{
+    if(Array.isArray(qq.toggles)){
+      qq.toggles.forEach(tg=>{
+        const val = (state.toggles || {})[qq.id+'_'+tg.key];
+        if(val === 'yes'){
+          Object.entries(tg.fx || {}).forEach(([k,v])=> addC(k, qq.id+'_'+tg.key, v));
+          (tg.notes || []).forEach(n=> reasons[n.sol] && reasons[n.sol].push({txt:n.txt, src:n.src}));
+        }
+      });
+    }
+  });
+  /* Préférence de déploiement de l'outil lui-même (question env) */
+  if(state.envDeploy){
+    const envQ = QUESTIONS.find(qq=>qq.id==='env');
+    const dep = envQ && Array.isArray(envQ.deploy) && envQ.deploy.find(d=>d.id===state.envDeploy);
+    if(dep){
+      Object.entries(dep.fx || {}).forEach(([k,v])=> addC(k, 'envDeploy', v));
+      (dep.notes || []).forEach(n=> reasons[n.sol] && reasons[n.sol].push({txt:n.txt, src:n.src}));
+    }
+  }
+
+  /* Éligibilité */
+  const excluded = [];
+  const entraEligible = state.slider >= 85;
+  if(!entraEligible){
+    excluded.push({ sol:'entra', why:`Votre empreinte Microsoft estimée (${state.slider} %) est sous le seuil de 85 % : la gouvernance Entra couvre bien les identités et les ressources de l'écosystème Microsoft, mais laisserait hors de portée l'essentiel des applications d'affaires à gouverner, qui constituent le cœur du besoin GIA [3]. Nous l'écartons donc du comparatif.` });
+  }
+
+  const eligible = ORDER.filter(k => !excluded.find(e=>e.sol===k))
+    .map(k => {
+      const total = Object.values(contrib[k]).reduce((a,b)=>a+b,0);
+      return { key:k, score: Math.max(0, Math.round(total)), contrib: contrib[k], reasons: reasons[k] };
+    })
+    .sort((a,b)=> b.score - a.score);
+
+  return { eligible, excluded };
+}
+
+/* Regroupe les ex æquo en tête */
+function groupLeaders(eligible){
+  if(!eligible.length) return [];
+  const top = eligible[0].score;
+  return eligible.filter(e => e.score === top);
+}
+
+/* ================================================================
+   RADAR (toile d'araignée)
+   ================================================================ */
+/* Profil intrinsèque de chaque solution sur les 6 axes du radar (0 à 10, plus haut = mieux).
+   Ces profils sont fixes (indépendants des réponses), synthèse des sources [1][2][5][8].
+   Note : pour "Coûts de mise en œuvre" et "Taille des équipes", 10 = coûts / équipe faibles (favorable).
+   Pour les autres axes, 10 = plus élevé / mieux. */
+const VENDOR_PROFILE = {
+  sailpointisc: { "Coûts de mise en œuvre":4, "Taille des équipes":5, "Couverture fonctionnelle":10, "Utilisation de l'IA":9, "Souveraineté et sur site":3,  "Infonuagique et léger":9 },
+  sailpointiiq: { "Coûts de mise en œuvre":2, "Taille des équipes":2, "Couverture fonctionnelle":9,  "Utilisation de l'IA":5, "Souveraineté et sur site":8,  "Infonuagique et léger":2 },
+  saviynt:      { "Coûts de mise en œuvre":4, "Taille des équipes":5, "Couverture fonctionnelle":10, "Utilisation de l'IA":10,"Souveraineté et sur site":3,  "Infonuagique et léger":10 },
+  omada:        { "Coûts de mise en œuvre":7, "Taille des équipes":7, "Couverture fonctionnelle":8,  "Utilisation de l'IA":7, "Souveraineté et sur site":6,  "Infonuagique et léger":8 },
+  oneidentity:  { "Coûts de mise en œuvre":3, "Taille des équipes":3, "Couverture fonctionnelle":10, "Utilisation de l'IA":6, "Souveraineté et sur site":8,  "Infonuagique et léger":5 },
+  ibm:          { "Coûts de mise en œuvre":3, "Taille des équipes":3, "Couverture fonctionnelle":8,  "Utilisation de l'IA":7, "Souveraineté et sur site":8,  "Infonuagique et léger":5 },
+  oracle:       { "Coûts de mise en œuvre":3, "Taille des équipes":3, "Couverture fonctionnelle":8,  "Utilisation de l'IA":5, "Souveraineté et sur site":8,  "Infonuagique et léger":5 },
+  ping:         { "Coûts de mise en œuvre":6, "Taille des équipes":6, "Couverture fonctionnelle":6,  "Utilisation de l'IA":6, "Souveraineté et sur site":5,  "Infonuagique et léger":8 },
+  entra:        { "Coûts de mise en œuvre":9, "Taille des équipes":9, "Couverture fonctionnelle":4,  "Utilisation de l'IA":7, "Souveraineté et sur site":2,  "Infonuagique et léger":10 },
+  midpoint:     { "Coûts de mise en œuvre":8, "Taille des équipes":3, "Couverture fonctionnelle":7,  "Utilisation de l'IA":4, "Souveraineté et sur site":10, "Infonuagique et léger":4 }
+};
+
+const AXES = [
+  { label:"Coûts de mise en œuvre",   hint:"favorable si faible" },
+  { label:"Taille des équipes",       hint:"favorable si une équipe réduite suffit" },
+  { label:"Couverture fonctionnelle", hint:"profondeur de la gouvernance et du provisioning" },
+  { label:"Utilisation de l'IA",      hint:"analytique de risque, role mining, assistance" },
+  { label:"Souveraineté et sur site", hint:"hébergement chez vous, auditabilité, réversibilité" },
+  { label:"Infonuagique et léger",    hint:"modèle SaaS, faible empreinte d'exploitation" }
+];
+
+function userAxisProfile(){
+  const a = state.answers;
+
+  let cost = 5;
+  if(state.sizeIT < 30) cost += 2;
+  else if(state.sizeIT > 150) cost -= 2;
+  if(a.budget){
+    if(state.capexBudget < 400) cost += 3;
+    else if(state.capexBudget >= 1500) cost -= 2;
+    if(a.budget.pref === 'opex') cost += 1;
+    else if(a.budget.pref === 'capex') cost -= 1;
+  }
+  cost = Math.max(0, Math.min(10, cost));
+
+  const opsMap = { none:9, shared:7, dedicated:4 };
+  let team = opsMap[a.ops] ?? 5;
+  if((state.toggles||{}).ops_msp === 'yes') team = Math.min(10, team + 1);
+  if(state.sizeIT > 400) team = Math.max(0, team - 2);
+  else if(state.sizeIT < 20) team = Math.min(10, team + 1);
+
+  const matDepth = { n1:3, n2:4, n3:6, n4:8, n5:10 };
+  let cover = matDepth[a.maturity] ?? 5;
+  if(a.motivation){
+    if(a.motivation.compliance === 3) cover = Math.min(10, cover + 1);
+    if(a.motivation.security === 3) cover = Math.min(10, cover + 1);
+  }
+  if(Array.isArray(a.need) && a.need.length >= 6) cover = Math.min(10, cover + 1);
+
+  let ai = 3;
+  if(a.motivation){
+    if(a.motivation.efficiency === 2) ai = 6;
+    if(a.motivation.efficiency === 3) ai = 9;
+    if(a.motivation.security === 3) ai = Math.min(10, ai + 1);
+  }
+
+  const envSov = { cloud:2, hybrid:5, onprem:8, sovereign:10 };
+  let sov = envSov[a.env] ?? 5;
+  const sv = Array.isArray(a.sovereignty) ? a.sovereignty : [];
+  if(sv.includes('opensource')) sov = Math.min(10, sov + 2);
+  if(sv.includes('residency') || sv.includes('reversibility')) sov = Math.min(10, sov + 1);
+  if(state.envDeploy === 'onprem') sov = Math.min(10, sov + 1);
+
+  const envCloud = { cloud:10, hybrid:6, onprem:2, sovereign:1 };
+  let cloud = envCloud[a.env] ?? 5;
+  if(state.slider >= 85) cloud = Math.min(10, cloud + 1);
+  if(state.envDeploy === 'saas') cloud = Math.min(10, cloud + 1);
+
+  return {
+    "Coûts de mise en œuvre": cost,
+    "Taille des équipes": team,
+    "Couverture fonctionnelle": cover,
+    "Utilisation de l'IA": ai,
+    "Souveraineté et sur site": sov,
+    "Infonuagique et léger": cloud
+  };
+}
+
+function radarSVG(eligible, leaders, excluded){function radarSVG(eligible, leaders, excluded){
+  const axes = AXES;
+  const N = axes.length;
+  if(N < 3) return '';
+  const leaderKeys = leaders.map(l=>l.key);
+
+  const W=680, H=580, cx=340, cy=290, R=195;
+  const pt = (i, r) => {
+    const ang = -Math.PI/2 + (2*Math.PI*i)/N;
+    return [cx + r*Math.cos(ang), cy + r*Math.sin(ang)];
+  };
+  let g = '';
+  /* anneaux */
+  [0.25,0.5,0.75,1].forEach(f=>{
+    const pts = axes.map((a,i)=>pt(i, R*f).join(',')).join(' ');
+    g += `<polygon points="${pts}" fill="none" stroke="#EEEEEC" stroke-width="1"/>`;
+  });
+  /* axes + libellés (on gère les labels longs sur deux lignes) */
+  axes.forEach((a,i)=>{
+    const [x,y] = pt(i,R);
+    g += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#DCDFE2" stroke-width="1"/>`;
+    const [lx,ly] = pt(i, R+34);
+    const anchor = Math.abs(lx-cx) < 20 ? 'middle' : (lx > cx ? 'start' : 'end');
+    /* Coupure sur 2 lignes si label long */
+    const words = a.label.split(' ');
+    let l1 = a.label, l2 = '';
+    if(a.label.length > 18 && words.length > 1){
+      let acc = '';
+      for(const w of words){
+        if((acc + ' ' + w).trim().length > 18){ l2 = (l2 + ' ' + w).trim(); }
+        else { acc = (acc + ' ' + w).trim(); }
+      }
+      l1 = acc; l2 = l2 || '';
+    }
+    g += `<text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="12.5" font-weight="500" fill="#5B626B" font-family="Poppins,sans-serif">${l1}${l2?`<tspan x="${lx}" dy="15"> ${l2}</tspan>`:''}</text>`;
+  });
+
+  /* Formes des solutions (fixes) */
+  const drawSolution = (key, isLead) => {
+    const c = COLORS[key];
+    const vals = axes.map(a => VENDOR_PROFILE[key][a.label] ?? 5);
+    const pts = vals.map((v,i)=> pt(i, R * (v/10)).join(',')).join(' ');
+    let dots = vals.map((v,i)=>{
+      const [x,y] = pt(i, R*(v/10));
+      const solName = SOLUTIONS[key].name;
+      const axisName = axes[i].label;
+      const title = `${solName} — ${axisName} : ${v}/10`;
+      return `<circle cx="${x}" cy="${y}" r="${isLead?4:3}" fill="#fff" stroke="${c}" stroke-width="${isLead?2:1.5}"><title>${title}</title></circle>`;
+    }).join('');
+    return `<polygon points="${pts}" fill="${c}" fill-opacity="${isLead?0.12:0.05}" stroke="${c}" stroke-width="${isLead?2:1.2}" stroke-linejoin="round" ${isLead?'':'stroke-dasharray="4 4"'}/>` + dots;
+  };
+
+  /* Non-leaders puis leaders */
+  const nonLeaders = eligible.filter(e=>!leaderKeys.includes(e.key));
+  g += nonLeaders.map(e => drawSolution(e.key, false)).join('');
+  g += leaders.map(l => drawSolution(l.key, true)).join('');
+
+  /* Profil utilisateur (superposé, noir, épais) */
+  const userProf = userAxisProfile();
+  const userVals = axes.map(a => userProf[a.label] || 0);
+  const userPts = userVals.map((v,i)=> pt(i, R * (v/10)).join(',')).join(' ');
+  const orgName = ((state.answers.org||'').trim() || 'Votre profil').replace(/</g,'&lt;');
+  g += `<polygon points="${userPts}" fill="#0C0F11" fill-opacity="0.10" stroke="#0C0F11" stroke-width="2.5" stroke-linejoin="round"/>`;
+  userVals.forEach((v,i)=>{
+    const [x,y] = pt(i, R*(v/10));
+    const axisName = axes[i].label;
+    const title = `${orgName} — ${axisName} : ${v.toFixed(1)}/10`;
+    g += `<circle cx="${x}" cy="${y}" r="5" fill="#0C0F11"><title>${title}</title></circle>`;
+  });
+
+  const svg = `<svg class="radar-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Toile d'araignée : votre profil comparé aux solutions">${g}</svg>`;
+
+  const EXCL_SHORT = {
+    entra: "écartée : empreinte Microsoft sous 85 %"
+  };  };
+  let legend = `<div class="rleg" style="border-bottom:1px solid var(--wp-grey-200);padding-bottom:10px;margin-bottom:6px">
+      <span class="rleg-swatch" style="border-top-color:#0C0F11;border-top-width:2.5px"></span>
+      <span class="rleg-name" style="font-weight:600">${orgName}</span>
+      <span class="rleg-pts">votre profil</span>
+    </div>`;
+  legend += eligible.map(e=>{
+    const isLead = leaderKeys.includes(e.key);
+    const c = COLORS[e.key];
+    return `<div class="rleg">
+      <span class="rleg-swatch${isLead?'':' dash'}" style="border-top-color:${c}"></span>
+      <span class="rleg-name" style="${isLead?'':'color:#5B626B;font-weight:400'}">${SOLUTIONS[e.key].name}</span>
+      <span class="rleg-pts">${e.score} pts</span>
+    </div>`;
+  }).join('');
+  legend += (excluded||[]).map(e=>`<div class="rleg-excl">
+      <span class="rleg-swatch"></span>
+      <span class="rleg-name">${SOLUTIONS[e.sol].name}</span>
+      <span class="rleg-why">${EXCL_SHORT[e.sol]||'écartée'}</span>
+    </div>`).join('');
+
+  return `<div class="radar-sec">
+    <div class="wp-eyebrow">Vue d'ensemble</div>
+    <h3 class="wp-h2" style="margin-top:8px;font-size:clamp(20px,2.4vw,26px)">Votre profil face aux solutions</h3>
+    <div class="radar-card">
+      <div class="radar-flex">
+        ${svg}
+        <div class="radar-legend">${legend}</div>
+      </div>
+      <p class="radar-note">Chaque solution a une forme intrinsèque et fixe sur ces six axes, synthèse des analyses tierces (Gartner<sup class="src">[1]</sup>, KuppingerCole<sup class="src">[2]</sup>, Peer Insights<sup class="src">[5]</sup>). Sur les axes "Coûts de mise en œuvre" et "Taille des équipes", 10 signifie coûts faibles et équipe réduite, donc favorable. La forme noire est votre profil, dérivé de vos réponses. Survolez les points pour voir le détail. <strong>Ce graphique simplifie chaque solution sur six dimensions génériques : il illustre des tendances de positionnement, pas le classement détaillé.</strong> Le classement qui tient compte de la totalité de vos réponses, avec leur pondération respective, est le tableau de score ci-dessous — c'est lui qui fait foi.</p>
+    </div>
+  </div>`;
+}
+
+/* ================================================================
+   HEATMAP effort / profondeur / équipe
+   Positions de marché issues des analyses tierces [1][2][5]
+   ================================================================ */
+/* HEAT : 4 dimensions
+   x = complexité de mise en œuvre (0=simple, 10=complexe)
+   y = profondeur des fonctionnalités (0=basique, 10=très profond)
+   team = taille d'équipe requise (0=minime, 10=importante, encode le rayon de la bulle)
+   tco = TCO relatif sur 5 ans (0=faible, 10=élevé, encode un anneau intérieur coloré) */
+const HEAT = {
+  sailpointisc: { x:7.5, y:9.5, team:7, tco:9   },
+  sailpointiiq: { x:9.5, y:9.0, team:9, tco:8.5 },
+  saviynt:      { x:7.0, y:9.5, team:7, tco:8.5 },
+  omada:        { x:5.0, y:8.0, team:5, tco:6.5 },
+  oneidentity:  { x:8.5, y:9.5, team:8, tco:8   },
+  ibm:          { x:8.8, y:8.4, team:8, tco:8   },
+  oracle:       { x:8.0, y:7.4, team:8, tco:7.5 },
+  ping:         { x:5.5, y:6.0, team:5, tco:6   },
+  entra:        { x:2.0, y:4.0, team:2, tco:2.5 },
+  midpoint:     { x:7.5, y:7.0, team:8, tco:3   }
+};
+
+/* Point utilisateur : une projection en 2 dimensions (complexité absorbable, profondeur recherchée)
+   dérivée de plusieurs réponses. Elle reste une simplification volontaire — voir la note affichée
+   sous le graphique — et ne recalcule pas le score pondéré sur les 15 questions. */
+function userHeatPoint(){
+  const a = state.answers;
+  const opsMap = { none:2, shared:4.5, dedicated:7 };
+  let x = opsMap[a.ops] ?? 4.5;
+  if((state.toggles||{}).ops_msp === 'yes') x += 1.5;
+  const matAdjX = { n1:-1, n2:-0.5, n3:0, n4:0.5, n5:1 };
+  x += matAdjX[a.maturity] ?? 0;
+  const procAdjX = { none:-1, informal:-0.5, documented:0.5, automated:1 };
+  x += procAdjX[a.process] ?? 0;
+  x = Math.min(10, Math.max(0, x));
+
+  const depthMap = { n1:3, n2:4, n3:5.5, n4:7.5, n5:9.5 };
+  let y = depthMap[a.maturity] ?? 5.5;
+  const need = Array.isArray(a.need) ? a.need : [];
+  if(need.length >= 6) y += 0.5;
+  if(a.motivation){
+    if(a.motivation.compliance === 3) y += 0.5;
+    if(a.motivation.security === 3) y += 0.5;
+  }
+  const accessAdjY = { none:-1, partial:-0.3, rbac:0.5, abac_rebac:1 };
+  y += accessAdjY[a.accessmodel] ?? 0;
+  y = Math.min(10, Math.max(0, y));
+  return { x, y };
+}
+
+function heatmapSVG(eligible, leaders, excluded){
+  const leaderKeys = leaders.map(l=>l.key);
+  const W=680, H=540, mL=64, mR=28, mT=26, mB=64;
+  const pw = W-mL-mR, ph = H-mT-mB;
+  const X = v => mL + (v/10)*pw;
+  const Y = v => mT + ph - (v/10)*ph;
+  let g = '';
+  /* grille */
+  for(let i=0;i<=10;i+=2.5){
+    g += `<line x1="${X(i)}" y1="${mT}" x2="${X(i)}" y2="${mT+ph}" stroke="#EEEEEC" stroke-width="1"/>`;
+    g += `<line x1="${mL}" y1="${Y(i)}" x2="${mL+pw}" y2="${Y(i)}" stroke="#EEEEEC" stroke-width="1"/>`;
+  }
+  /* axes */
+  g += `<line x1="${mL}" y1="${mT+ph}" x2="${mL+pw}" y2="${mT+ph}" stroke="#BCC1C6" stroke-width="1.2"/>`;
+  g += `<line x1="${mL}" y1="${mT}" x2="${mL}" y2="${mT+ph}" stroke="#BCC1C6" stroke-width="1.2"/>`;
+  g += `<text x="${mL+pw/2}" y="${H-14}" text-anchor="middle" font-size="13" font-weight="600" fill="#5B626B" font-family="Poppins,sans-serif">Complexité de mise en œuvre →</text>`;
+  g += `<text x="${18}" y="${mT+ph/2}" text-anchor="middle" font-size="13" font-weight="600" fill="#5B626B" font-family="Poppins,sans-serif" transform="rotate(-90 18 ${mT+ph/2})">Profondeur des fonctionnalités et personnalisation →</text>`;
+  g += `<text x="${mL+3}" y="${mT+ph+18}" font-size="10.5" fill="#8A9099" font-family="Poppins,sans-serif">Faible</text>`;
+  g += `<text x="${mL+pw}" y="${mT+ph+18}" text-anchor="end" font-size="10.5" fill="#8A9099" font-family="Poppins,sans-serif">Élevée</text>`;
+
+  /* repère de votre organisation */
+  const u = userHeatPoint();
+  const orgName = ((state.answers.org||'').trim() || 'Votre organisation').replace(/</g,'&lt;');
+  g += `<line x1="${X(u.x)}" y1="${mT}" x2="${X(u.x)}" y2="${mT+ph}" stroke="#0C0F11" stroke-width="1" stroke-dasharray="3 5" opacity=".55"/>`;
+  g += `<line x1="${mL}" y1="${Y(u.y)}" x2="${mL+pw}" y2="${Y(u.y)}" stroke="#0C0F11" stroke-width="1" stroke-dasharray="3 5" opacity=".55"/>`;
+
+  /* bulles (les solutions écartées ne sont pas affichées) — logo de taille uniforme, bulle proportionnelle à la taille d'équipe */
+  const LOGO_SIZE = 36;
+  let defs = '';
+  const bubbles = eligible.map(e=>{
+    const h = HEAT[e.key]; if(!h) return '';
+    const isLead = leaderKeys.includes(e.key);
+    const c = COLORS[e.key];
+    const r = 22 + h.team*2.6;  /* team maintenant sur 0-10 */
+    const cx = X(h.x), cy = Y(h.y);
+    const s = SOLUTIONS[e.key];
+    const tip = `${s.name}\n${s.tag}\nComplexité ${h.x}/10, profondeur ${h.y}/10, équipe ${h.team}/10, TCO ${h.tco}/10`;
+    /* Anneau TCO : plus le TCO est élevé, plus l'anneau extérieur est épais et opaque */
+    const tcoRing = `<circle cx="${cx}" cy="${cy}" r="${r+3}" fill="none" stroke="${c}" stroke-width="${1 + h.tco*0.35}" stroke-opacity="${0.15 + h.tco*0.05}"/>`;
+    defs += `<clipPath id="clip-${e.key}"><rect x="${cx-LOGO_SIZE/2}" y="${cy-LOGO_SIZE/2}" width="${LOGO_SIZE}" height="${LOGO_SIZE}" rx="6"/></clipPath>`;
+    const halo = isLead ? `<circle cx="${cx}" cy="${cy}" r="${r+7}" fill="${c}" fill-opacity=".14"/>` : '';
+    const op = isLead ? 1 : 0.55;
+    return `<g opacity="${op}" style="cursor:help"><title>${tip}</title>
+      ${tcoRing}
+      ${halo}
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" stroke="${c}" stroke-width="${isLead?3:1.5}" ${isLead?'':'stroke-dasharray="4 3"'}/>
+      <text x="${cx}" y="${cy+5}" text-anchor="middle" font-size="16" font-weight="600" fill="${c}" font-family="Poppins,sans-serif">${s.mono}</text>
+      <image href="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" x="${cx-LOGO_SIZE/2}" y="${cy-LOGO_SIZE/2}" width="${LOGO_SIZE}" height="${LOGO_SIZE}" clip-path="url(#clip-${e.key})" preserveAspectRatio="xMidYMid meet" onerror="this.style.display='none'"/>
+    </g>`;
+  }).join('');
+
+  /* Second passage : les libellés des bulles, dessinés au-dessus de tout (avec un halo blanc pour rester lisibles) */
+  const labels = eligible.map(e=>{
+    const h = HEAT[e.key]; if(!h) return '';
+    const isLead = leaderKeys.includes(e.key);
+    const c = COLORS[e.key];
+    const r = 22 + h.team*2.6;
+    const cx = X(h.x), cy = Y(h.y);
+    const s = SOLUTIONS[e.key];
+    const name = s.name;
+    const tip = `${s.name}\n${s.tag}\nComplexité ${h.x}/10, profondeur ${h.y}/10, équipe ${h.team}/10, TCO ${h.tco}/10`;
+    const ly = cy + r + 26;
+    const op = isLead ? 1 : 0.9;
+    return `<g opacity="${op}" style="cursor:help"><title>${tip}</title>
+      <text x="${cx}" y="${ly}" text-anchor="middle" font-size="12" font-weight="${isLead?600:500}" fill="#fff" font-family="Poppins,sans-serif" stroke="#fff" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill">${name}</text>
+      <text x="${cx}" y="${ly}" text-anchor="middle" font-size="12" font-weight="${isLead?600:500}" fill="${isLead?'#0C0F11':'#5B626B'}" font-family="Poppins,sans-serif">${name}</text>
+    </g>`;
+  }).join('');
+
+  /* marqueur organisation par-dessus - libellés décalés au-dessus pour éviter le chevauchement avec les autres éléments */
+  const labelLeft = u.x > 6.5;
+  const orgLabelX = X(u.x) + (labelLeft ? -18 : 18);
+  const orgLabelY = Y(u.y) - 14;
+  const marker = `<g>
+    <circle cx="${X(u.x)}" cy="${Y(u.y)}" r="6" fill="#0C0F11"/>
+    <circle cx="${X(u.x)}" cy="${Y(u.y)}" r="10" fill="none" stroke="#0C0F11" stroke-width="1.2" opacity=".4"/>
+    <text x="${orgLabelX}" y="${orgLabelY}" text-anchor="${labelLeft?'end':'start'}" font-size="12" font-weight="600" fill="#fff" font-family="Poppins,sans-serif" stroke="#fff" stroke-width="4" stroke-linejoin="round" paint-order="stroke fill">${orgName}</text>
+    <text x="${orgLabelX}" y="${orgLabelY}" text-anchor="${labelLeft?'end':'start'}" font-size="12" font-weight="600" fill="#0C0F11" font-family="Poppins,sans-serif">${orgName}</text>
+    <text x="${orgLabelX}" y="${orgLabelY+14}" text-anchor="${labelLeft?'end':'start'}" font-size="10.5" fill="#fff" font-family="Poppins,sans-serif" stroke="#fff" stroke-width="3" stroke-linejoin="round" paint-order="stroke fill">complexité absorbable / profondeur recherchée</text>
+    <text x="${orgLabelX}" y="${orgLabelY+14}" text-anchor="${labelLeft?'end':'start'}" font-size="10.5" fill="#5B626B" font-family="Poppins,sans-serif">complexité absorbable / profondeur recherchée</text>
+  </g>`;
+
+  const svg = `<svg class="heat-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Positionnement des solutions selon la complexité de mise en œuvre, la profondeur fonctionnelle et la taille d'équipe requise"><defs>${defs}</defs>${g}${bubbles}${labels}${marker}</svg>`;
+
+  const exclTxt = (excluded && excluded.length)
+    ? ` ${excluded.map(e=>SOLUTIONS[e.sol].name).join(' et ')} ${excluded.length>1?'sont absentes':'est absente'} de ce graphique car ${excluded.length>1?'écartées':'écartée'} de votre comparatif d'après vos réponses.`
+    : '';
+
+  return `<div class="radar-sec">
+    <div class="wp-eyebrow">Positionnement des solutions</div>
+    <h3 class="wp-h2" style="margin-top:8px;font-size:clamp(20px,2.4vw,26px)">Où se situent les solutions, et où vous vous situez</h3>
+    <div class="radar-card">
+      ${svg}
+      <p class="heat-note">${linkSups("Ce graphique combine quatre dimensions : la <strong>complexité de mise en œuvre</strong> en abscisse, la <strong>profondeur des fonctionnalités</strong> en ordonnée, la <strong>taille de l'équipe</strong> requise (rayon de la bulle) et le <strong>TCO relatif sur 5 ans</strong> (épaisseur de l'anneau extérieur). Le repère noir positionne " + orgName + " d'après une partie de vos réponses (équipe, maturité, processus). Les bulles des solutions occupent une position de marché fixe, issue des analyses tierces citées en source [1][2][5] : elles ne bougent pas selon vos réponses. <strong>La proximité visuelle avec votre repère est donc indicative, pas un classement</strong> — deux profils peuvent être proches sur ces deux seules dimensions tout en étant très différents sur les autres critères du questionnaire (conformité, souveraineté, parc applicatif…). Le classement qui fait foi, intégrant vos 15 réponses pondérées, est le tableau de score ci-dessous.<br>Comprendre les dimensions : plus la bulle est <em>grosse</em>, plus l'équipe requise est importante ; plus l'anneau extérieur est <em>épais</em>, plus le coût total de possession est élevé." + exclTxt)}</p>
+    </div>
+  </div>`;
+}
+
+/* ================================================================
+   COURRIEL DE PRISE DE CONTACT
+   ================================================================ */
+function toggleDeploySuffix(q){
+  let s = '';
+  if(Array.isArray(q.toggles) && q.toggles.length){
+    q.toggles.forEach(tg=>{
+      const val = (state.toggles||{})[q.id+'_'+tg.key];
+      if(val) s += ` | ${tg.label} : ${val==='yes'?'oui':'non'}`;
+    });
+  }
+  if(Array.isArray(q.deploy) && q.deploy.length && state.envDeploy){
+    const d = q.deploy.find(x=>x.id===state.envDeploy);
+    if(d) s += ` | Déploiement de l'outil : ${d.label}`;
+  }
+  return s;
+}
+function answerText(q){
+  return answerTextBase(q) + toggleDeploySuffix(q);
+}
+function answerTextBase(q){
+  if(q.type === 'orgLoc'){
+    const org = (state.answers.org||'').trim() || 'Non précisé';
+    const regions = Array.isArray(state.answers.regions) ? state.answers.regions : [];
+    const regionLabels = regions.map(rid => { const r = q.regions.find(x=>x.id===rid); return r ? r.label : rid; });
+    return `${org} · ${regionLabels.join(', ') || 'Aucune zone sélectionnée'}`;
+  }
+  if(q.type === 'text') return (state.answers[q.id]||'').trim() || 'Non précisé';
+  if(q.type === 'slider') return `${state.slider} % d'empreinte Microsoft`;
+  if(q.type === 'twoSliders'){
+    const b1 = q.sliders[0].buckets[state.sizeTotalIdx].label;
+    const b2 = q.sliders[1].buckets[state.sizeITIdx].label;
+    return `${b1} identités internes, ${b2} applications d'affaires`;
+  }
+  if(q.type === 'buckets'){
+    const sel = state.answers[q.id] || {};
+    let out = q.buckets.map(bk => {
+      const chosen = sel[bk.key];
+      let label = 'non précisé';
+      if(bk.multi){
+        const arr = Array.isArray(chosen) ? chosen : [];
+        label = arr.length ? arr.map(cid=>{ const c=bk.choices.find(x=>x.id===cid); return c?c.label:cid; }).join(', ') : 'aucun';
+      } else if(chosen){
+        const c = bk.choices.find(x => x.id === chosen);
+        if(c) label = c.label;
+      }
+      return `${bk.label} : ${label}`;
+    }).join(' | ');
+    return out;
+  }
+  if(q.type === 'axes'){
+    const sel = state.answers[q.id] || {};
+    return q.axes.map(ax => {
+      const lvl = sel[ax.key];
+      return `${ax.label} : ${lvl ? ax.levels[lvl-1].label + ' (niveau ' + lvl + ')' : 'non positionné'}`;
+    }).join(' | ');
+  }
+  if(q.type === 'budget'){
+    const sel = state.answers[q.id] || {};
+    const capexLabels = { capex:'Plutôt CAPEX', balanced:'Équilibré', opex:'Plutôt OPEX' };
+    const b = state.capexBudget;
+    const budTxt = b>=1000 ? (b/1000).toFixed(1).replace('.0','') + ' M$' : b + ' k$';
+    return `${capexLabels[sel.pref] || 'préférence non précisée'} | Enveloppe CAPEX : ${budTxt}`;
+  }
+  if(q.type === 'rank' || q.type === 'rankRemovable'){
+    const order = Array.isArray(state.answers[q.id]) ? state.answers[q.id] : [];
+    if(!order.length) return 'Aucun besoin sélectionné';
+    return order.map((oid,k)=>{ const o=q.options.find(x=>x.id===oid); return `${k+1}. ${o?o.label.split(' (')[0]:oid}`; }).join(' | ');
+  }
+  if(q.type === 'multi'){
+    const sel = Array.isArray(state.answers[q.id]) ? state.answers[q.id] : [];
+    return sel.length ? sel.map(oid=>{ const o=q.options.find(x=>x.id===oid); return o?o.label:oid; }).join(', ') : 'Non répondu';
+  }
+  const o = q.options.find(x=>x.id===state.answers[q.id]);
+  return o ? o.label : 'Non répondu';
+}
+
+function buildContactMailto(){
+  const org = (state.answers.org||'').trim() || 'organisation non précisée';
+  const { eligible, excluded } = computeScores();
+  const leaders = groupLeaders(eligible);
+  const lines = [];
+  lines.push('Bonjour,');
+  lines.push('');
+  lines.push("Je viens de réaliser l'évaluation sur votre outil de sélection en gouvernance des identités et j'aimerais être accompagné(e) pour les prochaines étapes, notamment la documentation des requis fonctionnels et non fonctionnels. Serait-il possible d'en discuter autour d'un café ?");
+  lines.push('');
+  lines.push('Merci et bonne journée.');
+  lines.push('');
+  lines.push('---');
+  lines.push('Synthèse de mes réponses');
+  lines.push('---');
+  visibleQuestions().forEach((q,i)=>{
+    lines.push('');
+    lines.push(`${String(i+1).padStart(2,'0')}. ${q.short}`);
+    if(q.type === 'rank' || q.type === 'rankRemovable'){
+      const order = Array.isArray(state.answers[q.id]) ? state.answers[q.id] : [];
+      order.forEach((oid,k)=>{
+        const o = q.options.find(x=>x.id===oid);
+        lines.push(`    ${k+1}. ${o ? o.label : oid}`);
+      });
+    } else {
+      lines.push(`    ${answerText(q)}`);
+    }
+    if(state.notes[q.id]){
+      lines.push(`    Notes personnelles : ${state.notes[q.id].replace(/\n/g,' ')}`);
+    }
+  });
+  lines.push('');
+  lines.push('---');
+  lines.push(`Résultat indicatif : ${leaders.map(l=>SOLUTIONS[l.key].name + ' (' + l.score + ' pts)').join(' et ')}${leaders.length>1?', ex aequo':''}`);
+  if(excluded.length) lines.push(`Solutions écartées du comparatif : ${excluded.map(e=>SOLUTIONS[e.sol].name).join(', ')}`);
+  if((state.notes._general||'').trim()){
+    lines.push('');
+    lines.push('--- Notes générales ---');
+    lines.push(state.notes._general.replace(/\n/g,' '));
+  }
+  const subject = `Accompagnement pour le choix d'une solution de gouvernance des identités (${org})`;
+  /* CRLF pour compatibilité maximale (Outlook, iOS Mail, Gmail web) */
+  const body = lines.join('\r\n');
+  return 'mailto:contact.canada@wepoint.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+}
+function contactMail(){
+  window.location.href = buildContactMailto();
+}
+
+/* ================================================================
+   MATRICE DES SCORES
+   ================================================================ */
+function scoreMatrixHTML(eligible){
+  const qs = visibleQuestions().filter(q => q.id !== 'org');
+  let html = '<table style="width:100%;border-collapse:collapse;font-size:12.5px;min-width:640px">';
+  html += '<thead><tr><th style="text-align:left;padding:14px 8px 12px;border-bottom:1px solid var(--wp-grey-200);font-weight:600;color:var(--wp-fg-2);vertical-align:bottom">Question</th>';
+  eligible.forEach(e=>{
+    const c = COLORS[e.key];
+    const s = SOLUTIONS[e.key];
+    const shortName = SHORT_NAME[e.key] || s.name.replace('Microsoft ','');
+    html += `<th style="text-align:center;padding:10px 6px 12px;border-bottom:1px solid var(--wp-grey-200);vertical-align:bottom;min-width:76px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" alt="${shortName}" width="28" height="28" style="border-radius:6px;background:#fff;padding:2px;border:1px solid var(--wp-grey-100)" onerror="this.style.display='none'">
+        <span style="font-size:11px;font-weight:600;color:${c};letter-spacing:.01em">${shortName}</span>
+      </div>
+    </th>`;
+  });
+  html += '</tr></thead><tbody>';
+  qs.forEach((q,i)=>{
+    const bg = i%2 ? 'var(--wp-grey-50)' : 'transparent';
+    html += `<tr style="background:${bg}"><td style="padding:8px;color:var(--wp-fg-1)">${i+1}. ${q.short}</td>`;
+    eligible.forEach(e=>{
+      const v = e.contrib[q.id] || 0;
+      const rounded = Math.round(v*10)/10;
+      const color = rounded > 0 ? 'var(--wp-success)' : (rounded < 0 ? 'var(--wp-danger)' : 'var(--wp-grey-300)');
+      const weight = Math.abs(rounded) >= 3 ? 600 : 400;
+      html += `<td style="text-align:center;padding:8px 6px;color:${color};font-weight:${weight}">${rounded === 0 ? '·' : (rounded > 0 ? '+' + rounded : rounded)}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '<tr style="border-top:2px solid var(--wp-ink)"><td style="padding:12px 8px;font-weight:700;color:var(--wp-ink)">Total</td>';
+  eligible.forEach(e=>{
+    const c = COLORS[e.key];
+    html += `<td style="text-align:center;padding:12px 6px;font-weight:700;color:${c};font-size:14px">${e.score}</td>`;
+  });
+  html += '</tr></tbody></table>';
+  return html;
+}
+
+/* ================================================================
+   EXPORT PDF (via window.print, avec styles print dédiés)
+   ================================================================ */
+function downloadPDF(){
+  /* On construit une page dédiée à l'impression avec un rendu propre */
+  const org = (state.answers.org||'').trim() || 'Organisation non précisée';
+  const { eligible, excluded } = computeScores();
+  const leaders = groupLeaders(eligible);
+  const runnerUp = eligible.find(e => !leaders.find(l => l.key === e.key));
+  const tight = leaders.length === 1 && runnerUp && (leaders[0].score - runnerUp.score) <= 3;
+  const today = new Date().toLocaleDateString('fr-CA', { year:'numeric', month:'long', day:'numeric' });
+
+  /* Récupération des SVG rendus (radar, heatmap) */
+  const radarEl = document.querySelector('.radar-svg');
+  const heatEl  = document.querySelector('.heat-svg');
+  const radarSVGStr = radarEl ? radarEl.outerHTML : '';
+  const heatSVGStr  = heatEl  ? heatEl.outerHTML  : '';
+
+  const qs = visibleQuestions().filter(q => q.id !== 'org');
+  const answersHTML = qs.map((q,i)=>{
+    const n = state.notes[q.id];
+    return `<div class="pdf-answer">
+      <div class="pdf-q">${i+1}. ${q.title}</div>
+      <div class="pdf-a">${answerText(q).replace(/</g,'&lt;').replace(/\|/g,' · ')}</div>
+      ${n ? `<div class="pdf-note"><strong>Notes personnelles :</strong> ${n.replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  const leadersHTML = leaders.map(l=>{
+    const s = SOLUTIONS[l.key];
+    return `<div class="pdf-leader">
+      <div class="pdf-leader-name">${s.name}</div>
+      <div class="pdf-leader-score">${l.score} pts</div>
+      <div class="pdf-leader-tag">${s.tag}</div>
+    </div>`;
+  }).join('');
+
+  const otherHTML = eligible.filter(e => !leaders.find(l => l.key === e.key))
+    .map(e => `<tr><td>${SOLUTIONS[e.key].name}</td><td style="text-align:right;color:#009DDF;font-weight:600">${e.score} pts</td></tr>`).join('');
+
+  /* Conclusion rédigée : pourquoi cette solution vous ressemble */
+  const conclusionHTML = (function(){
+    if(!leaders.length) return '';
+    const lead = leaders[0];
+    const s = SOLUTIONS[lead.key];
+    const contribs = Object.entries(lead.contrib || {}).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1])).slice(0,4);
+    const drivers = contribs.map(([qid,v])=>{
+      const q = QUESTIONS.find(x=>x.id===qid);
+      const short = q ? q.short : qid;
+      return `<li><strong>${short}</strong> : ${v>0?'+':''}${Math.round(v*10)/10} pt</li>`;
+    }).join('');
+    const nearby = tight
+      ? `<p style="margin-top:14px;padding:12px 14px;background:#EAF7FD;border-left:3px solid #009DDF;border-radius:4px"><strong>À noter :</strong> l'écart avec <strong>${SOLUTIONS[runnerUp.key].name}</strong> est faible (${leaders[0].score - runnerUp.score} pts). Les deux solutions méritent d'être confrontées en démonstration, sur vos cas d'usage réels.</p>`
+      : '';
+    return `
+      <p>${leaders.length>1
+        ? `Deux solutions sortent ex æquo : <strong>${leaders.map(l=>SOLUTIONS[l.key].name).join(' et ')}</strong>. Les deux correspondent à votre profil et méritent une confrontation directe.`
+        : `<strong>${s.name}</strong> arrive en tête avec ${lead.score} points. ${s.tag}`}</p>
+      <p style="margin-top:12px">Ce résultat est porté principalement par vos réponses aux questions suivantes :</p>
+      <ul style="margin:8px 0 0 20px;padding:0;color:#3A3F45">${drivers}</ul>
+      ${nearby}
+    `;
+  })();
+
+  const matrixTable = (function(){
+    let h = '<table class="pdf-matrix"><thead><tr><th style="text-align:left">Question</th>';
+    eligible.forEach(e=>{
+      const s = SOLUTIONS[e.key];
+      const shortName = SHORT_NAME[e.key] || s.name.replace('Microsoft ','');
+      h += `<th style="vertical-align:bottom;padding-bottom:8px">
+        <img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" width="20" height="20" style="border-radius:4px;display:block;margin:0 auto 4px" alt=""><br>
+        <span style="font-size:8pt">${shortName}</span>
+      </th>`;
+    });
+    h += '</tr></thead><tbody>';
+    qs.forEach((q,i)=>{
+      h += `<tr><td>${i+1}. ${q.short}</td>`;
+      eligible.forEach(e=>{
+        const v = Math.round((e.contrib[q.id]||0)*10)/10;
+        h += `<td style="text-align:center;color:${v>0?'#059469':v<0?'#DB3149':'#BCC1C6'}">${v===0?'·':(v>0?'+'+v:v)}</td>`;
+      });
+      h += '</tr>';
+    });
+    h += '<tr class="pdf-total"><td><b>Total</b></td>';
+    eligible.forEach(e=>{ h += `<td style="text-align:center;color:#009DDF"><b>${e.score}</b></td>`; });
+    h += '</tr></tbody></table>';
+    return h;
+  })();
+
+  const doc = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Bilan GIA · ${org}</title>
+<style>
+@page { size: A4; margin: 22mm 16mm 24mm; }
+@page :first { margin: 0; }
+* { box-sizing: border-box; }
+body { font-family: 'Poppins', -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0C0F11; margin: 0; padding: 0; font-size: 11pt; line-height: 1.55; }
+
+/* ==== Couverture ==== */
+.pdf-cover { height: 297mm; width: 210mm; display: flex; flex-direction: column; justify-content: space-between; background: #fff; padding: 30mm 20mm; page-break-after: always; position: relative; }
+.pdf-cover::before { content:''; position:absolute; top:0; left:0; right:0; height: 8mm; background: linear-gradient(90deg, #009DDF 0%, #0079B8 100%); }
+.pdf-cover::after { content:''; position:absolute; bottom:0; left:0; right:0; height: 4mm; background: #009DDF; }
+.pdf-cover-head img { height: 44px; }
+.pdf-cover-eyebrow { font-size: 10pt; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: #009DDF; margin-bottom: 12px; }
+.pdf-cover-body h1 { font-size: 40pt; font-weight: 600; letter-spacing: -1.2px; line-height: 1.05; margin: 0 0 20px; color: #0C0F11; }
+.pdf-cover-body h2 { font-size: 22pt; font-weight: 400; color: #5B626B; margin: 0 0 24px; letter-spacing: -.3px; }
+.pdf-cover-body .pdf-cover-org { font-size: 26pt; font-weight: 600; color: #0C0F11; margin-bottom: 40px; padding-left: 14px; border-left: 4px solid #009DDF; }
+.pdf-cover-body p { font-size: 11pt; color: #3A3F45; margin: 0; max-width: 130mm; }
+.pdf-cover-foot { display: flex; justify-content: space-between; align-items: center; font-size: 9pt; color: #5B626B; padding-top: 20px; border-top: 1px solid #EEEEEC; }
+.pdf-cover-foot strong { color: #0C0F11; }
+
+/* ==== Sections ==== */
+h2.pdf-section { font-size: 20pt; font-weight: 600; letter-spacing: -.5px; margin: 28px 0 14px; color: #0C0F11; page-break-after: avoid; }
+h2.pdf-section::before { content: ''; display: block; width: 44px; height: 4px; background: #009DDF; margin-bottom: 12px; border-radius: 2px; }
+.pdf-eyebrow { font-size: 8pt; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #009DDF; margin-bottom: 6px; }
+
+/* ==== wepoint intro ==== */
+.pdf-wepoint-intro { background: linear-gradient(135deg, #EAF7FD 0%, #F6F7F8 100%); border-radius: 10px; padding: 22px 24px; margin: 12px 0 20px; border-left: 4px solid #009DDF; }
+.pdf-wepoint-intro h3 { font-size: 14pt; font-weight: 600; color: #0C0F11; margin: 0 0 8px; }
+.pdf-wepoint-intro p { font-size: 10pt; color: #3A3F45; margin: 0 0 10px; line-height: 1.55; }
+.pdf-wepoint-intro p:last-child { margin-bottom: 0; }
+.pdf-wepoint-stats { display: flex; gap: 20px; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(0,157,223,.2); }
+.pdf-wepoint-stat { flex: 1; }
+.pdf-wepoint-stat b { display: block; font-size: 18pt; font-weight: 700; color: #009DDF; line-height: 1; margin-bottom: 3px; }
+.pdf-wepoint-stat span { font-size: 8.5pt; color: #5B626B; }
+
+/* ==== Leaders ==== */
+.pdf-leaders { display: flex; gap: 12px; margin: 12px 0 20px; }
+.pdf-leader { flex: 1; border: 2px solid #009DDF; border-radius: 10px; padding: 18px; background: linear-gradient(135deg, #fff 0%, #EAF7FD 100%); }
+.pdf-leader-name { font-size: 15pt; font-weight: 600; color: #0C0F11; margin-bottom: 6px; }
+.pdf-leader-score { font-size: 24pt; font-weight: 700; color: #009DDF; margin-bottom: 6px; line-height: 1; }
+.pdf-leader-tag { font-size: 9.5pt; color: #5B626B; line-height: 1.5; }
+
+/* ==== Conclusion ==== */
+.pdf-conclusion p { font-size: 11pt; color: #3A3F45; }
+.pdf-conclusion ul li { font-size: 10pt; padding: 3px 0; }
+.pdf-conclusion strong { color: #0C0F11; }
+
+/* ==== Tableaux ==== */
+table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
+table.pdf-others { margin: 12px 0 20px; }
+table.pdf-others td { padding: 8px 10px; border-bottom: 1px solid #EEEEEC; }
+table.pdf-others tr:hover { background: #F6F7F8; }
+table.pdf-matrix { margin: 12px 0 20px; font-size: 8.5pt; }
+table.pdf-matrix th { padding: 8px 4px; border-bottom: 2px solid #009DDF; text-align: center; font-weight: 600; color: #0C0F11; }
+table.pdf-matrix td { padding: 6px 4px; border-bottom: 1px solid #F6F7F8; }
+table.pdf-matrix tr.pdf-total td { border-top: 2px solid #0C0F11; border-bottom: none; padding-top: 10px; font-size: 10pt; }
+
+/* ==== Graphes ==== */
+.pdf-chart-wrap { margin: 12px 0 20px; padding: 14px; border: 1px solid #EEEEEC; border-radius: 8px; text-align: center; page-break-inside: avoid; }
+.pdf-chart-wrap svg { max-width: 100%; max-height: 130mm; height: auto; }
+.pdf-chart-caption { font-size: 9pt; color: #5B626B; margin-top: 10px; text-align: left; }
+
+/* ==== Réponses ==== */
+.pdf-answer { border-bottom: 1px solid #EEEEEC; padding: 12px 0; page-break-inside: avoid; }
+.pdf-q { font-size: 10pt; font-weight: 600; color: #0C0F11; margin-bottom: 4px; }
+.pdf-q::before { content: ''; display: inline-block; width: 3px; height: 12px; background: #009DDF; vertical-align: middle; margin-right: 8px; border-radius: 2px; }
+.pdf-a { font-size: 10pt; color: #3A3F45; margin-bottom: 4px; padding-left: 11px; }
+.pdf-note { font-size: 9.5pt; color: #3A3F45; background: #EAF7FD; padding: 10px 12px; border-left: 3px solid #009DDF; border-radius: 4px; margin-top: 8px; margin-left: 11px; }
+.pdf-note strong { color: #0C0F11; font-weight: 600; }
+
+/* ==== Écartées ==== */
+.pdf-excluded { background: #F6F7F8; border-radius: 8px; padding: 14px 18px; margin: 10px 0 20px; }
+.pdf-excluded > div { padding: 6px 0; border-bottom: 1px solid #EEEEEC; font-size: 9.5pt; color: #5B626B; }
+.pdf-excluded > div:last-child { border-bottom: none; }
+.pdf-excluded strong { color: #0C0F11; }
+
+@media print { .pdf-noprint { display: none; } }
+</style></head><body>
+
+<!-- ==================== COUVERTURE ==================== -->
+<div class="pdf-cover">
+  <div class="pdf-cover-head">
+    <img src="https://www.wepoint.com/wp-content/themes/onepoint/Logo_wepoint_noir.png" alt="wepoint">
+  </div>
+  <div class="pdf-cover-body">
+    <div class="pdf-cover-eyebrow">Bilan d'évaluation en gouvernance des identités</div>
+    <div class="pdf-cover-org">${org}</div>
+    <h2>Choisir votre outil de gestion des accès à privilèges</h2>
+    <h1>Un cadrage indépendant, six solutions, une lecture claire.</h1>
+    <p>Cette évaluation confronte votre contexte à dix solutions du marché (SailPoint Identity Security Cloud, SailPoint IdentityIQ, Saviynt, Omada, One Identity, IBM Verify Identity Governance, Oracle Identity Governance, Ping Identity Governance, Microsoft Entra ID Governance et Evolveum midPoint), sur la base d'analyses tierces indépendantes : le Market Guide GIA de Gartner (2 octobre 2025), le Leadership Compass GIA de KuppingerCole (édition 2026), la SPARK Matrix de Quadrant Knowledge Solutions, Gartner Peer Insights et des sources institutionnelles européennes.</p>
+  </div>
+  <div class="pdf-cover-foot">
+    <span>Réalisé le <strong>${today}</strong></span>
+    <span><strong>wepoint</strong> · contact.canada@wepoint.com</span>
+  </div>
+</div>
+
+<!-- ==================== À propos de wepoint ==================== -->
+<h2 class="pdf-section">À propos de wepoint</h2>
+<div class="pdf-wepoint-intro">
+  <h3>Architecte des grandes transformations numériques et humaines</h3>
+  <p>Créé en 2025, <strong>wepoint</strong> porte l'ambition nord-américaine du groupe Onepoint et vise à devenir l'acteur de référence du conseil et de l'intelligence artificielle sur ce territoire. Issu du rapprochement des équipes nord-américaines de Onepoint et de celles du groupe Logient Nventive, wepoint est implanté à New York, Montréal et Québec.</p>
+  <p>Nos expertises couvrent la stratégie TI, les plateformes et le numérique, la data et l'IA, la transformation infonuagique et la <strong>cybersécurité</strong>, avec une conviction : les grandes transformations réussissent quand elles articulent la technologie, l'humain et l'organisation.</p>
+  <div class="pdf-wepoint-stats">
+    <div class="pdf-wepoint-stat"><b>600</b><span>experts en Amérique du Nord</span></div>
+    <div class="pdf-wepoint-stat"><b>3</b><span>bureaux : New York, Montréal, Québec</span></div>
+    <div class="pdf-wepoint-stat"><b>4 500+</b><span>talents dans le groupe Onepoint</span></div>
+    <div class="pdf-wepoint-stat"><b>19</b><span>implantations dans le monde</span></div>
+  </div>
+</div>
+
+<!-- ==================== Résultat ==================== -->
+<h2 class="pdf-section">Résultat indicatif</h2>
+<p style="margin:0 0 12px">D'après vos réponses, ${leaders.length>1 ? "les solutions qui vous ressemblent le plus (ex æquo) sont :" : "la solution qui semble le mieux vous correspondre est :"}</p>
+<div class="pdf-leaders">${leadersHTML}</div>
+
+<div class="pdf-conclusion">
+  ${conclusionHTML}
+</div>
+
+${otherHTML ? `<h2 class="pdf-section">Autres solutions comparées</h2>
+<table class="pdf-others"><tbody>${otherHTML}</tbody></table>` : ''}
+
+${excluded.length ? `<h2 class="pdf-section">Solutions écartées</h2>
+<div class="pdf-excluded">${excluded.map(e=>`<div><strong>${SOLUTIONS[e.sol].name}</strong> : ${e.why.replace(/\[\d+\]/g,'').replace(/</g,'&lt;')}</div>`).join('')}</div>` : ''}
+
+<!-- ==================== Graphes ==================== -->
+${radarSVGStr ? `<h2 class="pdf-section" style="page-break-before: always">Votre profil face aux solutions</h2>
+<div class="pdf-chart-wrap">${radarSVGStr}</div>
+<p class="pdf-chart-caption">Chaque solution a une forme intrinsèque et fixe sur ces six axes, synthèse des analyses tierces (Gartner MQ 2025, KuppingerCole, Gartner Peer Insights). Sur les axes "Coûts de mise en œuvre" et "Taille des équipes", 10 signifie coûts faibles et équipe réduite, donc favorable. La forme en noir est le profil de <strong>${org}</strong>, dérivé de vos réponses.</p>` : ''}
+
+${heatSVGStr ? `<h2 class="pdf-section">Où se situent les solutions</h2>
+<div class="pdf-chart-wrap">${heatSVGStr}</div>
+<p class="pdf-chart-caption">Ce graphique combine quatre dimensions : la complexité de mise en œuvre (abscisse), la profondeur des fonctionnalités (ordonnée), la taille de l'équipe requise (rayon de la bulle) et le TCO à cinq ans (épaisseur de l'anneau extérieur). Le repère noir positionne <strong>${org}</strong> d'après vos réponses.</p>` : ''}
+
+<!-- ==================== Matrice ==================== -->
+<h2 class="pdf-section" style="page-break-before: always">Matrice des scores</h2>
+${matrixTable}
+<p style="font-size:9pt;color:#5B626B;margin-top:8px">Cette matrice montre combien chaque solution a gagné (en vert) ou perdu (en rouge) de points sur chaque question. Le total en dernière ligne est celui affiché en résultat.</p>
+
+<!-- ==================== Réponses ==================== -->
+<h2 class="pdf-section" style="page-break-before: always">Vos réponses et notes personnelles</h2>
+${answersHTML}
+
+${(state.notes._general||'').trim() ? `<h2 class="pdf-section">Notes générales</h2>
+<div style="font-size:10pt;color:#3A3F45;background:#EAF7FD;padding:14px 18px;border-left:3px solid #009DDF;border-radius:6px;line-height:1.6">${(state.notes._general||'').replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div>` : ''}
+
+<!-- ==================== Suite ==================== -->
+<h2 class="pdf-section" style="page-break-before: always">Les prochaines étapes</h2>
+<p>Ce résultat indicatif mérite d'être confronté à la réalité de votre organisation. La prochaine étape consiste à <strong>documenter vos requis fonctionnels et non fonctionnels</strong> (cas d'usage, périmètres, exigences de sécurité, contraintes d'exploitation, critères de coût) pour permettre une analyse plus fine, puis un appel d'offres et une preuve de concept solides.</p>
+<p style="margin-top:12px">C'est justement là que <strong style="color:#009DDF">wepoint</strong> peut vous accompagner : cadrage indépendant, benchmark, montage d'appel d'offres, pilotage de POC et intégration. Prenez contact avec notre équipe cybersécurité à <strong>contact.canada@wepoint.com</strong>.</p>
+<p style="margin-top:20px;font-size:10pt;color:#5B626B;padding:14px 16px;background:#F6F7F8;border-radius:6px"><em>Note méthodologique : cet outil est un outil d'aide à la décision. Les pondérations reposent exclusivement sur des analyses tierces citées en source, jamais sur la documentation des éditeurs. Point d'attention propre à ce marché : Gartner ne publie plus de Magic Quadrant pour la gouvernance des identités mais un Market Guide, qui ne hiérarchise pas les éditeurs ; le classement indépendant le plus récent est le Leadership Compass 2026 de KuppingerCole. Les graphiques de positionnement simplifient chaque solution sur un petit nombre de dimensions et restent indicatifs : le tableau de score, qui intègre l'ensemble de vos réponses pondérées, fait foi. Cet outil ne remplace ni un cadrage, ni un appel d'offres, ni un pilote.</em></p>
+
+<div class="pdf-noprint" style="text-align:center;padding:40px;background:#F6F7F8;border-radius:12px;margin-top:32px">
+  <p style="margin:0 0 16px;font-size:14pt;font-weight:600">Prévisualisation du bilan</p>
+  <p style="margin:0 0 20px;color:#5B626B">Cliquez ci-dessous pour enregistrer ce document en PDF (choisir « Enregistrer au format PDF » dans la boîte d'impression).</p>
+  <button onclick="window.print()" style="background:#009DDF;color:#fff;border:none;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:500;cursor:pointer;font-family:Poppins,sans-serif">Ouvrir la boîte d'impression</button>
+</div>
+
+<script>
+/* Personnaliser l'en-tête / pied de page d'impression pour ne pas afficher "about:blank" */
+document.title = 'Bilan GIA ${org.replace(/'/g,"\\'")} - ${today}';
+window.addEventListener('load', () => setTimeout(() => window.print(), 500));
+</scr` + `ipt>
+</body></html>`;
+
+  const w = window.open('', '_blank', 'width=900,height=1100');
+  if(!w){ alert("Le navigateur a bloqué l'ouverture d'une nouvelle fenêtre. Autorisez les pop-ups pour ce site puis réessayez."); return; }
+  w.document.open();
+  w.document.write(doc);
+  w.document.close();
+  try { w.focus(); } catch(e){}
+}
+
+/* ================================================================
+   RENDU RÉSULTATS
+   ================================================================ */
+const CAVEATS = {
+  sailpointisc: `À garder en tête : la couverture la plus large du marché se paie en coût de licence et en charge d'intégration, et les retours clients situent l'effort initial parmi les plus élevés de la catégorie [4]. Le modèle de tarification à l'identité mérite d'être projeté sur cinq ans.`,
+  sailpointiiq: `À garder en tête : IdentityIQ reste très personnalisable, mais l'effort de l'éditeur porte désormais sur Identity Security Cloud, et les praticiens décrivent le passage de l'un à l'autre comme une refonte plutôt qu'une montée de version [9]. Un choix d'IdentityIQ aujourd'hui doit intégrer ce chantier futur.`,
+  saviynt: `À garder en tête : la profondeur analytique et la gouvernance applicative supposent des données d'identité déjà propres et une organisation capable d'arbitrer. Sur un premier projet, la richesse de la plateforme peut devenir un facteur de lenteur [4].`,
+  omada: `À garder en tête : le cadrage méthodologique qui fait la force d'Omada suppose d'accepter sa façon de faire. Les organisations qui veulent reproduire à l'identique des processus très atypiques y trouveront plus de friction qu'ailleurs [2].`,
+  oneidentity: `À garder en tête : la profondeur de One Identity Manager s'accompagne d'un paramétrage exigeant et d'une courbe d'apprentissage réelle. Sans compétence dédiée ou intégrateur engagé, le projet s'étire [5].`,
+  ibm: `À garder en tête : la solution s'exprime surtout dans les organisations déjà investies dans l'écosystème IBM. Hors de ce contexte, l'effort de mise en œuvre est rarement justifié par un avantage fonctionnel décisif [3].`,
+  oracle: `À garder en tête : l'intérêt tient largement à l'alignement avec un SI déjà Oracle, et l'offre se répartit entre la suite historique et Access Governance, plus récente. Clarifiez lequel des deux périmètres vous est réellement proposé [3].`,
+  ping: `À garder en tête : la gouvernance Ping tire sa cohérence de la plateforme d'accès qui l'entoure. Évaluée seule, sur des besoins de certification ou de séparation des tâches avancés, elle est moins profonde que les spécialistes GIA [5][6].`,
+  entra: `À garder en tête : la gouvernance Entra est excellente sur le périmètre Microsoft et très économique à activer, mais elle n'a pas vocation à gouverner un parc applicatif hétérogène. Vérifiez précisément quelles applications resteraient hors couverture [3].`,
+  midpoint: `À garder en tête : l'absence de coût de licence ne signifie pas l'absence de coût. midPoint suppose des compétences internes durables ou un partenaire d'intégration solide, et son interface reste plus proche de l'outil d'administration que du portail métier [10].`
+};
+
+function leaderCard(e, li, tie){
+  const s = SOLUTIONS[e.key];
+  const reasons = e.reasons.slice(0, tie ? 4 : 5);
+  const color = COLORS[e.key] || '#009DDF';
+  return `<div class="leader-card" style="--lead-color:${color}">
+    <div class="lead-top">
+      ${logoHTML(e.key)}
+      <div class="lead-id"><h3>${s.name}</h3><p>${s.tag}</p></div>
+      <span class="lead-badge" style="color:${color};border-color:${color}33;background:${color}14">${tie ? 'Ex æquo' : 'Affinité la plus forte'}</span>
+    </div>
+    <div class="affbar"><span style="width:100%"></span></div>
+    <div class="aff-line"><span>Indice d'affinité avec votre contexte</span><b>${e.score} pts</b></div>
+    <div class="why-title">Pourquoi cette affinité (d'après vos réponses)</div>
+    <ul class="why-list">
+      ${reasons.length ? reasons.map(r=>`<li>${r.txt} ${srcSup(r.src)}</li>`).join('') : `<li>Votre profil ne fait ressortir aucun besoin extrême : ${s.name} cumule simplement le plus de points sur l'ensemble de vos réponses.</li>`}
+    </ul>
+    ${CAVEATS[e.key] ? `<p class="lead-note">${linkSups(CAVEATS[e.key])}</p>` : ''}
+    <div class="lead-cta">
+      <a class="wp-btn wp-btn-accent" href="${s.url}" target="_blank" rel="noopener">Visiter le site de l'éditeur
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a>
+    </div>
+  </div>`;
+}
+
+function showResults(){
+  const { eligible, excluded } = computeScores();
+  const leaders = groupLeaders(eligible);
+  const tie = leaders.length > 1;
+  const max = Math.max(1, eligible[0].score);
+  const others = eligible.filter(e => !leaders.find(l=>l.key===e.key));
+  const runnerUp = others[0];
+  const tight = !tie && runnerUp && (leaders[0].score - runnerUp.score) <= 3;
+
+  const headline = tie
+    ? (leaders.length === 2
+        ? `Il semblerait que deux solutions vous ressemblent autant : ${SOLUTIONS[leaders[0].key].name} et ${SOLUTIONS[leaders[1].key].name}.`
+        : `Il semblerait que plusieurs solutions vous ressemblent autant : ${leaders.map(l=>SOLUTIONS[l.key].name).join(', ')}.`)
+    : `Il semblerait que ce qui vous ressemble le plus soit ${SOLUTIONS[leaders[0].key].name}.`;
+
+  const caveat = tie
+    ? `Ces solutions terminent à égalité de points sur vos réponses : ce n'est pas un hasard, c'est le signe que votre contexte peut être servi par des philosophies différentes. Nous les présentons côte à côte, sans en privilégier une. Le choix final se joue toujours en appel d'offres puis en preuve de concept, avec vos cas d'usage réels.`
+    : `Ce n'est pas une prescription : c'est une lecture de vos réponses au regard d'analyses indépendantes${tight ? `, et <strong>l'écart avec ${SOLUTIONS[runnerUp.key].name} est faible</strong> (les deux méritent d'être confrontées en démonstration)` : ''}. Le choix final se joue toujours en appel d'offres puis en preuve de concept, avec vos cas d'usage réels.`;
+
+  let html = `
+    <div class="res-head">
+      <div class="wp-eyebrow">Résultat indicatif</div>
+      <h1 class="wp-h1" style="margin-top:10px">${headline}</h1>
+      <div class="res-caveat">${caveat}</div>
+    </div>
+    <div class="leaders-grid${tie?' tie':''}">
+      ${leaders.map((l,i)=>leaderCard(l, i, tie)).join('')}
+    </div>
+    ${radarSVG(eligible, leaders, excluded)}
+    ${heatmapSVG(eligible, leaders, excluded)}`;
+
+  if(others.length){
+    html += `<div class="others">
+      <div class="wp-eyebrow" style="margin-bottom:6px">Les autres solutions comparées</div>
+      ${others.map(e=>{
+        const so = SOLUTIONS[e.key];
+        const topR = e.reasons[0];
+        return `<div class="other-row">
+          ${logoHTML(e.key)}
+          <div class="other-main">
+            <p class="other-name">${so.name} <a href="${so.url}" target="_blank" rel="noopener">site de l'éditeur ↗</a></p>
+            <p class="other-why">${topR ? topR.txt + ' ' + srcSup(topR.src) : so.tag + '.'}</p>
+            <div class="affbar"><span style="width:${Math.round(e.score/max*100)}%"></span></div>
+            <div class="aff-line"><span></span><b>${e.score} pts</b></div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  if(excluded.length){
+    html += `<div class="excluded">
+      <div class="wp-eyebrow" style="margin-bottom:6px">Écartées de votre comparatif (et pourquoi)</div>
+      ${excluded.map(e=>{
+        const so = SOLUTIONS[e.sol];
+        return `<div class="exc-row">${logoHTML(e.sol)}
+          <div><p class="exc-name">${so.name}</p><p class="exc-why">${linkSups(e.why)}</p></div></div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  html += `<div class="radar-sec">
+    <div class="wp-eyebrow">Matrice des scores</div>
+    <h3 class="wp-h2" style="margin-top:8px;font-size:clamp(20px,2.4vw,26px)">Le détail question par question</h3>
+    <div class="radar-card" style="padding:20px;overflow-x:auto">
+      ${scoreMatrixHTML(eligible)}
+      <p class="radar-note">Cette matrice montre combien chaque solution a gagné (ou perdu) de points sur chacune des questions. Les cases vides valent zéro. Le total en dernière ligne est celui affiché en tête du bilan.</p>
+    </div>
+  </div>`;
+
+  /* Notes générales */
+  const gnVal = (state.notes._general || '').replace(/</g,'&lt;');
+  html += `<div class="radar-sec">
+    <div class="wp-eyebrow">Notes générales</div>
+    <h3 class="wp-h2" style="margin-top:8px;font-size:clamp(20px,2.4vw,26px)">Vos observations globales</h3>
+    <div class="radar-card" style="padding:24px">
+      <p style="font-size:13.5px;color:var(--wp-fg-2);margin:0 0 14px">Ajoutez ici vos remarques, questions ou points de discussion qui ne sont pas liés à une question spécifique. Ces notes apparaîtront dans le PDF exporté et dans le courriel de prise de contact.</p>
+      <textarea class="general-notes" placeholder="Vos observations globales, contraintes particulières, points à approfondir…" oninput="state.notes._general = this.value">${gnVal}</textarea>
+    </div>
+  </div>`;
+
+  html += `<div class="next-steps">
+      <div class="wp-eyebrow">Et maintenant ?</div>
+      <h3>Les prochaines étapes</h3>
+      <p>Ce résultat indicatif mérite d'être confronté à la réalité de votre organisation. La prochaine étape consiste à <strong>documenter vos requis fonctionnels et non fonctionnels</strong> (cas d'usage, périmètres, exigences de sécurité, contraintes d'exploitation, critères de coût) pour permettre une analyse plus fine, puis un appel d'offres et une preuve de concept solides. C'est justement là que wepoint peut vous accompagner.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="wp-btn wp-btn-accent" onclick="contactMail()">Contacter wepoint.
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></button>
+        <button class="wp-btn pdf-btn" onclick="downloadPDF()">Télécharger le bilan en PDF
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="res-actions">
+      <button class="wp-btn wp-btn-primary" onclick="openReview()">Modifier certaines réponses</button>
+      <button class="wp-btn wp-btn-ghost" onclick="restart()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Recommencer de zéro</button>
+    </div>`;
+
+  document.getElementById('resWrap').innerHTML = html;
+
+  document.getElementById('srcWrap').innerHTML = `
+    <h3>Nos sources</h3>
+    <p>Chaque pondération de ce questionnaire s'appuie exclusivement sur des analyses tierces (cabinets d'analystes indépendants, agences étatiques, presse spécialisée et avis clients vérifiés), jamais sur la documentation commerciale des éditeurs.</p>
+    <ul class="src-list">
+      ${Object.entries(SOURCES).map(([i,src])=>`<li><span class="src-id">[${i}]</span><span class="src-txt"><b><a href="${src.url}" target="_blank" rel="noopener">${src.label}</a></b> : ${src.note}</span></li>`).join('')}
+    </ul>`;
+
+  go('results');
+}
+
+/* ================================================================
+   REVIEW
+   ================================================================ */
+function openReview(){ renderReview(); go('review'); }
+function renderReview(){
+  const qs = visibleQuestions();
+  document.getElementById('revList').innerHTML = qs.map((q,i)=>{
+    const ans = answerText(q);
+    return `<div class="rev-row">
+      <span class="rev-num">${String(i+1).padStart(2,'0')}</span>
+      <div class="rev-main"><p class="rev-q">${q.title}</p><p class="rev-a">${ans.length > 140 ? ans.slice(0,140) + '…' : ans}</p></div>
+      <button class="wp-btn wp-btn-ghost rev-edit" onclick="editQ(${i})">Modifier</button>
+    </div>`;
+  }).join('');
+}
+function editQ(i){
+  state.idx = i; state.fromReview = true;
+  renderQuiz(); go('quiz');
+}
+</script>
+</body>
+</html>
