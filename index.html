@@ -129,7 +129,7 @@ button{font-family:var(--wp-font)}
 .rail-step.cur .rail-idx{color:var(--sec-color,var(--wp-blue));font-weight:600}
 /* Séparateur entre sections dans le rail */
 .rail-sec-sep{display:flex;align-items:center;justify-content:center;height:24px;position:relative}
-.rail-sec-dot{width:8px;height:8px;border-radius:50%;display:block}
+.rail-sec-dot{width:11px;height:11px;border-radius:50%;display:block;background:var(--wp-white);border:2px solid var(--wp-grey-300);box-sizing:border-box}
 /* Infobulle du fil */
 .rail-step[data-tip]::after{content:attr(data-tip);position:absolute;left:calc(50% + 16px);top:50%;transform:translateY(-50%);background:var(--wp-ink);color:#fff;font-size:12px;font-weight:500;line-height:1.3;padding:7px 12px;border-radius:var(--wp-r-sm);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:30;box-shadow:var(--wp-shadow-md)}
 .rail-step[data-tip]:hover::after{opacity:1}
@@ -608,7 +608,7 @@ const QUESTIONS = [
   type:'orgLoc',
   title:'Votre organisation et ses zones d\'activité',
   why:"Le nom personnalise votre bilan. Les zones géographiques conditionnent l'éligibilité de certaines solutions dont l'écosystème (partenaires, support, compétences, hébergement) est concentré sur un continent.",
-  impact:`Une présence européenne valorise <strong>midPoint</strong>, développé et détenu dans l'Union européenne et référencé par la Commission<sup class="src">[7]</sup>, ainsi qu'<strong>Omada</strong>, éditeur danois dont la majorité des clients sont européens<sup class="src">[2]</sup>.`,
+  impact:`Une présence européenne valorise <strong>midPoint</strong>, développé et détenu dans l'Union européenne et référencé par la Commission<sup class="src">[7]</sup>, ainsi qu'<strong>Omada</strong>, éditeur danois dont la majorité des clients sont européens<sup class="src">[2]</sup>, et dans une moindre mesure <strong>One Identity</strong>. Une présence en Amérique du Nord donne un léger avantage à <strong>SailPoint</strong> et <strong>Saviynt</strong>, tous deux basés aux États-Unis. En Asie-Pacifique et au Moyen-Orient, <strong>IBM</strong> et <strong>Oracle</strong> bénéficient d'un léger bonus lié à la profondeur de leur présence régionale, également au Moyen-Orient pour <strong>SailPoint</strong>, et en Afrique pour <strong>Oracle</strong><sup class="src">[3]</sup>. Une présence en Amérique du Sud n'avantage aucun candidat en particulier, faute de données spécifiques dans nos sources.`,
   options:[],
   regions:[
     { id:'europe', label:'Europe', desc:'UE, Royaume-Uni, Suisse…', fx:{ midpoint:5, omada:4, oneidentity:2 },
@@ -707,6 +707,7 @@ const QUESTIONS = [
         notes:[ {sol:'entra', txt:'La conformité est votre moteur principal : Entra ID Governance couvre bien les revues d\'accès sur le périmètre Microsoft, mais produire une preuve d\'audit homogène sur des applications hors écosystème demande des compléments', src:[3]} ] }
     ]},
     { key:'security', label:'Sécurité et réduction du risque', levels:[
+      { label:'Faible', desc:'La sécurité n\'est pas un moteur : vous visez surtout l\'automatisation ou l\'efficience opérationnelle', fx:{ entra:1, omada:1, midpoint:1 } },
       { label:'Modérée', desc:'Réduire les accès dormants sans viser l\'excellence', fx:{ sailpointisc:1, saviynt:1, omada:1, oneidentity:1, ibm:1, oracle:1, ping:1, entra:1, midpoint:1, sailpointiiq:1 } },
       { label:'Élevée', desc:'Un standard exigeant est visé sur l\'ensemble du périmètre', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, midpoint:2, sailpointiiq:2 } },
       { label:'Maximale', desc:'Moindre privilège généralisé, accès dynamiques, identités non humaines et agents IA', fx:{ saviynt:5, sailpointisc:5, oneidentity:3, omada:3, ibm:2, ping:2, oracle:2, sailpointiiq:2, entra:1, midpoint:1 },
@@ -793,7 +794,7 @@ const QUESTIONS = [
     { id:'none', label:'Aucune documentation', desc:'Les accès et privilèges ne sont documentés pour aucune application, y compris les plus critiques',
       fx:{ saviynt:4, sailpointisc:4, omada:4, entra:2, ping:1, oneidentity:0, midpoint:0, sailpointiiq:0, ibm:0, oracle:0 },
       notes:[ {sol:'saviynt', txt:'Aucune documentation n\'existe encore : le role mining assisté par IA de Saviynt aide à faire émerger une première structure à partir des accès réels plutôt que de la documenter à la main', src:[2]} ] },
-    { id:'inprogress', label:'En cours de documentation', desc:'Un chantier est engagé, mais aucune application n\'est encore entièrement couverte',
+    { id:'inprogress', label:'En cours de documentation', desc:'Un chantier est engagé : certaines applications sont déjà documentées, d\'autres pas encore',
       fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
     { id:'critical', label:'Documenté pour les applications les plus critiques', desc:'Les accès et rôles applicatifs des systèmes sensibles (ERP, finance…) sont connus et à jour',
       fx:{ oneidentity:4, saviynt:3, sailpointisc:3, midpoint:3, sailpointiiq:3, omada:2, ibm:2, oracle:2, ping:1, entra:0 },
@@ -940,9 +941,9 @@ const QUESTIONS = [
       ]}
   ],
   toggles:[
-    { key:'sod', label:'Vous avez des enjeux de séparation des tâches (SoD) sur vos applications critiques',
+    { key:'sod', label:'Vous avez des préoccupations ou des besoins de séparation des tâches (SoD) sur vos applications critiques',
       fx:{ saviynt:4, oneidentity:3, sailpointisc:2, oracle:2, ibm:1, sailpointiiq:1, entra:-1 },
-      notes:[ {sol:'saviynt', txt:'Vous avez des enjeux de séparation des tâches : c\'est un différenciateur documenté de Saviynt, en particulier sur les ERP', src:[2]} ] }
+      notes:[ {sol:'saviynt', txt:'Vous avez des préoccupations de séparation des tâches : c\'est un différenciateur documenté de Saviynt, en particulier sur les ERP', src:[2]} ] }
   ]
 },
 {
@@ -961,6 +962,7 @@ const QUESTIONS = [
     { id:'wallix', label:'WALLIX', fx:{ midpoint:2, omada:1 }, notes:[] },
     { id:'entrapim', label:'Microsoft Entra PIM', fx:{ entra:4 },
       notes:[ {sol:'entra', txt:'Vous utilisez déjà Entra PIM : la gouvernance Entra en est le prolongement direct, sous la même console et le même modèle de licence', src:[3]} ] },
+    { id:'other', label:'Autre', fx:{}, notes:[] },
     { id:'none', label:'Aucune solution PAM en place', fx:{}, notes:[] }
   ]
 },
@@ -970,7 +972,7 @@ const QUESTIONS = [
   short:'Annuaires, IdP, MFA/SSO',
   type:'buckets',
   title:'Quels annuaires, fournisseurs d\'identité et mécanismes d\'authentification utilisez-vous ?',
-  why:"La solution GIA doit lire vos répertoires pour réconcilier les comptes, dialoguer avec vos fournisseurs d'identité pour propager les accès, et s'articuler avec votre SSO et votre MFA existants plutôt que les dupliquer. Sélectionnez tout ce qui s'applique.",
+  why:"La solution GIA doit lire vos répertoires pour réconcilier les comptes, dialoguer avec vos fournisseurs d'identité pour propager les accès, et s'articuler avec votre SSO et votre MFA existants plutôt que les dupliquer. Il s'agit ici de l'IdP à usage interne, celui de vos employés pour le SSO — pas d'une plateforme CIAM destinée à vos clients. Sélectionnez tout ce qui s'applique.",
   impact:`Tous les candidats s'intègrent aux répertoires et IdP majeurs. Un socle <strong>Ping</strong> déjà en place favorise sa propre brique de gouvernance par continuité de plateforme<sup class="src">[5]</sup>. Un SSO et un MFA déjà déployés indiquent une organisation prête pour une gouvernance fine<sup class="src">[5][6]</sup>. La question suivante détermine l'éligibilité d'<strong>Entra ID Governance</strong>, dont la valeur s'effondre hors de l'écosystème Microsoft<sup class="src">[3]</sup>.`,
   buckets:[
     { key:'directory', label:'Répertoires / annuaires', multi:true,
@@ -979,7 +981,7 @@ const QUESTIONS = [
         { id:'ldap', label:'LDAP ou annuaire tiers', fx:{ midpoint:2, oneidentity:1, sailpointiiq:1, oracle:1 } },
         { id:'entradir', label:'Entra ID (répertoire cloud)', fx:{ entra:1, sailpointisc:1, saviynt:1 } }
       ]},
-    { key:'idp', label:"Fournisseurs d'identité (IdP)", multi:true,
+    { key:'idp', label:"Fournisseurs d'identité (IdP) — usage interne, pour le SSO de vos employés", multi:true,
       choices:[
         { id:'entra', label:'Entra ID', fx:{ entra:2, sailpointisc:1, saviynt:1 } },
         { id:'okta', label:'Okta', fx:{ sailpointisc:1, saviynt:1 } },
@@ -1055,7 +1057,7 @@ const QUESTIONS = [
         {sol:'oneidentity', txt:'Vous disposez d\'une équipe dédiée : la principale réserve envers One Identity Manager, l\'exigence de son paramétrage, ne s\'applique plus à votre contexte', src:[5]} ] }
   ],
   toggles:[
-    { key:'msp', label:'Vous faites appel à un intégrateur ou un MSSP pour l\'opérationnalisation au quotidien (hors implémentation initiale)',
+    { key:'msp', label:'Vous faites appel ou comptez faire appel à un intégrateur ou un MSSP pour l\'opérationnalisation au quotidien (hors implémentation initiale)',
       fx:{ sailpointisc:3, saviynt:3, oneidentity:4, omada:3, ibm:3, oracle:3, sailpointiiq:3, midpoint:3, ping:2, entra:0 },
       notes:[ {sol:'omada', txt:'Vous vous appuyez sur un intégrateur ou un MSSP pour l\'exploitation courante : KuppingerCole décrit Omada comme particulièrement adapté aux organisations qui délèguent ainsi une partie de l\'opérationnalisation', src:[2]} ] }
   ]
@@ -1197,7 +1199,7 @@ function renderRail(){
     /* Séparateur de section si on change de section */
     let separator = '';
     if(q.section !== prevSection && prevSection){
-      separator = `<div class="rail-sec-sep" title="${sec?sec.label:''}"><span class="rail-sec-dot" style="background:${secColor}"></span></div>`;
+      separator = `<div class="rail-sec-sep" title="${sec?sec.label:''}"><span class="rail-sec-dot" style="border-color:${secColor}"></span></div>`;
     }
     prevSection = q.section;
     return `${separator}<div class="rail-step ${cls}" data-tip="${railTip(q)}" style="--sec-color:${secColor}"${click}><span class="rail-idx">${String(i+1).padStart(2,'0')}</span><span class="rail-dot"></span></div>`;
@@ -1285,7 +1287,7 @@ function renderQuiz(){
       const cur = state.answers[q.id][ax.key];
       return `<div class="axis-row">
         <div class="axis-head"><span class="axis-name">${ax.label}</span><span class="axis-level">${cur ? 'Niveau ' + cur : 'À positionner'}</span></div>
-        <div class="axis-choices">${ax.levels.map((lv,i)=>`<button type="button" class="axis-btn${cur===i+1?' sel lvl-'+(i+1):''}" onclick="pickAxis('${q.id}','${ax.key}',${i+1})"><span class="axis-btn-label">${lv.label}</span><span class="axis-btn-desc">${lv.desc}</span></button>`).join('')}</div>
+        <div class="axis-choices" style="grid-template-columns:repeat(${ax.levels.length},minmax(0,1fr))">${ax.levels.map((lv,i)=>`<button type="button" class="axis-btn${cur===i+1?' sel lvl-'+(i+1):''}" onclick="pickAxis('${q.id}','${ax.key}',${i+1})"><span class="axis-btn-label">${lv.label}</span><span class="axis-btn-desc">${lv.desc}</span></button>`).join('')}</div>
       </div>`;
     }).join('') + `</div>`;
   } else if(q.type === 'budget'){
@@ -1305,8 +1307,8 @@ function renderQuiz(){
       <div class="budget-block budget-slider">
         <h4>Enveloppe CAPEX <strong>envisagée pour la mise en œuvre</strong></h4>
         <div class="slider-val" id="budVal" style="font-size:32px;margin-bottom:6px">${budgetFmt(bud)}</div>
-        <input type="range" min="150" max="2000" step="50" value="${bud}" id="budSl" aria-label="Budget CAPEX" oninput="onBudget(this.value)">
-        <div class="slider-ticks"><span>150 k$</span><span>1 M$</span><span>2 M$ et +</span></div>
+        <input type="range" min="250" max="2000" step="50" value="${bud}" id="budSl" aria-label="Budget CAPEX" oninput="onBudget(this.value)">
+        <div class="slider-ticks"><span>250 k$</span><span>1 M$</span><span>2 M$ et +</span></div>
       </div>
       <div class="budget-block budget-slider">
         <h4>Répartition <strong>fournisseurs de services / ressources internes</strong></h4>
@@ -1413,6 +1415,14 @@ function renderQuiz(){
         const sel = state.envDeploy === d.id;
         return `<button type="button" class="bucket-btn${sel?' sel':''}" onclick="pickDeploy('${d.id}')"><span style="display:block;font-weight:600">${d.label}</span><span style="display:block;font-size:12px;color:var(--wp-fg-3);font-weight:400;margin-top:3px">${d.desc}</span></button>`;
       }).join('')}</div>
+    </div>`;
+  }
+
+  if(Array.isArray(q.options) && q.options.some(o=>o.id==='other') && state.answers[q.id] === 'other'){
+    const otxt = state.answers[q.id+'_otherText'] || '';
+    body += `<div class="toggle-block" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--wp-grey-100)">
+      <label class="wp-small" style="display:block;margin-bottom:8px;color:var(--wp-fg-2)">Précisez si vous le souhaitez (facultatif)</label>
+      <input type="text" class="org-input" maxlength="80" placeholder="Nom de la solution…" value="${otxt.replace(/"/g,'&quot;')}" oninput="state.answers['${q.id}_otherText'] = this.value">
     </div>`;
   }
 
@@ -1626,7 +1636,7 @@ function pickCapex(pref){
 function onBudget(v){
   state.capexBudget = +v;
   const sl = document.getElementById('budSl');
-  if(sl) sl.style.setProperty('--pct', ((+v - 150) / (2000 - 150) * 100) + '%');
+  if(sl) sl.style.setProperty('--pct', ((+v - 250) / (2000 - 250) * 100) + '%');
   const el = document.getElementById('budVal');
   if(el) el.textContent = (+v)>=1000 ? ((+v)/1000).toFixed(1).replace('.0','') + ' M$' : v + ' k$';
 }
@@ -1667,6 +1677,15 @@ function rankRestore(oid){
 function toggleMulti(qid, oid){
   if(!Array.isArray(state.answers[qid])) state.answers[qid] = [];
   const arr = state.answers[qid];
+  if(oid === 'none'){
+    /* Sélectionner "Aucune exigence" efface toute autre sélection */
+    state.answers[qid] = arr.includes('none') ? [] : ['none'];
+    renderQuiz();
+    return;
+  }
+  /* Sélectionner autre chose retire "Aucune exigence" si elle était cochée */
+  const noneIx = arr.indexOf('none');
+  if(noneIx >= 0) arr.splice(noneIx,1);
   const ix = arr.indexOf(oid);
   if(ix >= 0) arr.splice(ix,1); else arr.push(oid);
   renderQuiz();
@@ -2277,6 +2296,10 @@ function toggleDeploySuffix(q){
   if(Array.isArray(q.deploy) && q.deploy.length && state.envDeploy){
     const d = q.deploy.find(x=>x.id===state.envDeploy);
     if(d) s += ` | Déploiement de l'outil : ${d.label}`;
+  }
+  if(Array.isArray(q.options) && q.options.some(o=>o.id==='other') && state.answers[q.id] === 'other'){
+    const otxt = (state.answers[q.id+'_otherText'] || '').trim();
+    if(otxt) s += ` (${otxt})`;
   }
   return s;
 }
