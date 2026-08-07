@@ -67,8 +67,19 @@ button{font-family:var(--wp-font)}
 .hdr{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--wp-grey-200)}
 .hdr-logo{cursor:pointer;display:flex;align-items:center}
 .hdr-logo img{height:32px;width:auto;display:block}
-.hdr-tag{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-grey-500);border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-pill);padding:8px 16px;background:#fff}
-.hdr-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--wp-blue)}
+.hdr-switcher{position:relative}
+.hdr-switcher-btn{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-grey-500);border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-pill);padding:8px 12px 8px 16px;background:#fff;cursor:pointer;font-family:inherit;line-height:1}
+.hdr-switcher-btn::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--wp-blue);flex-shrink:0}
+.hdr-switcher-btn:hover{border-color:var(--wp-grey-300)}
+.hdr-switcher-btn .hdr-chevron{width:14px;height:14px;flex-shrink:0;transition:transform .2s ease}
+.hdr-switcher.open .hdr-switcher-btn .hdr-chevron{transform:rotate(180deg)}
+.hdr-switcher-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:280px;background:#fff;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);box-shadow:0 14px 34px rgba(12,15,17,.14);padding:6px;display:none;z-index:60}
+.hdr-switcher.open .hdr-switcher-menu{display:block}
+.hdr-switcher-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 12px;font-size:13px;font-weight:500;color:var(--wp-fg-2);text-decoration:none;text-transform:none;letter-spacing:normal;border-radius:8px;cursor:pointer}
+.hdr-switcher-item:hover{background:var(--wp-bg-2)}
+.hdr-switcher-item.is-active{color:var(--wp-ink);font-weight:600;cursor:default}
+.hdr-switcher-item.is-active:hover{background:none}
+.hdr-switcher-item svg{width:16px;height:16px;flex-shrink:0;color:var(--wp-grey-400)}
 
 /* Screens */
 .screen{display:none}
@@ -431,7 +442,7 @@ sup.src a:hover{text-decoration:underline}
 
 @media (max-width:840px){
   .hdr{padding:12px 20px}
-  .hdr-tag{display:none}
+  .hdr-switcher{display:none}
   .hero-inner,.method,.review,.results,.sources{padding-left:20px;padding-right:20px}
   .hero-meta,.method-grid{grid-template-columns:1fr}
   .quiz-wrap{grid-template-columns:1fr;padding:40px 20px 72px}
@@ -457,7 +468,16 @@ sup.src a:hover{text-decoration:underline}
   <div class="hdr-logo" onclick="go('intro')">
     <img src="https://www.wepoint.com/wp-content/themes/onepoint/Logo_wepoint_noir.png" alt="wepoint" onerror="wpLogoFail(this,22)">
   </div>
-  <div class="hdr-tag">Sélecteur d'outil de gouvernance des identités</div>
+  <div class="hdr-switcher" id="hdrSwitcher">
+    <button type="button" class="hdr-switcher-btn" onclick="toggleToolSwitcher(event)" aria-haspopup="true" aria-expanded="false">
+      Sélecteur d'outil de gouvernance des identités
+      <svg class="hdr-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+    <div class="hdr-switcher-menu">
+      <div class="hdr-switcher-item is-active">Gouvernance des identités (GIA) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <a class="hdr-switcher-item" href="https://pamevaluator.netlify.app/" target="_blank" rel="noopener">Gestion des accès à privilèges (PAM) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+    </div>
+  </div>
 </header>
 
 <!-- ============================ INTRO ============================ -->
@@ -497,7 +517,7 @@ sup.src a:hover{text-decoration:underline}
     </div>
     <div style="margin-top:36px;padding:18px 22px;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);background:var(--wp-bg-2);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
       <p class="wp-small" style="margin:0;color:var(--wp-fg-2)">Vous évaluez aussi une solution de gestion des accès à privilèges (PAM)&nbsp;? Un outil similaire existe pour ce domaine.</p>
-      <a class="wp-btn wp-btn-ghost" style="padding:9px 18px;font-size:13px;white-space:nowrap" href="https://pamevaluator.netlify.app/" target="_blank" rel="noopener">Ouvrir l'évaluateur PAM <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+      <a class="wp-btn wp-btn-ghost" style="padding:9px 18px;font-size:13px;white-space:nowrap;background:#fff;border-color:var(--wp-grey-300);box-shadow:0 1px 2px rgba(12,15,17,.06)" href="https://pamevaluator.netlify.app/" target="_blank" rel="noopener">Ouvrir l'évaluateur PAM <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
     </div>
   </div>
 </section>
@@ -542,6 +562,30 @@ sup.src a:hover{text-decoration:underline}
 </footer>
 
 <script>
+function toggleToolSwitcher(e){
+  if(e) e.stopPropagation();
+  const el = document.getElementById('hdrSwitcher');
+  if(!el) return;
+  const willOpen = !el.classList.contains('open');
+  el.classList.toggle('open', willOpen);
+  const btn = el.querySelector('.hdr-switcher-btn');
+  if(btn) btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+}
+document.addEventListener('click', function(e){
+  const el = document.getElementById('hdrSwitcher');
+  if(el && el.classList.contains('open') && !el.contains(e.target)){
+    el.classList.remove('open');
+    const btn = el.querySelector('.hdr-switcher-btn');
+    if(btn) btn.setAttribute('aria-expanded', 'false');
+  }
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    const el = document.getElementById('hdrSwitcher');
+    if(el) el.classList.remove('open');
+  }
+});
+
 /* ================================================================
    DONNÉES : solutions, sources, questions, pondérations
    ================================================================ */
