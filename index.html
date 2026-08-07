@@ -1458,7 +1458,7 @@ function renderQuiz(){
   }
   if(Array.isArray(q.deploy) && q.deploy.length){
     body += `<div class="toggle-block" style="margin-top:22px;padding-top:18px;border-top:1px solid var(--wp-grey-100)">
-      <p class="bucket-title" style="margin:0 0 10px">Préférence de déploiement pour l'outil lui-même</p>
+      <p class="bucket-title" style="margin:0 0 10px">Préférence de déploiement pour l'outil de GIA lui-même</p>
       <div class="bucket-choices" style="grid-template-columns:repeat(${q.deploy.length},minmax(0,1fr))">${q.deploy.map(d=>{
         const sel = state.envDeploy === d.id;
         return `<button type="button" class="bucket-btn${sel?' sel':''}" onclick="pickDeploy('${d.id}')"><span style="display:block;font-weight:600">${d.label}</span><span style="display:block;font-size:12px;color:var(--wp-fg-3);font-weight:400;margin-top:3px">${d.desc}</span></button>`;
@@ -1483,7 +1483,7 @@ function renderQuiz(){
   else if(q.type === 'axes') canNext = state.answers[q.id] && q.axes.every(ax => state.answers[q.id][ax.key]);
   else if(q.type === 'budget') canNext = state.answers[q.id] && !!state.answers[q.id].pref;
   else if(q.type === 'rankRemovable') canNext = Array.isArray(state.answers[q.id]) && state.answers[q.id].length > 0;
-  else if(!q.type) canNext = !!state.answers[q.id];
+  else if(!q.type){ canNext = !!state.answers[q.id]; if(q.id === 'env') canNext = canNext && !!state.envDeploy; }
 
   const noteVal = (state.notes[q.id] || '').replace(/</g,'&lt;');
   const notesHTML = q.id === 'org' ? '' : `<details class="notes-block" ${noteVal ? 'open':''}>
