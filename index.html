@@ -120,13 +120,27 @@ button{font-family:var(--wp-font)}
 .solutions-wall-item img{width:22px;height:22px;border-radius:5px;object-fit:contain;display:block;flex-shrink:0}
 .solutions-wall-item .sw-fallback{width:22px;height:22px;border-radius:5px;color:#fff;font-size:10px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0}
 .solutions-wall-item small{font-size:13px;font-weight:500;color:var(--wp-fg-2);white-space:nowrap}
-.sc-wrap{margin-top:28px;max-width:640px;margin-left:auto;margin-right:auto}
-.solutions-carousel{display:flex;align-items:center;gap:18px;justify-content:center;min-height:56px}
-.sc-badge{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;transition:background .35s ease;opacity:1}
-.sc-text{text-align:left;max-width:520px;transition:opacity .35s ease}
-.sc-text h4{margin:0 0 4px;font-size:15px;font-weight:600;color:var(--wp-ink)}
-.sc-text p{margin:0;font-size:13px;color:var(--wp-fg-2);line-height:1.5}
-.sc-dots{display:flex;gap:6px;justify-content:center;margin-top:16px}
+.sc-wrap{margin-top:28px;max-width:1100px;margin-left:auto;margin-right:auto}
+.sc-row{display:flex;align-items:center;gap:8px;justify-content:center}
+.sc-arrow{flex-shrink:0;width:38px;height:38px;border-radius:50%;border:1px solid var(--wp-grey-200);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--wp-fg-2);cursor:pointer;transition:border-color .2s,color .2s}
+.sc-arrow:hover{border-color:var(--wp-blue);color:var(--wp-blue)}
+.sc-arrow svg{width:18px;height:18px}
+.sc-track{display:flex;align-items:center;justify-content:center;gap:0;position:relative;height:132px;overflow:hidden;flex:1;max-width:820px}
+.sc-card{display:flex;flex-direction:column;align-items:center;text-align:center;text-decoration:none;transition:opacity .4s ease,transform .4s ease,width .4s ease;flex-shrink:0;border-radius:var(--wp-r-lg);cursor:pointer;position:relative}
+.sc-card[data-off="0"]{width:340px;padding:18px 22px;opacity:1;transform:scale(1);background:#fff;box-shadow:var(--wp-shadow-md);border:1px solid var(--wp-grey-200);z-index:5;flex-direction:row;text-align:left;gap:14px;cursor:auto}
+.sc-card[data-off="-1"],.sc-card[data-off="1"]{width:130px;padding:10px;opacity:.45;transform:scale(.88);z-index:3}
+.sc-card[data-off="-2"],.sc-card[data-off="2"]{width:90px;padding:8px;opacity:.15;transform:scale(.78);z-index:1}
+.sc-card img{width:26px;height:26px;border-radius:6px;object-fit:contain;display:block;flex-shrink:0}
+.sc-card[data-off="0"] img{width:38px;height:38px;border-radius:9px}
+.sc-card .sc-fallback{display:none;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;color:#fff;font-size:9px;font-weight:700;flex-shrink:0}
+.sc-card[data-off="0"] .sc-fallback{width:38px;height:38px;border-radius:9px;font-size:12px}
+.sc-card .sc-name{margin-top:6px;font-size:11px;font-weight:600;color:var(--wp-fg-2);line-height:1.3}
+.sc-card[data-off="0"] .sc-name{margin-top:0;font-size:15px;font-weight:600;color:var(--wp-ink)}
+.sc-card-main .sc-body{display:flex;flex-direction:column}
+.sc-card .sc-tag{margin:3px 0 0;font-size:12.5px;color:var(--wp-fg-2);line-height:1.45}
+.sc-card .sc-visit{margin-top:8px;font-size:12px;font-weight:600;color:var(--wp-blue);display:inline-flex;align-items:center;gap:4px}
+.sc-card .sc-visit svg{width:12px;height:12px}
+.sc-dots{display:flex;gap:6px;justify-content:center;margin-top:18px}
 .sc-dot{width:6px;height:6px;border-radius:50%;background:var(--wp-grey-300);transition:background .3s,transform .3s;cursor:pointer}
 .sc-dot.active{background:var(--wp-blue);transform:scale(1.4)}
 
@@ -464,6 +478,12 @@ sup.src a:hover{text-decoration:underline}
   .quiz-wrap{grid-template-columns:1fr;padding:40px 20px 72px}
   .rail{display:none}
   .method{padding:40px 0}
+  .sc-card[data-off="-2"],.sc-card[data-off="2"]{display:none}
+  .sc-card[data-off="-1"],.sc-card[data-off="1"]{width:60px;padding:6px}
+  .sc-card[data-off="-1"] .sc-name,.sc-card[data-off="1"] .sc-name{display:none}
+  .sc-card[data-off="0"]{width:auto;max-width:270px;padding:14px 16px}
+  .sc-card[data-off="0"] .sc-tag{display:none}
+  .sc-track{max-width:100%}
   .method-cols{grid-template-columns:1fr}
   .method-text{padding:0 20px;max-width:none;margin-left:0}
   .method-grid{grid-template-columns:1fr}
@@ -530,12 +550,16 @@ sup.src a:hover{text-decoration:underline}
         <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=evolveum.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#C79A00">mP</span><small>Evolveum midPoint</small></div>
       </div>
       <div class="sc-wrap">
-        <div class="solutions-carousel" id="solutionsCarousel">
-          <div class="sc-badge" id="scBadge">S</div>
-          <div class="sc-text">
-            <h4 id="scName">SailPoint Identity Security Cloud</h4>
-            <p id="scTag">La référence SaaS du marché, la plus large base installée</p>
+        <div class="sc-row">
+          <button type="button" class="sc-arrow" id="scPrev" aria-label="Solution précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+          <div class="sc-track" id="solutionsCarousel">
+            <div class="sc-card" data-off="-2" id="scSlotM2"><img alt=""><span class="sc-fallback"></span><div class="sc-name"></div></div>
+            <div class="sc-card" data-off="-1" id="scSlotM1"><img alt=""><span class="sc-fallback"></span><div class="sc-name"></div></div>
+            <a class="sc-card sc-card-main" data-off="0" id="scSlot0" target="_blank" rel="noopener"><img alt=""><span class="sc-fallback"></span><div class="sc-body"><h4 class="sc-name"></h4><p class="sc-tag"></p><span class="sc-visit">Visiter le site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span></div></a>
+            <div class="sc-card" data-off="1" id="scSlotP1"><img alt=""><span class="sc-fallback"></span><div class="sc-name"></div></div>
+            <div class="sc-card" data-off="2" id="scSlotP2"><img alt=""><span class="sc-fallback"></span><div class="sc-name"></div></div>
           </div>
+          <button type="button" class="sc-arrow" id="scNext" aria-label="Solution suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
         </div>
         <div class="sc-dots" id="scDots"></div>
       </div>
@@ -2989,45 +3013,69 @@ function editQ(i){
 }
 
 /* ================================================================
-   Carrousel des solutions (page d'accueil) — défile automatiquement
+   Carrousel des solutions (page d'accueil) — défile automatiquement,
+   navigation aux flèches, carte centrale pleine couleur, liens éditeurs
    ================================================================ */
 (function initSolutionsCarousel(){
-  const wrap = document.getElementById('solutionsCarousel');
+  const track = document.getElementById('solutionsCarousel');
   const dotsWrap = document.getElementById('scDots');
-  if(!wrap || !dotsWrap) return;
-  const badge = document.getElementById('scBadge');
-  const nameEl = document.getElementById('scName');
-  const tagEl = document.getElementById('scTag');
+  if(!track || !dotsWrap) return;
   const keys = ORDER;
+  const n = keys.length;
+  const OFFSETS = [-2,-1,0,1,2];
+  const SLOT_ID = { '-2':'scSlotM2', '-1':'scSlotM1', '0':'scSlot0', '1':'scSlotP1', '2':'scSlotP2' };
+
   dotsWrap.innerHTML = keys.map((k,i)=>`<span class="sc-dot${i===0?' active':''}" data-i="${i}"></span>`).join('');
   const dots = Array.from(dotsWrap.querySelectorAll('.sc-dot'));
+
   let idx = 0, timer = null;
-  function render(i){
-    const key = keys[i];
+
+  function fillSlot(off, key){
+    const slot = document.getElementById(SLOT_ID[String(off)]);
+    if(!slot) return;
     const s = SOLUTIONS[key];
     if(!s) return;
-    wrap.style.opacity = '0';
-    setTimeout(()=>{
-      badge.textContent = s.mono;
-      badge.style.background = COLORS[key] || 'var(--wp-blue)';
-      nameEl.textContent = s.name;
-      tagEl.textContent = s.tag;
-      wrap.style.opacity = '1';
-    }, 180);
+    const img = slot.querySelector('img');
+    const fb = slot.querySelector('.sc-fallback');
+    img.style.display = '';
+    fb.style.display = 'none';
+    img.src = `https://www.google.com/s2/favicons?sz=128&domain=${s.domain}`;
+    img.alt = s.name;
+    fb.textContent = s.mono;
+    fb.style.background = COLORS[key] || 'var(--wp-blue)';
+    img.onerror = function(){ img.style.display = 'none'; fb.style.display = 'flex'; };
+    const nameEl = slot.querySelector('.sc-name');
+    if(nameEl) nameEl.textContent = off === 0 ? s.name : (SHORT_NAME[key] || s.name);
+    if(off === 0){
+      const tagEl = slot.querySelector('.sc-tag');
+      if(tagEl) tagEl.textContent = s.tag;
+      slot.href = s.url;
+    } else {
+      slot.onclick = function(){ idx = (idx + off + n * 10) % n; render(idx); start(); };
+    }
+  }
+
+  function render(i){
+    OFFSETS.forEach(off=>{
+      const key = keys[(i + off + n * 10) % n];
+      fillSlot(off, key);
+    });
     dots.forEach((d,j)=> d.classList.toggle('active', j===i));
   }
-  function next(){ idx = (idx+1) % keys.length; render(idx); }
-  function start(){ if(timer) clearInterval(timer); timer = setInterval(next, 3800); }
-  wrap.style.transition = 'opacity .18s ease';
+  function next(){ idx = (idx + 1) % n; render(idx); }
+  function prev(){ idx = (idx - 1 + n) % n; render(idx); }
+  function start(){ if(timer) clearInterval(timer); timer = setInterval(next, 4200); }
+
   render(0);
   start();
+
   dots.forEach(d=>{
-    d.addEventListener('click', ()=>{
-      idx = +d.dataset.i;
-      render(idx);
-      start();
-    });
+    d.addEventListener('click', ()=>{ idx = +d.dataset.i; render(idx); start(); });
   });
+  const btnPrev = document.getElementById('scPrev');
+  const btnNext = document.getElementById('scNext');
+  if(btnPrev) btnPrev.addEventListener('click', ()=>{ prev(); start(); });
+  if(btnNext) btnNext.addEventListener('click', ()=>{ next(); start(); });
 })();
 </script>
 </body>
