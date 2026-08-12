@@ -113,13 +113,22 @@ button{font-family:var(--wp-font)}
 .method-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
 .method-grid .mcard{padding:22px 20px}
 .method-grid .mcard p{font-size:13.5px;line-height:1.55}
-.solutions-wall{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--wp-grey-200)}
-.solutions-wall-label{font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-grey-400);margin:0 0 16px}
-.solutions-wall-grid{display:flex;flex-wrap:wrap;gap:12px}
+.solutions-wall{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--wp-grey-200);max-width:1160px;margin-left:auto;margin-right:auto}
+.solutions-wall-label{font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-grey-400);margin:0 0 16px;text-align:center}
+.solutions-wall-grid{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .solutions-wall-item{display:flex;align-items:center;gap:10px;padding:9px 16px 9px 12px;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-pill);background:#fff}
 .solutions-wall-item img{width:22px;height:22px;border-radius:5px;object-fit:contain;display:block;flex-shrink:0}
 .solutions-wall-item .sw-fallback{width:22px;height:22px;border-radius:5px;color:#fff;font-size:10px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0}
 .solutions-wall-item small{font-size:13px;font-weight:500;color:var(--wp-fg-2);white-space:nowrap}
+.sc-wrap{margin-top:28px;max-width:640px;margin-left:auto;margin-right:auto}
+.solutions-carousel{display:flex;align-items:center;gap:18px;justify-content:center;min-height:56px}
+.sc-badge{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0;transition:background .35s ease;opacity:1}
+.sc-text{text-align:left;max-width:520px;transition:opacity .35s ease}
+.sc-text h4{margin:0 0 4px;font-size:15px;font-weight:600;color:var(--wp-ink)}
+.sc-text p{margin:0;font-size:13px;color:var(--wp-fg-2);line-height:1.5}
+.sc-dots{display:flex;gap:6px;justify-content:center;margin-top:16px}
+.sc-dot{width:6px;height:6px;border-radius:50%;background:var(--wp-grey-300);transition:background .3s,transform .3s;cursor:pointer}
+.sc-dot.active{background:var(--wp-blue);transform:scale(1.4)}
 
 @media (max-width:1100px){
   .method-cols{grid-template-columns:1fr;padding:0}
@@ -507,7 +516,7 @@ sup.src a:hover{text-decoration:underline}
   </div>
   <div class="method" id="methode">
     <div class="solutions-wall">
-      <p class="solutions-wall-label">Les solutions analysées</p>
+      <p class="solutions-wall-label">Les onze solutions analysées</p>
       <div class="solutions-wall-grid">
         <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=sailpoint.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#2B5CE6">S</span><small>SailPoint</small></div>
         <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=saviynt.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#832A96">SV</span><small>Saviynt</small></div>
@@ -519,6 +528,16 @@ sup.src a:hover{text-decoration:underline}
         <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=okta.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#0057C5">OK</span><small>Okta</small></div>
         <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=microsoft.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#2BD68E">M</span><small>Microsoft Entra</small></div>
         <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=evolveum.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#C79A00">mP</span><small>Evolveum midPoint</small></div>
+      </div>
+      <div class="sc-wrap">
+        <div class="solutions-carousel" id="solutionsCarousel">
+          <div class="sc-badge" id="scBadge">S</div>
+          <div class="sc-text">
+            <h4 id="scName">SailPoint Identity Security Cloud</h4>
+            <p id="scTag">La référence SaaS du marché, la plus large base installée</p>
+          </div>
+        </div>
+        <div class="sc-dots" id="scDots"></div>
       </div>
     </div>
     <div class="method-cols">
@@ -537,7 +556,7 @@ sup.src a:hover{text-decoration:underline}
       </div>
       <div class="method-img"><img src="https://www.groupeonepoint.com/wp-content/uploads/2024/07/Secteur-savoir-faire-300x286.png" alt="" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
     </div>
-    <div style="margin-top:36px;padding:26px 30px;border-radius:var(--wp-r-lg);background:linear-gradient(135deg, var(--wp-blue) 0%, var(--wp-blue-press) 100%);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;box-shadow:var(--wp-shadow-md)">
+    <div style="margin:36px auto 0;max-width:1360px;padding:26px 30px;border-radius:var(--wp-r-lg);background:linear-gradient(135deg, var(--wp-blue) 0%, var(--wp-blue-press) 100%);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;box-shadow:var(--wp-shadow-md)">
       <div style="display:flex;align-items:center;gap:16px">
         <div style="width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0">
           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -2968,6 +2987,48 @@ function editQ(i){
   state.idx = i; state.fromReview = true;
   renderQuiz(); go('quiz');
 }
+
+/* ================================================================
+   Carrousel des solutions (page d'accueil) — défile automatiquement
+   ================================================================ */
+(function initSolutionsCarousel(){
+  const wrap = document.getElementById('solutionsCarousel');
+  const dotsWrap = document.getElementById('scDots');
+  if(!wrap || !dotsWrap) return;
+  const badge = document.getElementById('scBadge');
+  const nameEl = document.getElementById('scName');
+  const tagEl = document.getElementById('scTag');
+  const keys = ORDER;
+  dotsWrap.innerHTML = keys.map((k,i)=>`<span class="sc-dot${i===0?' active':''}" data-i="${i}"></span>`).join('');
+  const dots = Array.from(dotsWrap.querySelectorAll('.sc-dot'));
+  let idx = 0, timer = null;
+  function render(i){
+    const key = keys[i];
+    const s = SOLUTIONS[key];
+    if(!s) return;
+    wrap.style.opacity = '0';
+    setTimeout(()=>{
+      badge.textContent = s.mono;
+      badge.style.background = COLORS[key] || 'var(--wp-blue)';
+      nameEl.textContent = s.name;
+      tagEl.textContent = s.tag;
+      wrap.style.opacity = '1';
+    }, 180);
+    dots.forEach((d,j)=> d.classList.toggle('active', j===i));
+  }
+  function next(){ idx = (idx+1) % keys.length; render(idx); }
+  function start(){ if(timer) clearInterval(timer); timer = setInterval(next, 3800); }
+  wrap.style.transition = 'opacity .18s ease';
+  render(0);
+  start();
+  dots.forEach(d=>{
+    d.addEventListener('click', ()=>{
+      idx = +d.dataset.i;
+      render(idx);
+      start();
+    });
+  });
+})();
 </script>
 </body>
 </html>
