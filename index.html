@@ -113,6 +113,13 @@ button{font-family:var(--wp-font)}
 .method-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:32px}
 .method-grid .mcard{padding:22px 20px}
 .method-grid .mcard p{font-size:13.5px;line-height:1.55}
+.solutions-wall{margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid var(--wp-grey-200)}
+.solutions-wall-label{font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--wp-grey-400);margin:0 0 16px}
+.solutions-wall-grid{display:flex;flex-wrap:wrap;gap:12px}
+.solutions-wall-item{display:flex;align-items:center;gap:10px;padding:9px 16px 9px 12px;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-pill);background:#fff}
+.solutions-wall-item img{width:22px;height:22px;border-radius:5px;object-fit:contain;display:block;flex-shrink:0}
+.solutions-wall-item .sw-fallback{width:22px;height:22px;border-radius:5px;color:#fff;font-size:10px;font-weight:700;align-items:center;justify-content:center;flex-shrink:0}
+.solutions-wall-item small{font-size:13px;font-weight:500;color:var(--wp-fg-2);white-space:nowrap}
 
 @media (max-width:1100px){
   .method-cols{grid-template-columns:1fr;padding:0}
@@ -492,13 +499,28 @@ sup.src a:hover{text-decoration:underline}
         <a class="wp-btn wp-btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="#methode">Notre méthodologie</a>
       </div>
       <div class="hero-meta">
-        <div><h4>Dix solutions évaluées</h4><p>SailPoint (Identity Security Cloud et IdentityIQ), Saviynt, Omada, One Identity, IBM, Oracle, Ping Identity, Microsoft Entra ID Governance et Evolveum midPoint.</p></div>
+        <div><h4>Onze solutions évaluées</h4><p>SailPoint (Identity Security Cloud et IdentityIQ), Saviynt, Omada, One Identity, IBM, Oracle, Ping Identity, Okta, Microsoft Entra ID Governance et Evolveum midPoint.</p></div>
         <div><h4>Des sources indépendantes</h4><p>Chaque pondération s'appuie sur des analyses tierces (Gartner, KuppingerCole...) jamais sur la documentation des éditeurs.</p></div>
         <div><h4>Un résultat nuancé</h4><p>Nous n'annonçons pas « la » solution qu'il vous faut : nous éclairons celle qui semble vous ressembler le plus, et pourquoi.</p></div>
       </div>
     </div>
   </div>
   <div class="method" id="methode">
+    <div class="solutions-wall">
+      <p class="solutions-wall-label">Les solutions analysées</p>
+      <div class="solutions-wall-grid">
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=sailpoint.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#2B5CE6">S</span><small>SailPoint</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=saviynt.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#832A96">SV</span><small>Saviynt</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=omadaidentity.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#00A88F">O</span><small>Omada</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=oneidentity.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#E66F29">1</span><small>One Identity</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=ibm.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#0C2D6B">IB</span><small>IBM</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=oracle.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#C8102E">OR</span><small>Oracle</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=pingidentity.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#D62598">P</span><small>Ping Identity</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=okta.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#0057C5">OK</span><small>Okta</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=microsoft.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#2BD68E">M</span><small>Microsoft Entra</small></div>
+        <div class="solutions-wall-item"><img src="https://www.google.com/s2/favicons?sz=128&domain=evolveum.com" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="sw-fallback" style="display:none;background:#C79A00">mP</span><small>Evolveum midPoint</small></div>
+      </div>
+    </div>
     <div class="method-cols">
       <div class="method-text">
         <div class="wp-eyebrow">Notre méthodologie</div>
@@ -515,9 +537,17 @@ sup.src a:hover{text-decoration:underline}
       </div>
       <div class="method-img"><img src="https://www.groupeonepoint.com/wp-content/uploads/2024/07/Secteur-savoir-faire-300x286.png" alt="" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
     </div>
-    <div style="margin-top:36px;padding:18px 22px;border:1px solid var(--wp-grey-200);border-radius:var(--wp-r-md);background:var(--wp-bg-2);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-      <p class="wp-small" style="margin:0;color:var(--wp-fg-2)">Vous évaluez aussi une solution de gestion des accès à privilèges (PAM)&nbsp;? Un outil similaire existe pour ce domaine.</p>
-      <a class="wp-btn wp-btn-ghost" style="padding:9px 18px;font-size:13px;white-space:nowrap;background:#fff;border-color:var(--wp-grey-300);box-shadow:0 1px 2px rgba(12,15,17,.06)" href="https://pamevaluator.netlify.app/" target="_blank" rel="noopener">Ouvrir l'évaluateur PAM <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+    <div style="margin-top:36px;padding:26px 30px;border-radius:var(--wp-r-lg);background:linear-gradient(135deg, var(--wp-blue) 0%, var(--wp-blue-press) 100%);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;box-shadow:var(--wp-shadow-md)">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <p style="margin:0;font-size:15px;font-weight:600;color:#fff">Vous évaluez aussi une solution de gestion des accès à privilèges (PAM)&nbsp;?</p>
+          <p style="margin:3px 0 0;font-size:13px;color:rgba(255,255,255,.82)">Un outil similaire, avec la même méthodologie sourcée, existe pour ce domaine.</p>
+        </div>
+      </div>
+      <a class="wp-btn" style="padding:12px 22px;font-size:14px;font-weight:600;white-space:nowrap;background:#fff;color:var(--wp-blue-press);border:none" href="https://pamevaluator.netlify.app/" target="_blank" rel="noopener">Ouvrir l'évaluateur PAM <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
     </div>
   </div>
 </section>
@@ -594,7 +624,7 @@ document.addEventListener('keydown', function(e){
 const SHORT_NAME = {
   sailpointisc:'SailPoint ISC', sailpointiiq:'SailPoint IIQ', saviynt:'Saviynt',
   omada:'Omada', oneidentity:'One Identity', ibm:'IBM Verify', oracle:'Oracle OIG',
-  ping:'Ping', entra:'Entra ID Gov.', midpoint:'midPoint'
+  ping:'Ping', entra:'Entra ID Gov.', midpoint:'midPoint', okta:'Okta OIG'
 };
 
 /* Rend cliquables les renvois [n] dans un texte HTML */
@@ -615,15 +645,16 @@ const SOLUTIONS = {
   oracle:       { name:'Oracle Identity Governance', tag:"L'ancrage historique des SI Oracle, complété par Access Governance", domain:'oracle.com', url:'https://www.oracle.com', mono:'OR' },
   ping:         { name:'Ping Identity Governance', tag:'La gouvernance adossée à une plateforme d\u2019accès unifiée', domain:'pingidentity.com', url:'https://www.pingidentity.com', mono:'P' },
   entra:        { name:'Microsoft Entra ID Governance', tag:"La gouvernance native de l'écosystème Microsoft", domain:'microsoft.com', url:'https://www.microsoft.com/security/business/identity-access/microsoft-entra-id-governance', mono:'M' },
-  midpoint:     { name:'Evolveum midPoint', tag:'La seule suite GIA complète en logiciel libre, souveraineté maximale', domain:'evolveum.com', url:'https://evolveum.com', mono:'mP' }
+  midpoint:     { name:'Evolveum midPoint', tag:'La seule suite GIA complète en logiciel libre, souveraineté maximale', domain:'evolveum.com', url:'https://evolveum.com', mono:'mP' },
+  okta:         { name:'Okta Identity Governance', tag:"La gouvernance légère adossée à l'IdP workforce le plus répandu du marché", domain:'okta.com', url:'https://www.okta.com/products/identity-governance/', mono:'OK' }
 };
-const ORDER = ['sailpointisc','sailpointiiq','saviynt','omada','oneidentity','ibm','oracle','ping','entra','midpoint'];
+const ORDER = ['sailpointisc','sailpointiiq','saviynt','omada','oneidentity','ibm','oracle','ping','entra','midpoint','okta'];
 
 /* Couleurs par fournisseur (palette dataviz, réservée aux graphiques) */
 const COLORS = {
   sailpointisc:'#2B5CE6', sailpointiiq:'#8FA9F2', saviynt:'#832A96', omada:'#00A88F',
   oneidentity:'#E66F29', ibm:'#0C2D6B', oracle:'#C8102E', ping:'#D62598',
-  entra:'#2BD68E', midpoint:'#C79A00'
+  entra:'#2BD68E', midpoint:'#C79A00', okta:'#0057C5'
 };
 
 const SOURCES = {
@@ -636,13 +667,14 @@ const SOURCES = {
   7:{ label:'Commission européenne, portail Interoperable Europe — fiche de la solution midPoint', note:"Référencement institutionnel européen de midPoint comme plateforme GIA en logiciel libre couvrant le provisioning, le contrôle d'accès basé sur les rôles et la gouvernance. Confirme la double licence Apache 2.0 et EUPL, et l'inscription de la solution dans les catalogues de réutilisation du secteur public européen.", url:'https://interoperable-europe.ec.europa.eu/collection/eidentity-and-esignature/solution/midpoint' },
   8:{ label:'Dépôt public Evolveum/midPoint (GitHub) — licence European Union Public License', note:"Source primaire vérifiable, et non un discours commercial : le code est publié sous EUPL, ce qui garantit l'auditabilité du produit et la possibilité juridique de poursuivre son exploitation ou son évolution indépendamment de l'éditeur. C'est le fondement objectif de l'avantage de midPoint sur les critères de souveraineté et de réversibilité.", url:'https://github.com/evolveum/midpoint' },
   9:{ label:'SailPoint Developer Community — retours de praticiens sur la migration IdentityIQ vers Identity Security Cloud', note:"Sessions et discussions animées par des intégrateurs et des clients, et non par le marketing de l'éditeur. Le constat convergent : le passage d'IdentityIQ à Identity Security Cloud n'est pas une montée de version mais un changement de paradigme, de la personnalisation profonde vers l'extensibilité de plateforme, avec une dette technique à traiter. C'est ce qui justifie de traiter les deux produits comme deux candidats distincts dans ce comparatif.", url:'https://developer.sailpoint.com/discuss/t/beyond-the-lift-and-shift-architecting-success-in-the-iiq-to-isc-migration/209983' },
- 10:{ label:'Start with Identity, revue indépendante d\u2019Evolveum midPoint', note:"Analyse indépendante destinée aux professionnels de l'identité : midPoint couvre le provisioning, la gestion des rôles et des structures organisationnelles, les politiques et la certification d'accès à un niveau qui rivalise avec les outils commerciaux, sans coût de licence, mais suppose des compétences internes réelles. Adoption marquée dans le secteur public, l'enseignement supérieur et les organisations cherchant à éviter une facturation à l'identité.", url:'https://startwithidentity.com/vendors/iga/evolveum/' }
+ 10:{ label:'Start with Identity, revue indépendante d\u2019Evolveum midPoint', note:"Analyse indépendante destinée aux professionnels de l'identité : midPoint couvre le provisioning, la gestion des rôles et des structures organisationnelles, les politiques et la certification d'accès à un niveau qui rivalise avec les outils commerciaux, sans coût de licence, mais suppose des compétences internes réelles. Adoption marquée dans le secteur public, l'enseignement supérieur et les organisations cherchant à éviter une facturation à l'identité.", url:'https://startwithidentity.com/vendors/iga/evolveum/' },
+ 11:{ label:'Gartner Peer Insights, avis clients vérifiés — page produit Okta Identity Governance', note:"Retours d'utilisateurs finaux sur le produit Okta Identity Governance (OIG) spécifiquement, distinct d'Okta comme fournisseur d'identité généraliste. Les avis convergent : OIG couvre correctement le cycle de vie et les certifications d'accès de base, avec une intégration native à l'écosystème Okta, mais plusieurs utilisateurs le qualifient eux-mêmes de « IGA Lite », soulignant ses limites sur les certifications d'accès complexes et les contrôles de gouvernance granulaires. Point notable : contrairement aux autres candidats de ce comparatif, Okta n'apparaît pas comme « Representative Vendor » dans le Market Guide GIA de Gartner, ni dans le Leadership Compass GIA de KuppingerCole, ni dans la SPARK Matrix — seule cette page de revues vérifiées documente sa gouvernance de façon indépendante.", url:'https://www.gartner.com/reviews/product/okta-identity-governance' }
 };
 
 const SECTIONS = [
   { id:'s1', label:'Organisation et objectifs', color:'#009DDF' },
-  { id:'s2', label:'Système d\'information', color:'#E66F29' },
-  { id:'s3', label:'Moyens à disposition', color:'#832A96' }
+  { id:'s2', label:'Système d\'information', color:'#2E5FD9' },
+  { id:'s3', label:'Moyens à disposition', color:'#14305C' }
 ];
 
 const QUESTIONS = [
@@ -656,14 +688,14 @@ const QUESTIONS = [
   type:'orgLoc',
   title:'Votre organisation et ses zones d\'activité',
   why:"Le nom personnalise votre bilan. Les zones géographiques conditionnent l'éligibilité de certaines solutions dont l'écosystème (partenaires, support, compétences, hébergement) est concentré sur un continent.",
-  impact:`Une présence européenne valorise <strong>midPoint</strong>, développé et détenu dans l'Union européenne et référencé par la Commission<sup class="src">[7]</sup>, ainsi qu'<strong>Omada</strong>, éditeur danois dont la majorité des clients sont européens<sup class="src">[2]</sup>, et dans une moindre mesure <strong>One Identity</strong>. Une présence en Amérique du Nord donne un léger avantage à <strong>SailPoint</strong> et <strong>Saviynt</strong>, tous deux basés aux États-Unis. En Asie-Pacifique et au Moyen-Orient, <strong>IBM</strong> et <strong>Oracle</strong> bénéficient d'un léger bonus lié à la profondeur de leur présence régionale, également au Moyen-Orient pour <strong>SailPoint</strong>, et en Afrique pour <strong>Oracle</strong><sup class="src">[3]</sup>. Une présence en Amérique du Sud n'avantage aucun candidat en particulier, faute de données spécifiques dans nos sources.`,
+  impact:`Une présence européenne valorise <strong>midPoint</strong>, développé et détenu dans l'Union européenne et référencé par la Commission<sup class="src">[7]</sup>, ainsi qu'<strong>Omada</strong>, éditeur danois dont la majorité des clients sont européens<sup class="src">[2]</sup>, et dans une moindre mesure <strong>One Identity</strong>. Une présence en Amérique du Nord donne un léger avantage à <strong>SailPoint</strong>, <strong>Saviynt</strong> et <strong>Okta</strong>, tous basés aux États-Unis. En Asie-Pacifique et au Moyen-Orient, <strong>IBM</strong> et <strong>Oracle</strong> bénéficient d'un léger bonus lié à la profondeur de leur présence régionale, également au Moyen-Orient pour <strong>SailPoint</strong>, et en Afrique pour <strong>Oracle</strong><sup class="src">[3]</sup>. Une présence en Amérique du Sud n'avantage aucun candidat en particulier, faute de données spécifiques dans nos sources.`,
   options:[],
   regions:[
     { id:'europe', label:'Europe', desc:'UE, Royaume-Uni, Suisse…', fx:{ midpoint:5, omada:4, oneidentity:2 },
       notes:[
         {sol:'midpoint', txt:'Vous opérez en Europe : midPoint est développé et détenu dans l\'Union européenne et référencé au catalogue Interoperable Europe de la Commission, ce qui simplifie les dossiers de souveraineté', src:[7]},
         {sol:'omada', txt:'Vous opérez en Europe : Omada, éditeur danois, y concentre l\'essentiel de sa base installée et de son écosystème de partenaires', src:[2]} ] },
-    { id:'na', label:'Amérique du Nord', desc:'Canada, États-Unis, Mexique', fx:{ sailpointisc:1, saviynt:1 } },
+    { id:'na', label:'Amérique du Nord', desc:'Canada, États-Unis, Mexique', fx:{ sailpointisc:1, saviynt:1, okta:1 } },
     { id:'sa', label:'Amérique du Sud', desc:'Brésil, Argentine, Chili…', fx:{} },
     { id:'apac', label:'Asie-Pacifique', desc:'Japon, Australie, Singapour…', fx:{ sailpointisc:1, ibm:1 } },
     { id:'mena', label:'Moyen-Orient', desc:'EAU, Arabie saoudite, Turquie…', fx:{ ibm:1, oracle:1 } },
@@ -721,19 +753,19 @@ const QUESTIONS = [
   impact:`La charge de mise en œuvre constatée par les clients pèse fortement ici<sup class="src">[4]</sup>. Les plateformes les plus profondes — <strong>One Identity</strong>, <strong>Oracle</strong>, <strong>IBM</strong>, <strong>SailPoint IdentityIQ</strong> — demandent un investissement initial important et supposent une organisation déjà structurée. <strong>Omada</strong> et <strong>Entra ID Governance</strong> sont plus accessibles à un premier projet, la première par sa méthode de déploiement cadrée<sup class="src">[2]</sup>, la seconde par sa continuité avec un environnement Microsoft déjà en place. Plus votre maturité monte, plus la profondeur fonctionnelle reprend l'avantage sur la simplicité.`,
   options:[
     { id:'n1', label:'Niveau 1 : tout est manuel', desc:'Les accès sont créés au fil de l\'eau, sans inventaire consolidé ni revue',
-      fx:{ entra:6, omada:5, midpoint:3, ping:3, sailpointisc:2, saviynt:2, oneidentity:1, ibm:0, oracle:0, sailpointiiq:0 },
+      fx:{ entra:6, omada:5, okta:5, midpoint:3, ping:3, sailpointisc:2, saviynt:2, oneidentity:1, ibm:0, oracle:0, sailpointiiq:0 },
       notes:[
         {sol:'omada', txt:'Vous partez de zéro : Omada structure son déploiement autour d\'un cadre de processus GIA prêt à l\'emploi, ce qui limite la page blanche du premier projet', src:[2]} ] },
     { id:'n2', label:'Niveau 2 : premiers inventaires', desc:'Un référentiel existe, alimenté partiellement, mais sans automatisation',
-      fx:{ omada:5, entra:4, midpoint:4, sailpointisc:3, ping:3, saviynt:3, oneidentity:2, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
+      fx:{ omada:5, entra:4, okta:4, midpoint:4, sailpointisc:3, ping:3, saviynt:3, oneidentity:2, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
     { id:'n3', label:'Niveau 3 : cycle de vie automatisé', desc:'Arrivées, mobilités et départs déclenchent des actions automatiques',
-      fx:{ sailpointisc:4, saviynt:4, omada:4, oneidentity:3, midpoint:3, entra:3, ping:3, ibm:2, oracle:2, sailpointiiq:2 }, notes:[] },
+      fx:{ sailpointisc:4, saviynt:4, omada:4, oneidentity:3, midpoint:3, entra:3, okta:3, ping:3, ibm:2, oracle:2, sailpointiiq:2 }, notes:[] },
     { id:'n4', label:'Niveau 4 : gouvernance établie', desc:'Campagnes de certification régulières, modèle de rôles vivant, contrôles SoD',
-      fx:{ saviynt:5, sailpointisc:5, oneidentity:4, omada:4, sailpointiiq:3, ibm:3, oracle:3, midpoint:2, ping:2, entra:1 },
+      fx:{ saviynt:5, sailpointisc:5, oneidentity:4, omada:4, sailpointiiq:3, ibm:3, oracle:3, midpoint:2, ping:2, entra:1, okta:1 },
       notes:[
         {sol:'saviynt', txt:'Votre gouvernance est établie : c\'est le terrain où l\'analytique de risque et la gouvernance applicative de Saviynt, notées au plus haut niveau par KuppingerCole, prennent tout leur sens', src:[2]} ] },
     { id:'n5', label:"Niveau 5 : gouvernance pilotée par le risque", desc:'Accès dynamiques, analytique, remédiation continue, identités non humaines incluses',
-      fx:{ saviynt:6, sailpointisc:6, oneidentity:4, omada:3, ibm:3, oracle:2, sailpointiiq:2, ping:2, midpoint:1, entra:1 },
+      fx:{ saviynt:6, sailpointisc:6, oneidentity:4, omada:3, ibm:3, oracle:2, sailpointiiq:2, ping:2, midpoint:1, entra:1, okta:0 },
       notes:[
         {sol:'saviynt', txt:'Vous visez une gouvernance pilotée par le risque : KuppingerCole place Saviynt en tête sur les quatre segments de son évaluation 2026, en soulignant l\'analytique de risque et l\'architecture orientée API', src:[2]},
         {sol:'sailpointisc', txt:'Vous visez une gouvernance pilotée par le risque : SailPoint reste la plus large base installée du marché sur ce type de programme, avec un écosystème d\'intégrateurs correspondant', src:[3,5]} ] }
@@ -749,28 +781,28 @@ const QUESTIONS = [
   impact:`Chaque axe (1 à 3) modifie les scores : plus il est élevé, plus il oriente le résultat. Une <strong>conformité décisive</strong> favorise les plateformes à forte capacité de certification et de preuve — Saviynt, SailPoint, One Identity, Omada<sup class="src">[2][5]</sup>. Une <strong>sécurité maximale</strong> valorise l'analytique de risque et la couverture des identités non humaines<sup class="src">[2]</sup>. Une <strong>efficience élevée</strong> favorise l'automatisation du cycle de vie et la richesse des connecteurs<sup class="src">[1]</sup>. Une <strong>expérience utilisateur poussée</strong> valorise le libre-service et la lisibilité des campagnes, terrain sur lequel les retours clients sont les plus discriminants<sup class="src">[4]</sup>.`,
   axes:[
     { key:'compliance', label:'Conformité et audit', levels:[
-      { label:'Absente de nos réflexions', desc:'Le projet est porté par l\'efficacité opérationnelle, pas par l\'audit', fx:{ entra:2, midpoint:2, ping:1 } },
-      { label:'Présente sans pression réglementaire forte', desc:'Bonnes pratiques, audits internes, traçabilité raisonnable', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 } },
-      { label:'Moteur principal, avec exigences fortes', desc:'Secteur régulé : 52-109, SOX, loi 25, DORA, NIS2, exigences d\'un régulateur sectoriel', fx:{ saviynt:6, sailpointisc:5, oneidentity:5, omada:5, sailpointiiq:4, ibm:3, oracle:3, midpoint:2, ping:1, entra:-1 },
+      { label:'Absente de nos réflexions', desc:'Le projet est porté par l\'efficacité opérationnelle, pas par l\'audit', fx:{ entra:2, okta:2, midpoint:2, ping:1 } },
+      { label:'Présente sans pression réglementaire forte', desc:'Bonnes pratiques, audits internes, traçabilité raisonnable', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, okta:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 } },
+      { label:'Moteur principal, avec exigences fortes', desc:'Secteur régulé : 52-109, SOX, loi 25, DORA, NIS2, exigences d\'un régulateur sectoriel', fx:{ saviynt:6, sailpointisc:5, oneidentity:5, omada:5, sailpointiiq:4, ibm:3, oracle:3, midpoint:2, ping:1, entra:-1, okta:-1 },
         notes:[ {sol:'entra', txt:'La conformité est votre moteur principal : Entra ID Governance couvre bien les revues d\'accès sur le périmètre Microsoft, mais produire une preuve d\'audit homogène sur des applications hors écosystème demande des compléments', src:[3]} ] }
     ]},
     { key:'security', label:'Sécurité et réduction du risque', levels:[
-      { label:'Faible', desc:'La sécurité n\'est pas un moteur : vous visez surtout l\'automatisation ou l\'efficience opérationnelle', fx:{ entra:1, omada:1, midpoint:1 } },
-      { label:'Modérée', desc:'Réduire les accès dormants sans viser l\'excellence', fx:{ sailpointisc:1, saviynt:1, omada:1, oneidentity:1, ibm:1, oracle:1, ping:1, entra:1, midpoint:1, sailpointiiq:1 } },
-      { label:'Élevée', desc:'Un standard exigeant est visé sur l\'ensemble du périmètre', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, midpoint:2, sailpointiiq:2 } },
-      { label:'Maximale', desc:'Moindre privilège généralisé, accès dynamiques, identités non humaines et agents IA', fx:{ saviynt:5, sailpointisc:5, oneidentity:3, omada:3, ibm:2, ping:2, oracle:2, sailpointiiq:2, entra:1, midpoint:1 },
+      { label:'Faible', desc:'La sécurité n\'est pas un moteur : vous visez surtout l\'automatisation ou l\'efficience opérationnelle', fx:{ entra:1, omada:1, okta:1, midpoint:1 } },
+      { label:'Modérée', desc:'Réduire les accès dormants sans viser l\'excellence', fx:{ sailpointisc:1, saviynt:1, omada:1, oneidentity:1, ibm:1, oracle:1, ping:1, entra:1, okta:1, midpoint:1, sailpointiiq:1 } },
+      { label:'Élevée', desc:'Un standard exigeant est visé sur l\'ensemble du périmètre', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, okta:1, midpoint:2, sailpointiiq:2 } },
+      { label:'Maximale', desc:'Moindre privilège généralisé, accès dynamiques, identités non humaines et agents IA', fx:{ saviynt:5, sailpointisc:5, oneidentity:3, omada:3, ibm:2, ping:2, oracle:2, sailpointiiq:2, entra:1, midpoint:1, okta:-1 },
         notes:[ {sol:'saviynt', txt:'Vous visez le niveau de sécurité maximal : l\'évaluation 2026 souligne le virage du marché vers la gouvernance des identités non humaines et l\'analytique prédictive, terrain sur lequel Saviynt obtient les meilleures notes', src:[2]} ] }
     ]},
     { key:'efficiency', label:'Efficience et automatisation', levels:[
-      { label:'Faible', desc:'Une part de traitement manuel reste acceptable', fx:{ entra:1, midpoint:1 } },
-      { label:'Moyenne', desc:'Automatiser les tâches chronophages : créations de comptes, départs, campagnes', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, midpoint:2, sailpointiiq:2 } },
-      { label:'Élevée', desc:'Provisioning de bout en bout, zéro ticket manuel, remédiation automatique', fx:{ sailpointisc:5, saviynt:4, oneidentity:4, omada:3, sailpointiiq:3, ibm:3, oracle:3, midpoint:2, ping:2, entra:2 },
+      { label:'Faible', desc:'Une part de traitement manuel reste acceptable', fx:{ entra:1, okta:1, midpoint:1 } },
+      { label:'Moyenne', desc:'Automatiser les tâches chronophages : créations de comptes, départs, campagnes', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, okta:2, midpoint:2, sailpointiiq:2 } },
+      { label:'Élevée', desc:'Provisioning de bout en bout, zéro ticket manuel, remédiation automatique', fx:{ sailpointisc:5, saviynt:4, oneidentity:4, omada:3, sailpointiiq:3, ibm:3, oracle:3, midpoint:2, ping:2, entra:2, okta:3 },
         notes:[ {sol:'oneidentity', txt:'Vous visez une automatisation poussée : One Identity Manager est régulièrement cité pour la profondeur de son moteur de provisioning et de politiques, au prix d\'un paramétrage exigeant', src:[5]} ] }
     ]},
     { key:'ux', label:'Expérience utilisateur et adhésion', levels:[
-      { label:'Standard', desc:'Une interface fonctionnelle suffit', fx:{ midpoint:1 } },
-      { label:'Améliorée', desc:'Réduire la friction pour les gestionnaires et les approbateurs', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, midpoint:2, sailpointiiq:2 } },
-      { label:'Poussée', desc:'Libre-service généralisé, campagnes lisibles par des non-informaticiens, adhésion des gestionnaires', fx:{ omada:5, sailpointisc:5, saviynt:4, entra:3, ping:3, oneidentity:2, ibm:1, oracle:1, sailpointiiq:1, midpoint:0 },
+      { label:'Standard', desc:'Une interface fonctionnelle suffit', fx:{ midpoint:1, okta:1 } },
+      { label:'Améliorée', desc:'Réduire la friction pour les gestionnaires et les approbateurs', fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, okta:2, midpoint:2, sailpointiiq:2 } },
+      { label:'Poussée', desc:'Libre-service généralisé, campagnes lisibles par des non-informaticiens, adhésion des gestionnaires', fx:{ omada:5, sailpointisc:5, saviynt:4, entra:3, okta:3, ping:3, oneidentity:2, ibm:1, oracle:1, sailpointiiq:1, midpoint:0 },
         notes:[
           {sol:'omada', txt:'L\'adhésion des utilisateurs est décisive : KuppingerCole relève la configurabilité des flux et l\'interaction assistée par IA d\'Omada comme des points forts sur ce terrain', src:[2]},
           {sol:'midpoint', txt:'L\'adhésion des utilisateurs est décisive : c\'est le point où midPoint demande le plus d\'efforts, son interface restant plus proche de l\'outil d\'administration que du portail métier', src:[10]} ] }
@@ -788,45 +820,45 @@ const QUESTIONS = [
   options:[
     { id:'central', label:'Centralisation des identités et des accès',
       desc:'Un référentiel unique : qui existe, qui a accès à quoi, et pourquoi',
-      fx:{ sailpointisc:8, saviynt:8, omada:8, oneidentity:8, midpoint:7, ibm:7, oracle:7, ping:6, sailpointiiq:7, entra:4 },
+      fx:{ sailpointisc:8, saviynt:8, omada:8, oneidentity:8, midpoint:7, ibm:7, oracle:7, ping:6, sailpointiiq:7, entra:4, okta:4 },
       notes:[
         {sol:'midpoint', txt:'La centralisation est votre priorité : midPoint couvre le référentiel, le provisioning et la structure organisationnelle à un niveau comparable aux outils commerciaux, sans facturation à l\'identité', src:[10]} ] },
     { id:'lifecycle', label:'Cycle de vie et provisioning automatisé',
       desc:'Arrivées, mobilités, départs : les accès suivent automatiquement',
-      fx:{ sailpointisc:9, oneidentity:9, saviynt:8, omada:8, midpoint:8, ibm:7, oracle:7, sailpointiiq:8, ping:6, entra:5 },
+      fx:{ sailpointisc:9, oneidentity:9, saviynt:8, omada:8, midpoint:8, ibm:7, oracle:7, sailpointiiq:8, ping:6, entra:5, okta:6 },
       notes:[
         {sol:'oneidentity', txt:'Le cycle de vie est votre priorité : le moteur de provisioning de One Identity Manager est l\'un des plus complets du marché, y compris sur des cibles hétérogènes', src:[5]},
         {sol:'sailpointisc', txt:'Le cycle de vie est votre priorité : c\'est le socle historique de SailPoint et le domaine où sa base installée et son écosystème d\'intégrateurs sont les plus profonds', src:[3,5]} ] },
     { id:'cert', label:'Certification et revues d\'accès',
       desc:'Campagnes périodiques, attestation par les gestionnaires, preuve pour l\'audit',
-      fx:{ saviynt:9, sailpointisc:9, omada:9, oneidentity:7, sailpointiiq:8, ibm:6, oracle:6, entra:5, midpoint:5, ping:5 },
+      fx:{ saviynt:9, sailpointisc:9, omada:9, oneidentity:7, sailpointiiq:8, ibm:6, oracle:6, entra:5, midpoint:5, ping:5, okta:4 },
       notes:[
         {sol:'omada', txt:'Les campagnes de certification sont votre priorité : Omada en fait un axe central de son cadre de processus, avec des campagnes conçues pour être conduites par des gestionnaires non techniques', src:[2]},
         {sol:'saviynt', txt:'Les campagnes de certification sont votre priorité : Saviynt obtient les meilleures notes de l\'évaluation KuppingerCole 2026 sur la certification et l\'analytique associée', src:[2]} ] },
     { id:'request', label:'Demande d\'accès et libre-service',
       desc:'Un catalogue lisible, des approbations claires, sans passer par un ticket',
-      fx:{ sailpointisc:8, omada:8, saviynt:7, entra:7, ping:6, oneidentity:6, ibm:5, oracle:5, sailpointiiq:6, midpoint:4 },
+      fx:{ sailpointisc:8, omada:8, saviynt:7, entra:7, okta:7, ping:6, oneidentity:6, ibm:5, oracle:5, sailpointiiq:6, midpoint:4 },
       notes:[
         {sol:'entra', txt:'Le libre-service est votre priorité : les packages d\'accès et les approbations d\'Entra ID Governance sont directement utilisables par les utilisateurs déjà dans l\'écosystème Microsoft', src:[3]} ] },
     { id:'roles', label:'Modèle de rôles, RBAC et role mining',
       desc:'Construire et maintenir des rôles métier plutôt que des accès individuels',
-      fx:{ oneidentity:8, saviynt:8, sailpointisc:8, midpoint:7, omada:7, sailpointiiq:8, ibm:6, oracle:6, ping:4, entra:3 },
+      fx:{ oneidentity:8, saviynt:8, sailpointisc:8, midpoint:7, omada:7, sailpointiiq:8, ibm:6, oracle:6, ping:4, entra:3, okta:2 },
       notes:[
         {sol:'midpoint', txt:'Le modèle de rôles est votre priorité : la gestion des rôles et des structures organisationnelles est l\'un des points les plus aboutis de midPoint selon les revues indépendantes', src:[10]} ] },
     { id:'sod', label:'Séparation des tâches (SoD) et contrôles applicatifs',
       desc:'Détecter et bloquer les combinaisons d\'accès interdites, notamment dans l\'ERP',
-      fx:{ saviynt:10, oneidentity:8, sailpointisc:6, oracle:6, ibm:5, sailpointiiq:6, omada:5, ping:3, midpoint:3, entra:2 },
+      fx:{ saviynt:10, oneidentity:8, sailpointisc:6, oracle:6, ibm:5, sailpointiiq:6, omada:5, ping:3, midpoint:3, entra:2, okta:0 },
       notes:[
         {sol:'saviynt', txt:'La séparation des tâches est votre priorité : la gouvernance des accès applicatifs, notamment sur les ERP, est un différenciateur documenté de Saviynt', src:[2]},
         {sol:'oneidentity', txt:'La séparation des tâches est votre priorité : One Identity dispose d\'une offre de gouvernance applicative reconnue, en particulier sur l\'univers SAP', src:[5]} ] },
     { id:'nonhuman', label:'Identités non humaines et agents IA',
       desc:'Comptes de service, robots, jetons applicatifs, agents autonomes',
-      fx:{ saviynt:8, sailpointisc:8, oneidentity:4, omada:4, ping:3, ibm:3, entra:3, oracle:2, sailpointiiq:2, midpoint:2 },
+      fx:{ saviynt:8, sailpointisc:8, oneidentity:4, omada:4, ping:3, ibm:3, entra:3, okta:1, oracle:2, sailpointiiq:2, midpoint:2 },
       notes:[
         {sol:'saviynt', txt:'Les identités non humaines sont votre priorité : l\'évaluation 2026 identifie ce sujet comme la principale ligne de fracture du marché, et y place Saviynt en tête', src:[2]} ] },
     { id:'external', label:'Identités externes et partenaires',
       desc:'Prestataires, fournisseurs, bénévoles, stagiaires : sans dossier RH, mais avec des accès',
-      fx:{ sailpointisc:7, saviynt:6, omada:6, entra:6, oneidentity:5, ping:5, midpoint:4, ibm:4, oracle:4, sailpointiiq:5 },
+      fx:{ sailpointisc:7, saviynt:6, omada:6, entra:6, okta:6, oneidentity:5, ping:5, midpoint:4, ibm:4, oracle:4, sailpointiiq:5 },
       notes:[
         {sol:'entra', txt:'Les identités externes sont votre priorité : la gouvernance des invités B2B est nativement couverte par Entra ID Governance', src:[3]} ] }
   ]
@@ -840,15 +872,15 @@ const QUESTIONS = [
   impact:`Sans documentation, même partielle, les solutions dotées d'un moteur de <strong>découverte de rôles et d'accès assistée par IA</strong> réduisent fortement le travail de démarrage : <strong>Saviynt</strong> et <strong>SailPoint</strong><sup class="src">[2]</sup>, ainsi qu'<strong>Omada</strong> par sa méthode cadrée<sup class="src">[2]</sup>. Une documentation déjà en place, au moins sur les applications critiques, valorise les moteurs de gouvernance applicative les plus profonds : <strong>One Identity</strong><sup class="src">[5]</sup>, <strong>SailPoint IdentityIQ</strong><sup class="src">[9]</sup> et <strong>midPoint</strong><sup class="src">[10]</sup>, qui exploitent directement cette matière plutôt que de devoir la reconstituer.`,
   options:[
     { id:'none', label:'Aucune documentation', desc:'Les accès et privilèges ne sont documentés pour aucune application, y compris les plus critiques',
-      fx:{ saviynt:4, sailpointisc:4, omada:4, entra:2, ping:1, oneidentity:0, midpoint:0, sailpointiiq:0, ibm:0, oracle:0 },
+      fx:{ saviynt:4, sailpointisc:4, omada:4, entra:2, okta:2, ping:1, oneidentity:0, midpoint:0, sailpointiiq:0, ibm:0, oracle:0 },
       notes:[ {sol:'saviynt', txt:'Aucune documentation n\'existe encore : le role mining assisté par IA de Saviynt aide à faire émerger une première structure à partir des accès réels plutôt que de la documenter à la main', src:[2]} ] },
     { id:'inprogress', label:'En cours de documentation', desc:'Un chantier est engagé : certaines applications sont déjà documentées, d\'autres pas encore',
-      fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
+      fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, okta:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
     { id:'critical', label:'Documenté pour les applications les plus critiques', desc:'Les accès et rôles applicatifs des systèmes sensibles (ERP, finance…) sont connus et à jour',
-      fx:{ oneidentity:4, saviynt:3, sailpointisc:3, midpoint:3, sailpointiiq:3, omada:2, ibm:2, oracle:2, ping:1, entra:0 },
+      fx:{ oneidentity:4, saviynt:3, sailpointisc:3, midpoint:3, sailpointiiq:3, omada:2, ibm:2, oracle:2, ping:1, entra:0, okta:0 },
       notes:[ {sol:'oneidentity', txt:'Vos applications les plus critiques sont documentées : c\'est la matière première dont le moteur de gouvernance applicative de One Identity Manager tire le plus de valeur', src:[5]} ] },
     { id:'broad', label:'Documenté largement', desc:'La documentation couvre la majorité du parc, au-delà des seules applications critiques',
-      fx:{ oneidentity:5, midpoint:5, sailpointiiq:4, saviynt:4, sailpointisc:4, omada:3, ibm:3, oracle:3, ping:1, entra:0 },
+      fx:{ oneidentity:5, midpoint:5, sailpointiiq:4, saviynt:4, sailpointisc:4, omada:3, ibm:3, oracle:3, ping:1, entra:0, okta:-1 },
       notes:[ {sol:'midpoint', txt:'Votre documentation est déjà large : c\'est le terrain où midPoint peut reprendre directement la matière existante plutôt que d\'attendre qu\'elle soit reconstituée', src:[10]} ] }
   ]
 },
@@ -861,15 +893,15 @@ const QUESTIONS = [
   impact:`Sans rôles métier, les moteurs de <strong>role mining</strong> aident à les faire émerger à partir des accès réels : <strong>Saviynt</strong>, <strong>SailPoint</strong><sup class="src">[2]</sup>. Des rôles métier déjà définis et matures valorisent fortement les moteurs de rôles les plus profonds : <strong>One Identity</strong><sup class="src">[5]</sup> et <strong>midPoint</strong><sup class="src">[10]</sup>, ainsi que <strong>SailPoint IdentityIQ</strong> sur des structures de rôles déjà complexes<sup class="src">[9]</sup>.`,
   options:[
     { id:'none', label:'Aucun rôle métier défini', desc:'Les accès sont gérés application par application, sans regroupement transverse',
-      fx:{ saviynt:4, sailpointisc:4, omada:3, entra:2, ping:1, oneidentity:0, midpoint:0, sailpointiiq:0 },
+      fx:{ saviynt:4, sailpointisc:4, omada:3, entra:2, okta:2, ping:1, oneidentity:0, midpoint:0, sailpointiiq:0 },
       notes:[ {sol:'sailpointisc', txt:'Aucun rôle métier n\'est encore défini : les capacités de role mining de SailPoint aident à faire émerger une première structure à partir des accès observés', src:[2]} ] },
     { id:'draft', label:'Quelques rôles ébauchés', desc:'Une première structure existe, mais reste incomplète ou instable',
-      fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
+      fx:{ sailpointisc:2, saviynt:2, omada:2, oneidentity:2, midpoint:1, entra:1, okta:1, ping:1, ibm:1, oracle:1, sailpointiiq:1 }, notes:[] },
     { id:'defined', label:'Rôles métier définis et documentés', desc:'Des rôles transverses à plusieurs applications existent et sont documentés',
-      fx:{ oneidentity:5, saviynt:4, sailpointisc:4, midpoint:4, sailpointiiq:3, omada:3, ibm:2, oracle:2, ping:1 },
+      fx:{ oneidentity:5, saviynt:4, sailpointisc:4, midpoint:4, sailpointiiq:3, omada:3, ibm:2, oracle:2, ping:1, entra:0, okta:0 },
       notes:[ {sol:'oneidentity', txt:'Vos rôles métier transverses sont définis et documentés : c\'est le terrain où le moteur de rôles de One Identity Manager, l\'un des plus complets du marché, s\'exprime pleinement', src:[5]} ] },
     { id:'maintained', label:'Rôles métier matures et revus régulièrement', desc:'La structure est stable, alignée sur l\'organisation, et revue à intervalle régulier',
-      fx:{ oneidentity:6, sailpointiiq:5, saviynt:5, sailpointisc:5, midpoint:5, omada:3, ibm:3, oracle:3, ping:1, entra:-1 },
+      fx:{ oneidentity:6, sailpointiiq:5, saviynt:5, sailpointisc:5, midpoint:5, omada:3, ibm:3, oracle:3, ping:1, entra:-1, okta:-1 },
       notes:[ {sol:'sailpointiiq', txt:'Vos rôles métier sont matures : c\'est précisément le type de structure complexe qu\'IdentityIQ a été conçu pour absorber, au prix d\'un paramétrage exigeant', src:[9]} ] }
   ]
 },
@@ -886,10 +918,10 @@ const QUESTIONS = [
     { id:'exploring', label:'En réflexion', desc:'Le sujet est identifié, aucune décision ou pilote engagé',
       fx:{ saviynt:1, ping:1, sailpointisc:1 }, notes:[] },
     { id:'pilot', label:'Pilote sur un périmètre restreint', desc:'Une première démarche ABAC ou PBAC est en cours sur un périmètre limité',
-      fx:{ saviynt:4, ping:3, sailpointisc:3, oneidentity:1, ibm:1, sailpointiiq:-1 },
+      fx:{ saviynt:4, ping:3, sailpointisc:3, oneidentity:1, ibm:1, sailpointiiq:-1, okta:-1 },
       notes:[ {sol:'saviynt', txt:'Vous pilotez une attribution dynamique : l\'architecture orientée API et l\'analytique contextuelle de Saviynt sont conçues pour ce type de politiques', src:[2]} ] },
     { id:'established', label:'Établie sur une part significative du périmètre', desc:'L\'attribution dynamique pilote déjà une partie réelle des accès, au-delà d\'un pilote',
-      fx:{ saviynt:6, ping:5, sailpointisc:4, oneidentity:1, ibm:1, midpoint:0, entra:-1, sailpointiiq:-3 },
+      fx:{ saviynt:6, ping:5, sailpointisc:4, oneidentity:1, ibm:1, midpoint:0, entra:-1, sailpointiiq:-3, okta:-2 },
       notes:[
         {sol:'ping', txt:'Votre attribution dynamique est établie : c\'est le terrain où la gouvernance Ping, adossée à un moteur de politiques contextuel, se distingue le plus des spécialistes GIA classiques', src:[5,6]},
         {sol:'sailpointiiq', txt:'Votre attribution dynamique est établie : IdentityIQ reste structuré autour d\'un modèle plus classique, et cette ambition pousse plutôt vers une plateforme plus récente', src:[9]} ] }
@@ -904,15 +936,15 @@ const QUESTIONS = [
   impact:`Sans aucun processus formalisé, les méthodes de déploiement cadrées et les workflows prêts à l'emploi comptent davantage : <strong>Omada</strong><sup class="src">[2]</sup> et <strong>Entra ID Governance</strong><sup class="src">[3]</sup>. Des processus déjà documentés, même hors outil, valorisent les moteurs de workflow les plus configurables : <strong>One Identity</strong>, <strong>SailPoint</strong>, <strong>Saviynt</strong> et <strong>midPoint</strong><sup class="src">[2][5][10]</sup>.`,
   options:[
     { id:'none', label:"Rien n'est formalisé", desc:'Les demandes et approbations se font au fil de l\'eau, sans règle écrite',
-      fx:{ omada:5, entra:4, sailpointisc:2, ping:2, saviynt:1, oneidentity:-2, oracle:-2, ibm:-2, sailpointiiq:-2, midpoint:-2 },
+      fx:{ omada:5, entra:4, okta:4, sailpointisc:2, ping:2, saviynt:1, oneidentity:-2, oracle:-2, ibm:-2, sailpointiiq:-2, midpoint:-2 },
       notes:[ {sol:'omada', txt:'Rien n\'est formalisé chez vous : la méthode de déploiement cadrée d\'Omada fournit des processus de départ prêts à l\'emploi plutôt que d\'attendre que vous les écriviez d\'abord', src:[2]} ] },
     { id:'informal', label:'Des pratiques existent, rien n\'est écrit', desc:'Chacun sait globalement quoi faire, sans document de référence',
-      fx:{ omada:3, entra:2, sailpointisc:2, saviynt:2, ping:1, oneidentity:0, ibm:0, oracle:0, sailpointiiq:0, midpoint:0 }, notes:[] },
+      fx:{ omada:3, entra:2, okta:2, sailpointisc:2, saviynt:2, ping:1, oneidentity:0, ibm:0, oracle:0, sailpointiiq:0, midpoint:0 }, notes:[] },
     { id:'documented', label:'RACI et workflows documentés, pas encore dans un outil', desc:'Les règles existent sur papier ou dans un référentiel qualité',
-      fx:{ oneidentity:4, sailpointisc:4, saviynt:4, midpoint:4, sailpointiiq:3, omada:2, ibm:2, oracle:2, ping:1, entra:-1 },
+      fx:{ oneidentity:4, sailpointisc:4, saviynt:4, midpoint:4, sailpointiiq:3, omada:2, ibm:2, oracle:2, ping:1, entra:-1, okta:-1 },
       notes:[ {sol:'oneidentity', txt:'Vos processus sont déjà documentés : le moteur de workflow de One Identity Manager est conçu pour reproduire fidèlement des règles complexes plutôt que d\'imposer les siennes', src:[5]} ] },
     { id:'automated', label:'Workflows déjà automatisés ailleurs', desc:'Dans un ITSM, un outil RH ou un autre système, à faire migrer',
-      fx:{ sailpointisc:4, saviynt:4, oneidentity:3, ibm:2, oracle:2, sailpointiiq:2, omada:2, midpoint:1, ping:1, entra:0 }, notes:[] }
+      fx:{ sailpointisc:4, saviynt:4, oneidentity:3, ibm:2, oracle:2, sailpointiiq:2, omada:2, midpoint:1, ping:1, entra:0, okta:0 }, notes:[] }
   ]
 },
 /* ================================================================
@@ -927,26 +959,26 @@ const QUESTIONS = [
   impact:`Un SI infonuagique favorise les plateformes conçues pour ce modèle : <strong>Saviynt</strong>, <strong>SailPoint Identity Security Cloud</strong>, <strong>Omada Identity Cloud</strong> et <strong>Entra ID Governance</strong><sup class="src">[2][5]</sup>. Un SI majoritairement interne, ou soumis à des exigences de résidence des données, valorise les solutions installables sur site : <strong>midPoint</strong><sup class="src">[7][8]</sup>, <strong>One Identity</strong>, <strong>Oracle</strong>, <strong>IBM</strong>, <strong>SailPoint IdentityIQ</strong><sup class="src">[9]</sup> et <strong>Omada Identity</strong> en version sur site<sup class="src">[2]</sup>.`,
   options:[
     { id:'cloud', label:'Infonuagique d\'abord', desc:'SaaS majoritaire, peu ou pas de serveurs applicatifs internes',
-      fx:{ saviynt:5, sailpointisc:5, omada:4, entra:4, ping:3, oneidentity:1, ibm:1, oracle:1, midpoint:0, sailpointiiq:-3 },
+      fx:{ saviynt:5, sailpointisc:5, omada:4, entra:4, okta:4, ping:3, oneidentity:1, ibm:1, oracle:1, midpoint:0, sailpointiiq:-3 },
       notes:[
         {sol:'sailpointiiq', txt:'Votre SI est infonuagique : IdentityIQ est une plateforme conçue pour une exploitation sur site, et les retours de praticiens décrivent le passage vers Identity Security Cloud comme un changement de paradigme et non une migration technique', src:[9]} ] },
     { id:'hybrid', label:'Hybride', desc:'Centres de données internes et nuage public, coexistence durable',
-      fx:{ sailpointisc:4, saviynt:4, omada:4, oneidentity:4, ibm:3, oracle:3, ping:3, midpoint:3, sailpointiiq:3, entra:2 }, notes:[] },
+      fx:{ sailpointisc:4, saviynt:4, omada:4, oneidentity:4, ibm:3, oracle:3, ping:3, midpoint:3, sailpointiiq:3, entra:2, okta:2 }, notes:[] },
     { id:'onprem', label:'Majoritairement interne', desc:'Applications hébergées chez vous, migration infonuagique limitée',
-      fx:{ oneidentity:5, midpoint:5, sailpointiiq:5, ibm:4, oracle:4, omada:3, saviynt:1, sailpointisc:1, ping:1, entra:-3 },
+      fx:{ oneidentity:5, midpoint:5, sailpointiiq:5, ibm:4, oracle:4, omada:3, saviynt:1, sailpointisc:1, ping:1, entra:-3, okta:-3 },
       notes:[
         {sol:'entra', txt:'Votre SI est majoritairement interne : Entra ID Governance est un service infonuagique dont la valeur décroît fortement dès que les applications à gouverner sortent de l\'écosystème Microsoft', src:[3]} ] },
     { id:'sovereign', label:'Souverain ou isolé', desc:'Données sensibles, hébergement national imposé, environnements cloisonnés',
-      fx:{ midpoint:7, sailpointiiq:4, oneidentity:4, ibm:3, oracle:3, omada:2, saviynt:0, sailpointisc:0, ping:0, entra:-4 },
+      fx:{ midpoint:7, sailpointiiq:4, oneidentity:4, ibm:3, oracle:3, omada:2, saviynt:0, sailpointisc:0, ping:0, entra:-4, okta:-4 },
       notes:[
         {sol:'midpoint', txt:'Votre contexte impose la souveraineté : midPoint est publié sous EUPL, déployable intégralement chez vous, et son code est auditable, ce qui répond directement aux exigences de résidence et de transparence', src:[7,8]} ] }
   ],
   deploy:[
     { id:'saas', label:'SaaS uniquement', desc:'Vous excluez toute exploitation sur site pour l\'outil de GIA lui-même',
-      fx:{ sailpointisc:3, saviynt:3, omada:2, entra:2, ping:2, oneidentity:-2, oracle:-2, ibm:-2, sailpointiiq:-5, midpoint:-4 },
+      fx:{ sailpointisc:3, saviynt:3, omada:2, entra:2, okta:2, ping:2, oneidentity:-2, oracle:-2, ibm:-2, sailpointiiq:-5, midpoint:-4 },
       notes:[ {sol:'sailpointiiq', txt:'Vous excluez le sur site pour l\'outil lui-même : IdentityIQ ne correspond pas à cette contrainte, contrairement à Identity Security Cloud', src:[9]} ] },
     { id:'onprem', label:'Sur site uniquement', desc:'Vous excluez toute solution exclusivement infonuagique',
-      fx:{ midpoint:4, oneidentity:3, sailpointiiq:3, ibm:2, oracle:2, omada:1, entra:-6, saviynt:-3, sailpointisc:-3, ping:-2 },
+      fx:{ midpoint:4, oneidentity:3, sailpointiiq:3, ibm:2, oracle:2, omada:1, entra:-6, okta:-6, saviynt:-3, sailpointisc:-3, ping:-2 },
       notes:[ {sol:'entra', txt:'Vous excluez le sur site pour l\'outil lui-même : Entra ID Governance n\'existe qu\'en service infonuagique, ce qui est incompatible avec cette contrainte', src:[3]} ] },
     { id:'any', label:'Peu importe', desc:'Le modèle de déploiement de l\'outil n\'est pas un critère en soi', fx:{}, notes:[] }
   ]
@@ -964,33 +996,33 @@ const QUESTIONS = [
       choices:[
         { id:'s', label:'Aucune source RH exploitable', fx:{ midpoint:1, omada:1 } },
         { id:'m', label:'SIRH interne ou fichier consolidé', fx:{ oneidentity:2, midpoint:2, sailpointiiq:1 } },
-        { id:'l', label:'SIRH SaaS majeur (Workday, SuccessFactors…)', fx:{ sailpointisc:3, saviynt:2, omada:2, ping:1 } },
+        { id:'l', label:'SIRH SaaS majeur (Workday, SuccessFactors…)', fx:{ sailpointisc:3, saviynt:2, omada:2, ping:1, okta:1 } },
         { id:'xl', label:'Plusieurs sources RH à réconcilier', fx:{ sailpointisc:2, saviynt:2, oneidentity:2, omada:2, midpoint:1 } }
       ]},
     { key:'critical', label:'Applications critiques à gouverner finement', multi:true,
       choices:[
-        { id:'none', label:'Aucune application critique particulière', fx:{ entra:2 } },
+        { id:'none', label:'Aucune application critique particulière', fx:{ entra:2, okta:2 } },
         { id:'business', label:'Applications métier internes ou spécifiques', fx:{ oneidentity:2, midpoint:2, sailpointiiq:2, ibm:1 } },
-        { id:'erp', label:'ERP majeur (SAP, Oracle, Dynamics, NetSuite…)', fx:{ saviynt:5, oneidentity:5, oracle:3, sailpointisc:2, ibm:1 } }
+        { id:'erp', label:'ERP majeur (SAP, Oracle, Dynamics, NetSuite…)', fx:{ saviynt:5, oneidentity:5, oracle:3, sailpointisc:2, ibm:1, okta:-1 } }
       ]},
     { key:'complex', label:'Outils techniques à gouverner', multi:true,
       choices:[
-        { id:'crm', label:'CRM (Salesforce, HubSpot…)', fx:{ sailpointisc:2, saviynt:2, omada:1, entra:1 } },
-        { id:'coderepo', label:'Dépôts de code (GitHub, GitLab, Bitbucket…)', fx:{ saviynt:2, sailpointisc:2, oneidentity:1, midpoint:1 },
+        { id:'crm', label:'CRM (Salesforce, HubSpot…)', fx:{ sailpointisc:2, saviynt:2, omada:1, entra:1, okta:3 } },
+        { id:'coderepo', label:'Dépôts de code (GitHub, GitLab, Bitbucket…)', fx:{ saviynt:2, sailpointisc:2, oneidentity:1, midpoint:1, okta:1 },
           notes:[ {sol:'saviynt', txt:'Vous devez gouverner des dépôts de code : c\'est un terrain proche de la gestion des identités non humaines, où l\'analytique de Saviynt est reconnue', src:[2]} ] },
-        { id:'paas', label:'PaaS / IaaS (Azure, AWS, GCP…)', fx:{ sailpointisc:3, saviynt:3, entra:2, ping:1, midpoint:1 } }
+        { id:'paas', label:'PaaS / IaaS (Azure, AWS, GCP…)', fx:{ sailpointisc:3, saviynt:3, entra:2, ping:1, midpoint:1, okta:2 } }
       ]},
     { key:'legacy', label:"Applications sans interface standard (ni SCIM, ni API)",
       choices:[
-        { id:'s', label:'Presque aucune', fx:{ entra:3, sailpointisc:2, saviynt:2, ping:1 } },
+        { id:'s', label:'Presque aucune', fx:{ entra:3, okta:3, sailpointisc:2, saviynt:2, ping:1 } },
         { id:'m', label:'Quelques-unes', fx:{ sailpointisc:1, saviynt:1, omada:1, oneidentity:1, midpoint:1 } },
-        { id:'l', label:'Une part significative', fx:{ oneidentity:3, midpoint:3, sailpointiiq:3, ibm:2, oracle:2, entra:-2 } },
-        { id:'xl', label:'La majorité du parc (mainframe, applications historiques)', fx:{ oneidentity:4, sailpointiiq:4, midpoint:3, ibm:4, oracle:3, entra:-4, ping:-2 } }
+        { id:'l', label:'Une part significative', fx:{ oneidentity:3, midpoint:3, sailpointiiq:3, ibm:2, oracle:2, entra:-2, okta:-2 } },
+        { id:'xl', label:'La majorité du parc (mainframe, applications historiques)', fx:{ oneidentity:4, sailpointiiq:4, midpoint:3, ibm:4, oracle:3, entra:-4, ping:-2, okta:-4 } }
       ]}
   ],
   toggles:[
     { key:'sod', label:'Vous avez des préoccupations ou des besoins de séparation des tâches (SoD) sur vos applications critiques',
-      fx:{ saviynt:4, oneidentity:3, sailpointisc:2, oracle:2, ibm:1, sailpointiiq:1, entra:-1 },
+      fx:{ saviynt:4, oneidentity:3, sailpointisc:2, oracle:2, ibm:1, sailpointiiq:1, entra:-1, okta:-2 },
       notes:[ {sol:'saviynt', txt:'Vous avez des préoccupations de séparation des tâches : c\'est un différenciateur documenté de Saviynt, en particulier sur les ERP', src:[2]} ] }
   ]
 },
@@ -1021,7 +1053,7 @@ const QUESTIONS = [
   type:'buckets',
   title:'Quels annuaires, fournisseurs d\'identité et mécanismes d\'authentification utilisez-vous ?',
   why:"La solution GIA doit lire vos répertoires pour réconcilier les comptes, dialoguer avec vos fournisseurs d'identité pour propager les accès, et s'articuler avec votre SSO et votre MFA existants plutôt que les dupliquer. Il s'agit ici de l'IdP à usage interne, celui de vos employés pour le SSO — pas d'une plateforme CIAM destinée à vos clients. Sélectionnez tout ce qui s'applique.",
-  impact:`Tous les candidats s'intègrent aux répertoires et IdP majeurs. Un socle <strong>Ping</strong> déjà en place favorise sa propre brique de gouvernance par continuité de plateforme<sup class="src">[5]</sup>. Un SSO et un MFA déjà déployés indiquent une organisation prête pour une gouvernance fine<sup class="src">[5][6]</sup>. La question suivante détermine l'éligibilité d'<strong>Entra ID Governance</strong>, dont la valeur s'effondre hors de l'écosystème Microsoft<sup class="src">[3]</sup>.`,
+  impact:`Tous les candidats s'intègrent aux répertoires et IdP majeurs. Un socle <strong>Ping</strong> ou <strong>Okta</strong> déjà en place favorise sa propre brique de gouvernance par continuité de plateforme<sup class="src">[5][11]</sup>. Un SSO et un MFA déjà déployés indiquent une organisation prête pour une gouvernance fine<sup class="src">[5][6]</sup>. La question suivante détermine l'éligibilité d'<strong>Entra ID Governance</strong>, dont la valeur s'effondre hors de l'écosystème Microsoft<sup class="src">[3]</sup> — Okta n'a pas cette contrainte, son socle IdP fonctionnant indépendamment de tout éditeur de messagerie ou de productivité.`,
   buckets:[
     { key:'directory', label:'Répertoires / annuaires', multi:true,
       choices:[
@@ -1032,15 +1064,16 @@ const QUESTIONS = [
     { key:'idp', label:"Fournisseurs d'identité (IdP) — usage interne, pour le SSO de vos employés", multi:true,
       choices:[
         { id:'entra', label:'Entra ID', fx:{ entra:2, sailpointisc:1, saviynt:1 } },
-        { id:'okta', label:'Okta', fx:{ sailpointisc:1, saviynt:1 } },
+        { id:'okta', label:'Okta', fx:{ okta:6, sailpointisc:1, saviynt:1 },
+          notes:[ {sol:'okta', txt:'Vous utilisez déjà Okta comme IdP : Okta Identity Governance s\'active directement sur ce socle existant, sans fournisseur d\'identité supplémentaire à déployer ni à maintenir', src:[11]} ] },
         { id:'ping', label:'Ping Identity', fx:{ ping:4 },
           notes:[ {sol:'ping', txt:'Vous utilisez déjà Ping comme IdP : sa brique de gouvernance partage la même plateforme, ce qui limite le nombre de fournisseurs et de modèles à maintenir', src:[5]} ] },
         { id:'google', label:'Google Workspace', fx:{ sailpointisc:1, midpoint:1 } }
       ]}
   ],
   toggles:[
-    { key:'sso', label:'Une solution de SSO est déjà en place', fx:{ sailpointisc:1, saviynt:1, omada:1, ping:2, entra:1 }, notes:[] },
-    { key:'mfa', label:'Une solution de MFA est déjà en place', fx:{ sailpointisc:1, saviynt:1, oneidentity:1, ping:1, entra:1 }, notes:[] }
+    { key:'sso', label:'Une solution de SSO est déjà en place', fx:{ sailpointisc:1, saviynt:1, omada:1, ping:2, entra:1, okta:1 }, notes:[] },
+    { key:'mfa', label:'Une solution de MFA est déjà en place', fx:{ sailpointisc:1, saviynt:1, oneidentity:1, ping:1, entra:1, okta:1 }, notes:[] }
   ]
 },
 {
@@ -1063,21 +1096,22 @@ const QUESTIONS = [
   impact:`Une exigence d'<strong>hébergement national</strong> pénalise les solutions proposées exclusivement en mode infonuagique multi-locataire et valorise celles installables chez vous. Une exigence de <strong>code auditable</strong> ne peut être satisfaite que par <strong>midPoint</strong>, seule suite GIA complète publiée en logiciel libre, sous licence EUPL<sup class="src">[7][8][10]</sup>. Une exigence de <strong>réversibilité</strong> valorise également midPoint, dont la licence garantit juridiquement la poursuite de l'exploitation indépendamment de l'éditeur<sup class="src">[8]</sup>.`,
   options:[
     { id:'residency', label:'Hébergement et résidence des données imposés', desc:'Loi 25, secteur public, données de santé ou de renseignement',
-      fx:{ midpoint:5, sailpointiiq:3, oneidentity:3, ibm:2, oracle:2, omada:1, saviynt:-1, sailpointisc:-1, entra:-2 }, notes:[] },
+      fx:{ midpoint:5, sailpointiiq:3, oneidentity:3, ibm:2, oracle:2, omada:1, saviynt:-1, sailpointisc:-1, entra:-2, okta:-2 }, notes:[] },
     { id:'opensource', label:'Code source ouvert et auditable', desc:'Vérifier soi-même ce que fait l\'outil sur une infrastructure critique',
-      fx:{ midpoint:9, sailpointisc:-1, saviynt:-1, entra:-1, ping:-1, ibm:-1, oracle:-1, omada:-1, oneidentity:-1, sailpointiiq:-1 },
+      fx:{ midpoint:9, sailpointisc:-1, saviynt:-1, entra:-1, ping:-1, ibm:-1, oracle:-1, omada:-1, oneidentity:-1, sailpointiiq:-1, okta:-1 },
       notes:[
         {sol:'midpoint', txt:'Vous exigez un code auditable : midPoint est la seule suite GIA complète du marché publiée en logiciel libre, sous licence EUPL, et référencée à ce titre par la Commission européenne', src:[7,8]} ] },
     { id:'reversibility', label:'Réversibilité et absence d\'enfermement propriétaire', desc:'Pouvoir changer d\'éditeur, ou continuer sans lui',
-      fx:{ midpoint:6, oneidentity:1, sailpointiiq:1, saviynt:-1, sailpointisc:-1, entra:-2 },
+      fx:{ midpoint:6, oneidentity:1, sailpointiiq:1, saviynt:-1, sailpointisc:-1, entra:-2, okta:-2 },
       notes:[
         {sol:'midpoint', txt:'Vous visez la réversibilité : la licence EUPL vous autorise juridiquement à poursuivre l\'exploitation et l\'évolution de la solution même sans l\'éditeur, ce qu\'aucune licence propriétaire ne permet', src:[8]} ] },
     { id:'continuity', label:'Continuité en cas de rachat ou de fin de vie du produit', desc:'Le marché de l\'identité connaît des consolidations fréquentes',
-      fx:{ midpoint:4, omada:2, oneidentity:1, sailpointiiq:-3 },
+      fx:{ midpoint:4, omada:2, oneidentity:1, okta:1, sailpointiiq:-3 },
       notes:[
         {sol:'sailpointiiq', txt:'La continuité du produit vous préoccupe : IdentityIQ fait l\'objet d\'un effort de modernisation vers Identity Security Cloud, et les praticiens décrivent cette transition comme une refonte plutôt qu\'une montée de version — un facteur à intégrer dans un choix engageant sur dix ans', src:[9]} ] },
     { id:'analystcov', label:'Couverture par des analystes indépendants exigée', desc:'Votre gouvernance interne demande une validation externe du choix',
-      fx:{ saviynt:3, sailpointisc:3, omada:3, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, sailpointiiq:2, midpoint:0 }, notes:[] },
+      fx:{ saviynt:3, sailpointisc:3, omada:3, oneidentity:2, ibm:2, oracle:2, ping:2, entra:2, sailpointiiq:2, midpoint:0, okta:-3 },
+      notes:[ {sol:'okta', txt:'Vous exigez une couverture par des analystes indépendants : Okta n\'apparaît pas comme vendeur représentatif dans le Market Guide GIA de Gartner, ni dans le Leadership Compass de KuppingerCole, ni dans la SPARK Matrix — seules des revues clients vérifiées documentent sa gouvernance de façon indépendante', src:[11]} ] },
     { id:'none', label:'Aucune exigence particulière', desc:'Le sujet n\'est pas structurant pour nous', fx:{}, notes:[] }
   ]
 },
@@ -1813,35 +1847,35 @@ function computeScores(){
       const fmt = n => n.toLocaleString('fr-CA');
       if(ident < 2500){
         addC('entra', q.id, 4); addC('omada', q.id, 3);
-        addC('midpoint', q.id, 3); addC('ping', q.id, 2); addC('sailpointisc', q.id, 1);
+        addC('midpoint', q.id, 3); addC('ping', q.id, 2); addC('sailpointisc', q.id, 1); addC('okta', q.id, 3);
       } else if(ident < 25000){
         addC('sailpointisc', q.id, 3); addC('saviynt', q.id, 3); addC('omada', q.id, 3);
         addC('oneidentity', q.id, 2); addC('entra', q.id, 2); addC('ping', q.id, 2);
-        addC('midpoint', q.id, 2); addC('ibm', q.id, 1); addC('oracle', q.id, 1);
+        addC('midpoint', q.id, 2); addC('ibm', q.id, 1); addC('oracle', q.id, 1); addC('okta', q.id, 2);
       } else {
         addC('sailpointisc', q.id, 5); addC('saviynt', q.id, 5); addC('oneidentity', q.id, 4);
         addC('ibm', q.id, 4); addC('oracle', q.id, 3); addC('omada', q.id, 3);
         addC('sailpointiiq', q.id, 3); addC('ping', q.id, 2); addC('midpoint', q.id, 1);
-        addC('entra', q.id, 1);
+        addC('entra', q.id, 1); addC('okta', q.id, 0);
         reasons.sailpointisc.push({txt:`Volumétrie importante (${fmt(ident)} identités) : le terrain sur lequel SailPoint dispose de la base installée et de l'écosystème d'intégrateurs les plus profonds du marché`, src:[3,5]});
       }
       /* Le nombre d'applications à gouverner est le vrai facteur de charge du projet */
       if(apps >= 400){
         addC('sailpointisc', q.id, 3); addC('saviynt', q.id, 3); addC('oneidentity', q.id, 3);
         addC('ibm', q.id, 2); addC('oracle', q.id, 2); addC('sailpointiiq', q.id, 2);
-        addC('entra', q.id, -3); addC('ping', q.id, -1);
+        addC('entra', q.id, -3); addC('ping', q.id, -1); addC('okta', q.id, -2);
         reasons.saviynt.push({txt:`Vous devez gouverner environ ${fmt(apps)} applications : à ce niveau, la richesse du catalogue de connecteurs et la capacité d'intégration deviennent le premier facteur de succès du programme`, src:[1,2]});
       } else if(apps >= 75){
         addC('sailpointisc', q.id, 2); addC('saviynt', q.id, 2); addC('omada', q.id, 2);
         addC('oneidentity', q.id, 2); addC('midpoint', q.id, 1); addC('entra', q.id, -1);
       } else {
         addC('entra', q.id, 3); addC('omada', q.id, 2);
-        addC('ping', q.id, 2); addC('midpoint', q.id, 1);
+        addC('ping', q.id, 2); addC('midpoint', q.id, 1); addC('okta', q.id, 3);
         addC('oneidentity', q.id, -1); addC('ibm', q.id, -1); addC('oracle', q.id, -1); addC('sailpointiiq', q.id, -1);
       }
       /* Identités non humaines : terrain où Saviynt et SailPoint sont documentés en tête */
       if(nonhuman >= 1000){
-        addC('saviynt', q.id, 3); addC('sailpointisc', q.id, 3); addC('oneidentity', q.id, 1); addC('entra', q.id, -1);
+        addC('saviynt', q.id, 3); addC('sailpointisc', q.id, 3); addC('oneidentity', q.id, 1); addC('entra', q.id, -1); addC('okta', q.id, -1);
         reasons.saviynt.push({txt:`Vous gouvernez un volume important d'identités non humaines (~${fmt(nonhuman)}) : c'est exactement le terrain où l'évaluation 2026 place Saviynt et SailPoint en tête, loin devant le reste du marché`, src:[2]});
       } else if(nonhuman >= 200){
         addC('saviynt', q.id, 1); addC('sailpointisc', q.id, 1);
@@ -2005,7 +2039,8 @@ const VENDOR_PROFILE = {
   oracle:       { "Coûts de mise en œuvre":3, "Taille des équipes":3, "Couverture fonctionnelle":8,  "Utilisation de l'IA":5, "Souveraineté et sur site":8,  "Infonuagique et léger":5 },
   ping:         { "Coûts de mise en œuvre":6, "Taille des équipes":6, "Couverture fonctionnelle":6,  "Utilisation de l'IA":6, "Souveraineté et sur site":5,  "Infonuagique et léger":8 },
   entra:        { "Coûts de mise en œuvre":9, "Taille des équipes":9, "Couverture fonctionnelle":4,  "Utilisation de l'IA":7, "Souveraineté et sur site":2,  "Infonuagique et léger":10 },
-  midpoint:     { "Coûts de mise en œuvre":8, "Taille des équipes":3, "Couverture fonctionnelle":7,  "Utilisation de l'IA":4, "Souveraineté et sur site":10, "Infonuagique et léger":4 }
+  midpoint:     { "Coûts de mise en œuvre":8, "Taille des équipes":3, "Couverture fonctionnelle":7,  "Utilisation de l'IA":4, "Souveraineté et sur site":10, "Infonuagique et léger":4 },
+  okta:         { "Coûts de mise en œuvre":9, "Taille des équipes":9, "Couverture fonctionnelle":5,  "Utilisation de l'IA":4, "Souveraineté et sur site":1,  "Infonuagique et léger":10 }
 };
 
 const AXES = [
@@ -2201,7 +2236,8 @@ const HEAT = {
   oracle:       { x:8.0, y:7.4, team:8, tco:7.5 },
   ping:         { x:5.5, y:6.0, team:5, tco:6   },
   entra:        { x:2.0, y:4.0, team:2, tco:2.5 },
-  midpoint:     { x:7.5, y:7.0, team:8, tco:3   }
+  midpoint:     { x:7.5, y:7.0, team:8, tco:3   },
+  okta:         { x:2.2, y:3.5, team:2, tco:2.3 }
 };
 
 /* Point utilisateur : une projection en 2 dimensions (complexité absorbable, profondeur recherchée)
@@ -2776,7 +2812,8 @@ const CAVEATS = {
   oracle: `À garder en tête : l'intérêt tient largement à l'alignement avec un SI déjà Oracle, et l'offre se répartit entre la suite historique et Access Governance, plus récente. Clarifiez lequel des deux périmètres vous est réellement proposé [3].`,
   ping: `À garder en tête : la gouvernance Ping tire sa cohérence de la plateforme d'accès qui l'entoure. Évaluée seule, sur des besoins de certification ou de séparation des tâches avancés, elle est moins profonde que les spécialistes GIA [5][6].`,
   entra: `À garder en tête : la gouvernance Entra est excellente sur le périmètre Microsoft et très économique à activer, mais elle n'a pas vocation à gouverner un parc applicatif hétérogène. Vérifiez précisément quelles applications resteraient hors couverture [3].`,
-  midpoint: `À garder en tête : l'absence de coût de licence ne signifie pas l'absence de coût. midPoint suppose des compétences internes durables ou un partenaire d'intégration solide, et son interface reste plus proche de l'outil d'administration que du portail métier [10].`
+  midpoint: `À garder en tête : l'absence de coût de licence ne signifie pas l'absence de coût. midPoint suppose des compétences internes durables ou un partenaire d'intégration solide, et son interface reste plus proche de l'outil d'administration que du portail métier [10].`,
+  okta: `À garder en tête : les utilisateurs vérifiés le décrivent eux-mêmes comme une gouvernance « lite » — solide sur le cycle de vie et les certifications de base, mais qui atteint vite ses limites sur des certifications complexes ou des contrôles granulaires [11]. Okta n'apparaît par ailleurs dans aucun des trois grands classements d'analystes indépendants utilisés dans cet outil, ce qui rend un pilote d'autant plus utile avant de trancher.`
 };
 
 function leaderCard(e, li, tie){
